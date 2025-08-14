@@ -459,3 +459,111 @@ body::after {
         align-items: center;
     }
 }
+
+/* Additional animations for enhanced glitching effects */
+@keyframes chaosFloat {
+    0% {
+        transform: translateY(0px) scale(1);
+        opacity: 0.8;
+    }
+    33% {
+        transform: translateY(-10px) scale(1.05);
+        opacity: 0.9;
+    }
+    66% {
+        transform: translateY(5px) scale(0.95);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(0px) scale(1);
+        opacity: 0.8;
+    }
+}
+
+@keyframes textGlitchPulse {
+    0% {
+        text-shadow: 0 0 5px currentColor;
+    }
+    25% {
+        text-shadow:
+            -2px 0 var(--neon-pink),
+            2px 0 var(--neon-cyan),
+            0 0 15px currentColor;
+    }
+    50% {
+        text-shadow:
+            2px 0 var(--neon-green),
+            -2px 0 var(--neon-yellow),
+            0 0 20px currentColor;
+    }
+    75% {
+        text-shadow:
+            -1px 0 #ff0000,
+            1px 0 #ffffff,
+            0 0 10px currentColor;
+    }
+    100% {
+        text-shadow: 0 0 5px currentColor;
+    }
+}
+
+@keyframes intensiveGlitch {
+    0% {
+        transform: translate(0, 0) skew(0deg);
+        filter: hue-rotate(0deg);
+    }
+    10% {
+        transform: translate(-2px, 1px) skew(1deg);
+        filter: hue-rotate(90deg);
+    }
+    20% {
+        transform: translate(2px, -1px) skew(-1deg);
+        filter: hue-rotate(180deg);
+    }
+    30% {
+        transform: translate(-1px, 2px) skew(1deg);
+        filter: hue-rotate(270deg);
+    }
+    40% {
+        transform: translate(1px, -2px) skew(-1deg);
+        filter: hue-rotate(180deg);
+    }
+    50% {
+        transform: translate(-2px, -1px) skew(1deg);
+        filter: hue-rotate(90deg);
+    }
+    60% {
+        transform: translate(2px, 1px) skew(-1deg);
+        filter: hue-rotate(0deg);
+    }
+    70% {
+        transform: translate(-1px, -2px) skew(1deg);
+        filter: hue-rotate(270deg);
+    }
+    80% {
+        transform: translate(1px, 2px) skew(-1deg);
+        filter: hue-rotate(180deg);
+    }
+    90% {
+        transform: translate(-2px, 1px) skew(1deg);
+        filter: hue-rotate(90deg);
+    }
+    100% {
+        transform: translate(0, 0) skew(0deg);
+        filter: hue-rotate(0deg);
+    }
+}
+
+/* Floating glitch text styling */
+.floating-glitch-text {
+    animation: chaosFloat 4s ease-in-out infinite, textGlitchPulse 2s ease-in-out infinite;
+}
+
+.chaos-text {
+    animation: chaosFloat 3s ease-in-out infinite, intensiveGlitch 1.5s linear infinite;
+}
+
+/* Enhanced glitch status styling */
+.glitch-status {
+    animation: textGlitchPulse 3s ease-in-out infinite;
+}
