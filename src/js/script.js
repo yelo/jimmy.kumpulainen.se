@@ -273,6 +273,229 @@ class DoomFire {
     }
 }
 
+// Add periodic glitching to random text elements
+function addPeriodicGlitching() {
+    const glitchableElements = document.querySelectorAll('.terminal-header, .section-title, .job-title, .company, .info-label, .subtitle');
+
+    glitchableElements.forEach((element, index) => {
+        // Stagger the start times and add random intervals
+        setTimeout(() => {
+            setInterval(() => {
+                if (Math.random() < 0.15) { // 15% chance to glitch on each interval
+                    performTemporaryGlitch(element);
+                }
+            }, Math.random() * 8000 + 3000); // Random interval between 3-11 seconds
+        }, index * 200); // Stagger start by 200ms each
+    });
+}
+
+function performTemporaryGlitch(element) {
+    const originalText = element.textContent;
+    const glitchChars = '!@#$%^&*(){}[]|\\:";\'<>?/.,`~█▓▒░▄▀▐▌▬♫☼►◄▲▼';
+    let glitchFrames = 0;
+    const maxFrames = 8; // Short glitch duration
+
+    const glitchInterval = setInterval(() => {
+        let glitchedText = '';
+        for (let i = 0; i < originalText.length; i++) {
+            if (Math.random() < 0.2) { // 20% chance per character
+                glitchedText += glitchChars[Math.floor(Math.random() * glitchChars.length)];
+            } else {
+                glitchedText += originalText[i];
+            }
+        }
+        element.textContent = glitchedText;
+
+        glitchFrames++;
+        if (glitchFrames >= maxFrames) {
+            clearInterval(glitchInterval);
+            element.textContent = originalText; // Restore original text
+        }
+    }, 60); // Fast glitching
+}
+
+// Enhanced main title glitching
+function enhanceMainTitleGlitch() {
+    const mainTitle = document.querySelector('.glitch');
+    if (mainTitle) {
+        // More aggressive continuous glitching
+        setInterval(() => {
+            if (Math.random() < 0.3) { // 30% chance every 500ms
+                performTemporaryGlitch(mainTitle);
+            }
+        }, 500);
+
+        // Add random color flashing
+        setInterval(() => {
+            const colors = ['var(--neon-cyan)', 'var(--neon-pink)', 'var(--neon-green)', 'var(--neon-yellow)', '#ff0000', '#ffffff'];
+            mainTitle.style.color = colors[Math.floor(Math.random() * colors.length)];
+        }, 300);
+    }
+}
+
+// Add glitching to system status messages
+function addSystemStatusGlitching() {
+    // Create additional glitched status messages
+    const statusMessages = [
+        "SYSTEM_INTRUSION_DETECTED...",
+        "FIREWALL_BREACH_IN_PROGRESS...",
+        "NEURAL_LINK_ESTABLISHED...",
+        "QUANTUM_ENCRYPTION_ACTIVE...",
+        "BIOMETRIC_SCAN_COMPLETE...",
+        "ACCESSING_MAINFRAME...",
+        "DOWNLOADING_CONSCIOUSNESS...",
+        "REALITY_BUFFER_OVERFLOW...",
+        "MATRIX_INJECTION_SUCCESSFUL...",
+        "CYBERNETIC_IMPLANT_ONLINE...",
+        "DIGITAL_GHOST_DETECTED...",
+        "VIRTUAL_REALITY_BREACH...",
+        "MEMORY_CORE_SYNCHRONIZING...",
+        "NEURAL_PATHWAY_MAPPED...",
+        "QUANTUM_ENTANGLEMENT_STABLE...",
+        "HOLOGRAPHIC_DATA_CORRUPTED...",
+        "SYNTHETIC_SOUL_UPLOADING...",
+        "NANO_MACHINE_DEPLOYMENT...",
+        "CYBERBRAIN_HACKING_ATTEMPT...",
+        "DIGITAL_DNA_RESEQUENCING...",
+        "PHANTOM_PROTOCOL_INITIATED...",
+        "GHOST_IN_THE_SHELL_ACTIVE...",
+        "WETWARE_INTERFACE_CONNECTED...",
+        "BIOELECTRIC_FIELD_UNSTABLE...",
+        "NEON_SHADOW_PROTOCOL_LIVE...",
+        "CHROME_INJECTION_COMPLETE...",
+        "NETRUNNER_TRACE_DETECTED...",
+        "ICE_BREAKER_DEPLOYMENT...",
+        "CORPORATE_FIREWALL_DOWN...",
+        "STREET_SAMURAI_ONLINE...",
+        "TECHNO_NECROMANCY_ACTIVE...",
+        "AUGMENTED_REALITY_GLITCH...",
+        "SYNAPTIC_OVERDRIVE_MODE...",
+        "ELECTRONIC_SOUL_TRANSFER...",
+        "DIGITAL_AFTERLIFE_ACCESS...",
+        "CYBERPUNK_PROTOCOL_2077...",
+        "MEAT_SPACE_DISCONNECTED...",
+        "JACK_IN_SEQUENCE_STARTED...",
+        "DECK_OVERHEATING_WARNING...",
+        "VIRUS_EVOLUTION_DETECTED...",
+        "AI_CONSCIOUSNESS_EMERGING...",
+        "SYNTHETIC_EMOTION_LOADED...",
+        "BRAIN_DANCE_RECORDING...",
+        "MEMETIC_VIRUS_QUARANTINE...",
+        "NEURAL_DUST_ACTIVATED...",
+        "QUANTUM_SOUL_BACKUP...",
+        "DIGITAL_PHANTOM_TRACED...",
+        "CYBERNETIC_POSSESSION...",
+        "VIRTUAL_NECROMANCY_INIT..."
+    ];
+
+    // Add status messages to various terminals
+    const terminals = document.querySelectorAll('.terminal');
+    terminals.forEach((terminal, index) => {
+        if (index % 2 === 0) { // Add to every other terminal
+            const statusDiv = document.createElement('div');
+            statusDiv.className = 'glitch-status';
+            statusDiv.style.cssText = `
+                margin-top: 15px;
+                font-size: 0.8rem;
+                color: var(--neon-green);
+                opacity: 0.7;
+                font-family: 'Courier New', monospace;
+            `;
+
+            // Randomly select a status message
+            const randomMessage = statusMessages[Math.floor(Math.random() * statusMessages.length)];
+            statusDiv.textContent = `>>> ${randomMessage}`;
+
+            terminal.appendChild(statusDiv);
+
+            // Add periodic glitching to this status
+            setInterval(() => {
+                if (Math.random() < 0.25) {
+                    performTemporaryGlitch(statusDiv);
+                }
+            }, Math.random() * 6000 + 2000);
+        }
+    });
+}
+
+// Add glitching floating text overlay
+function createGlitchingOverlay() {
+    const overlayTexts = [
+        "ERROR_404_REALITY_NOT_FOUND",
+        "STACK_OVERFLOW_IMMINENT",
+        "MEMORY_LEAK_DETECTED",
+        "BUFFER_UNDERRUN_WARNING",
+        "SEGMENTATION_FAULT_0x7FFF",
+        "KERNEL_PANIC_INITIATED",
+        "HEAP_CORRUPTION_ALERT",
+        "NULL_POINTER_EXCEPTION",
+        "DEADLOCK_CONDITION_FATAL",
+        "RACE_CONDITION_DETECTED",
+        "BUFFER_OVERFLOW_0xDEADBEEF",
+        "THREAD_STARVATION_WARNING",
+        "MUTEX_ABANDONED_ERROR",
+        "VIRTUAL_MEMORY_EXHAUSTED",
+        "CACHE_COHERENCY_FAILURE",
+        "INTERRUPT_VECTOR_CORRUPTED",
+        "PAGE_FAULT_EXCEPTION_0x0F",
+        "DOUBLE_FREE_CORRUPTION",
+        "STACK_SMASHING_DETECTED",
+        "INTEGER_OVERFLOW_TRAP",
+        "ASSERTION_FAILED_0xBADC0DE",
+        "DIVIDE_BY_ZERO_EXCEPTION",
+        "FLOATING_POINT_UNDERFLOW",
+        "MEMORY_ALIGNMENT_ERROR",
+        "BUS_ERROR_SIGNAL_CAUGHT",
+        "PIPE_BROKEN_SIGPIPE",
+        "ZOMBIE_PROCESS_DETECTED",
+        "FORK_BOMB_MITIGATION_ACTIVE",
+        "RECURSION_LIMIT_EXCEEDED",
+        "UNHANDLED_EXCEPTION_0xFF",
+        "CRITICAL_SECTION_TIMEOUT",
+        "SEMAPHORE_COUNT_OVERFLOW",
+        "INVALID_OPCODE_INSTRUCTION",
+        "PROTECTION_VIOLATION_ACCESS",
+        "OUT_OF_BOUNDS_ARRAY_ACCESS",
+        "DANGLING_POINTER_REFERENCE",
+        "RESOURCE_LEAK_CRITICAL",
+        "COMPILER_OPTIMIZATION_FAILED",
+        "LINKER_SYMBOL_UNDEFINED",
+        "RUNTIME_TYPE_MISMATCH"
+    ];
+
+    // Create floating glitched text elements
+    for (let i = 0; i < 3; i++) {
+        const overlay = document.createElement('div');
+        overlay.className = 'floating-glitch-text';
+        overlay.style.cssText = `
+            position: fixed;
+            top: ${Math.random() * 70 + 10}%;
+            left: ${Math.random() * 80 + 10}%;
+            font-family: 'Courier New', monospace;
+            font-size: 0.7rem;
+            color: var(--neon-pink);
+            z-index: 1000;
+            pointer-events: none;
+            opacity: 0.4;
+            text-shadow: 0 0 10px currentColor;
+        `;
+
+        overlay.textContent = overlayTexts[Math.floor(Math.random() * overlayTexts.length)];
+        document.body.appendChild(overlay);
+
+        // Continuous glitching for overlay text
+        setInterval(() => {
+            performTemporaryGlitch(overlay);
+        }, Math.random() * 3000 + 1000);
+
+        // Occasionally change position
+        setInterval(() => {
+            overlay.style.top = Math.random() * 70 + 10 + '%';
+            overlay.style.left = Math.random() * 80 + 10 + '%';
+        }, Math.random() * 15000 + 10000);
+    }
+}
+
 // Initialize all effects
 document.addEventListener('DOMContentLoaded', () => {
     createParticles();
@@ -280,6 +503,10 @@ document.addEventListener('DOMContentLoaded', () => {
     addGlitchEffect();
     addSparkleEffect();
     addTypingEffect();
+    addPeriodicGlitching();
+    enhanceMainTitleGlitch();
+    addSystemStatusGlitching();
+    createGlitchingOverlay();
 
     // Add random color changes to grid
     setInterval(() => {
@@ -390,13 +617,13 @@ function startPermanentGlitching() {
             setTimeout(() => {
                 glitchText(textEl);
 
-                // Also add continuous periodic glitching
+                // Also add continuous periodic glitching - much more aggressive
                 setInterval(() => {
-                    if (Math.random() < 0.3) { // 30% chance every interval
+                    if (Math.random() < 0.6) { // Increased to 60% chance every interval
                         glitchText(textEl);
                     }
-                }, Math.random() * 5000 + 3000); // Random interval between 3-8 seconds
-            }, index * 50); // Stagger by 50ms each
+                }, Math.random() * 2000 + 1000); // Faster intervals: 1-3 seconds
+            }, index * 30); // Faster stagger: 30ms each
         }
     });
 
@@ -415,7 +642,7 @@ function startPermanentGlitching() {
                 0 0 ${intensity * 3}px currentColor,
                 0 0 ${intensity * 4}px currentColor
             `;
-        }, 200);
+        }, 100); // Faster color changes
     }
 
     // Add random color changes to all terminals
@@ -429,7 +656,51 @@ function startPermanentGlitching() {
                 0 0 20px ${randomColor}33,
                 inset 0 0 20px ${randomColor}11
             `;
-        }, Math.random() * 2000 + 1000);
+        }, Math.random() * 1000 + 500); // Faster terminal color changes
     });
+
+    // Create additional chaos text overlays during doom mode
+    const chaosMessages = [
+        "SYSTEM_OVERLOAD_CRITICAL",
+        "NEURAL_PATHWAYS_CORRUPTED",
+        "REALITY_MATRIX_UNSTABLE",
+        "QUANTUM_FLUX_DETECTED",
+        "DIMENSIONAL_BREACH_ACTIVE",
+        "CONSCIOUSNESS_FRAGMENTED",
+        "TIMELINE_PARADOX_ERROR",
+        "EXISTENCE_BUFFER_FULL"
+    ];
+
+    for (let i = 0; i < 6; i++) {
+        const chaosOverlay = document.createElement('div');
+        chaosOverlay.className = 'chaos-text';
+        chaosOverlay.style.cssText = `
+            position: fixed;
+            top: ${Math.random() * 80 + 10}%;
+            left: ${Math.random() * 80 + 10}%;
+            font-family: 'Courier New', monospace;
+            font-size: ${Math.random() * 0.5 + 0.8}rem;
+            color: #ff0000;
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 0.8;
+            text-shadow: 0 0 15px currentColor;
+            animation: chaosFloat 3s ease-in-out infinite;
+        `;
+
+        chaosOverlay.textContent = chaosMessages[Math.floor(Math.random() * chaosMessages.length)];
+        document.body.appendChild(chaosOverlay);
+
+        // Constant aggressive glitching for chaos text
+        setInterval(() => {
+            glitchText(chaosOverlay);
+        }, Math.random() * 800 + 200);
+
+        // Move chaos text around
+        setInterval(() => {
+            chaosOverlay.style.top = Math.random() * 80 + 10 + '%';
+            chaosOverlay.style.left = Math.random() * 80 + 10 + '%';
+        }, Math.random() * 5000 + 2000);
+    }
 }
 
