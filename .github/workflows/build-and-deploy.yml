@@ -1,0 +1,63 @@
+name: Build and Deploy to Azure Static Web Apps
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build_and_deploy_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create build directory
+        run: mkdir -p build
+
+      - name: Copy source files
+        run: cp -r src/* build/
+
+      - name: Install minification tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y minify
+
+      - name: Minify HTML files
+        run: |
+          for file in build/*.html; do
+            if [ -f "$file" ]; then
+              minify -o "${file}.min" "$file"
+              mv "${file}.min" "$file"
+            fi
+          done
+
+      - name: Minify CSS files
+        run: |
+          for file in build/css/*.css; do
+            if [ -f "$file" ]; then
+              minify -o "${file}.min" "$file"
+              mv "${file}.min" "$file"
+            fi
+          done
+
+      - name: Minify JavaScript files
+        run: |
+          for file in build/js/*.js; do
+            if [ -f "$file" ]; then
+              minify -o "${file}.min" "$file"
+              mv "${file}.min" "$file"
+            fi
+          done
+
+      - name: Deploy to Azure Static Web Apps
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: "upload"
+          app_location: "/build"
+          output_location: "/"
