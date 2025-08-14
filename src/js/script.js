@@ -144,6 +144,134 @@ function addTypingEffect() {
     });
 }
 
+// Doom Fire Effect
+class DoomFire {
+    constructor() {
+        this.width = Math.floor(window.innerWidth / 4);
+        this.height = Math.floor(window.innerHeight / 4);
+        this.firePixels = new Array(this.width * this.height).fill(0);
+        this.canvas = null;
+        this.ctx = null;
+        this.imageData = null;
+        this.animationId = null;
+
+        // Doom fire color palette (37 colors from black to bright yellow)
+        this.palette = [
+            [7, 7, 7], [31, 7, 7], [47, 15, 7], [71, 15, 7], [87, 23, 7], [103, 31, 7],
+            [119, 31, 7], [143, 39, 7], [159, 47, 7], [175, 63, 7], [191, 71, 7], [199, 71, 7],
+            [223, 79, 7], [223, 87, 7], [223, 87, 7], [215, 95, 7], [215, 95, 7], [215, 103, 15],
+            [207, 111, 15], [207, 119, 15], [207, 127, 15], [207, 135, 23], [199, 135, 23], [199, 143, 23],
+            [199, 151, 31], [191, 159, 31], [191, 159, 31], [191, 167, 39], [191, 167, 39], [191, 175, 47],
+            [183, 175, 47], [183, 183, 47], [183, 183, 55], [207, 207, 111], [223, 223, 159], [239, 239, 199], [255, 255, 255]
+        ];
+    }
+
+    createCanvas() {
+        this.canvas = document.createElement('canvas');
+        this.canvas.width = this.width;
+        this.canvas.height = this.height;
+        this.canvas.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9998;
+            pointer-events: none;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+        `;
+
+        this.ctx = this.canvas.getContext('2d');
+        this.imageData = this.ctx.createImageData(this.width, this.height);
+
+        // Initialize bottom row to maximum fire intensity
+        for (let x = 0; x < this.width; x++) {
+            this.firePixels[(this.height - 1) * this.width + x] = 36;
+        }
+
+        document.body.appendChild(this.canvas);
+    }
+
+    spreadFire(src) {
+        const pixel = this.firePixels[src];
+        if (pixel === 0) {
+            this.firePixels[src - this.width] = 0;
+        } else {
+            const randIdx = Math.round(Math.random() * 3.0) & 3;
+            const dst = src - randIdx + 1;
+            this.firePixels[dst - this.width] = pixel - (randIdx & 1);
+        }
+    }
+
+    doFire() {
+        for (let x = 0; x < this.width; x++) {
+            for (let y = 1; y < this.height; y++) {
+                this.spreadFire(y * this.width + x);
+            }
+        }
+    }
+
+    render() {
+        this.doFire();
+
+        // Convert fire pixels to RGBA
+        for (let i = 0; i < this.firePixels.length; i++) {
+            const fireIntensity = this.firePixels[i];
+            const color = this.palette[fireIntensity];
+            const pixelIndex = i * 4;
+
+            this.imageData.data[pixelIndex] = color[0];     // Red
+            this.imageData.data[pixelIndex + 1] = color[1]; // Green
+            this.imageData.data[pixelIndex + 2] = color[2]; // Blue
+            this.imageData.data[pixelIndex + 3] = fireIntensity > 0 ? 255 : 0; // Alpha
+        }
+
+        this.ctx.putImageData(this.imageData, 0, 0);
+        this.animationId = requestAnimationFrame(() => this.render());
+    }
+
+    start() {
+        this.createCanvas();
+        this.render();
+    }
+
+    stop() {
+        if (this.animationId) {
+            cancelAnimationFrame(this.animationId);
+        }
+        if (this.canvas) {
+            this.canvas.remove();
+        }
+    }
+
+    extinguish() {
+        // Gradually reduce fire intensity at the bottom
+        const extinguishDuration = 2000; // 2 seconds
+        const startTime = Date.now();
+
+        const extinguishAnimation = () => {
+            const elapsed = Date.now() - startTime;
+            const progress = Math.min(elapsed / extinguishDuration, 1);
+
+            // Reduce bottom row intensity
+            for (let x = 0; x < this.width; x++) {
+                const bottomIndex = (this.height - 1) * this.width + x;
+                this.firePixels[bottomIndex] = Math.floor(36 * (1 - progress));
+            }
+
+            if (progress < 1) {
+                requestAnimationFrame(extinguishAnimation);
+            } else {
+                setTimeout(() => this.stop(), 500);
+            }
+        };
+
+        extinguishAnimation();
+    }
+}
+
 // Initialize all effects
 document.addEventListener('DOMContentLoaded', () => {
     createParticles();
@@ -187,8 +315,12 @@ function triggerPageDestructionAndRebuild() {
         }
     });
 
+    // Start the Doom fire effect
+    const doomFire = new DoomFire();
+    doomFire.start();
+
     // Add screen shatter effect to body
-    document.body.style.animation = 'screenShatter 6s ease-in-out';
+    document.body.style.animation = 'screenShatter 8s ease-in-out';
 
     // Create static noise overlay
     const staticOverlay = document.createElement('div');
@@ -206,7 +338,7 @@ function triggerPageDestructionAndRebuild() {
         pointer-events: none;
         z-index: 9999;
         opacity: 0;
-        animation: staticNoise 6s ease-in-out;
+        animation: staticNoise 8s ease-in-out;
     `;
     document.body.appendChild(staticOverlay);
 
@@ -225,7 +357,7 @@ function triggerPageDestructionAndRebuild() {
                 element.style.setProperty('--fall-y', fallY + 'px');
                 element.style.setProperty('--fall-rotation', fallRotation + 'deg');
 
-                element.style.animation = 'fallApart 6s ease-in-out';
+                element.style.animation = 'fallApart 8s ease-in-out';
 
                 // Add glitch effect to text content
                 const textElements = element.querySelectorAll('h1, h2, h3, p, div');
@@ -240,6 +372,11 @@ function triggerPageDestructionAndRebuild() {
             }, delay);
         }
     });
+
+    // Start extinguishing the fire after 4 seconds
+    setTimeout(() => {
+        doomFire.extinguish();
+    }, 4000);
 
     // Clean up after animation
     setTimeout(() => {
@@ -266,19 +403,19 @@ function triggerPageDestructionAndRebuild() {
 
         // Trigger a "system reboot" message
         showRebootMessage();
-    }, 6000);
+    }, 8000);
 }
 
 function glitchText(element) {
     const originalText = element.textContent;
     const glitchChars = '!@#$%^&*(){}[]|\\:";\'<>?/.,`~';
     let glitchCount = 0;
-    const maxGlitches = 8;
+    const maxGlitches = 12;
 
     const glitchInterval = setInterval(() => {
         let glitchedText = '';
         for (let i = 0; i < originalText.length; i++) {
-            if (Math.random() < 0.1) {
+            if (Math.random() < 0.15) {
                 glitchedText += glitchChars[Math.floor(Math.random() * glitchChars.length)];
             } else {
                 glitchedText += originalText[i];
@@ -311,17 +448,19 @@ function showRebootMessage() {
         text-align: center;
         z-index: 10000;
         box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
+        animation: glitch 0.5s ease-in-out 3;
     `;
 
     rebootDiv.innerHTML = `
         <div>SYSTEM REBOOT COMPLETE</div>
         <div style="margin-top: 10px; color: var(--neon-cyan);">>>> PORTFOLIO.EXE RESTORED <<<</div>
-        <div style="margin-top: 10px; font-size: 0.9rem; color: var(--neon-yellow);">Konami Code Detected ✓</div>
+        <div style="margin-top: 10px; font-size: 0.9rem; color: var(--neon-yellow);">Konami Code + Doom Fire Detected âœ"</div>
+        <div style="margin-top: 10px; font-size: 0.8rem; color: var(--neon-pink);">IDDQD IDKFA</div>
     `;
 
     document.body.appendChild(rebootDiv);
 
     setTimeout(() => {
         rebootDiv.remove();
-    }, 3000);
+    }, 4000);
 }
