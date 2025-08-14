@@ -1,0 +1,34 @@
+# Terraform Variables Configuration
+# Copy this file to terraform.tfvars and update with your values
+
+# Required: Azure Resource Group (should already exist)
+resource_group_name = "rg-jimmy-portfolio-prod"
+
+# Optional: Azure region (defaults to West Europe)
+location = "West Europe"
+
+# Optional: App name (defaults to jimmy-kumpulainen-portfolio)
+app_name = "jimmy-kumpulainen-portfolio"
+
+# Optional: Environment (defaults to prod)
+environment = "prod"
+
+# Optional: GitHub repository URL (auto-detected in CI/CD)
+github_repo_url = "https://github.com/yelo/jimmy.kumpulainen.se"
+
+# Optional: GitHub branch (auto-detected in CI/CD)
+github_repo_branch = "main"
+
+# Optional: Source locations (match your current setup)
+app_location = "/src"
+api_location = ""
+output_location = "/src"
+
+# Optional: Custom tags
+tags = {
+  Environment = "production"
+  Project     = "portfolio"
+  ManagedBy   = "terraform"
+  Owner       = "jimmy-kumpulainen"
+  Repository  = "jimmy.kumpulainen.se"
+}
