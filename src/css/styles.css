@@ -567,3 +567,484 @@ body::after {
 .glitch-status {
     animation: textGlitchPulse 3s ease-in-out infinite;
 }
+
+/* Extreme glitch box styles */
+.extreme-glitch-box {
+    position: relative;
+    background: rgba(0, 0, 0, 0.9);
+    border: 3px solid var(--neon-pink);
+    animation: extremeGlitch 1s steps(20, end) infinite, colorShift 2s steps(8, end) infinite;
+    overflow: hidden;
+    margin: 30px 0;
+    box-shadow:
+        0 0 30px rgba(255, 0, 255, 0.6),
+        inset 0 0 30px rgba(255, 0, 255, 0.2),
+        0 0 60px rgba(0, 255, 255, 0.3);
+}
+
+.extreme-glitch-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background:
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 0, 255, 0.1) 2px,
+            rgba(255, 0, 255, 0.1) 4px
+        );
+    animation: glitchSweep 3s linear infinite;
+    pointer-events: none;
+}
+
+.glitch-static {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.2) 1px, transparent 2px),
+        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.15) 1px, transparent 2px),
+        radial-gradient(circle at 40% 90%, rgba(255,255,255,0.1) 1px, transparent 2px);
+    background-size: 10px 10px, 15px 15px, 8px 8px;
+    animation: staticNoise 0.3s steps(6, end) infinite;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.glitch-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent 30%,
+        rgba(255, 0, 255, 0.3) 50%,
+        transparent 70%
+    );
+    animation: horizontalGlitch 1s steps(8, end) infinite;
+    pointer-events: none;
+}.glitch-header {
+    animation: textGlitchPulse 0.8s steps(8, end) infinite, colorFlash 1.5s steps(6, end) infinite;
+    position: relative;
+    z-index: 10;
+}
+
+.glitch-title {
+    animation: intensiveGlitch 0.9s steps(12, end) infinite, hueRotate 2s steps(8, end) infinite;
+    position: relative;
+    z-index: 10;
+}
+
+.glitch-content {
+    position: relative;
+    z-index: 10;
+}
+
+.glitch-item {
+    animation: itemGlitch 1.8s steps(10, end) infinite;
+    background: rgba(255, 0, 255, 0.15) !important;
+    border: 2px solid var(--neon-cyan) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.glitch-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 255, 255, 0.4),
+        transparent
+    );
+    animation: sweepEffect 3s linear infinite;
+}
+
+.glitch-label {
+    animation: labelGlitch 1.2s steps(8, end) infinite;
+    color: var(--neon-yellow) !important;
+    text-shadow:
+        0 0 5px currentColor,
+        2px 0 var(--neon-pink),
+        -2px 0 var(--neon-cyan);
+}
+
+.glitch-text {
+    animation: textWaver 1.6s steps(12, end) infinite;
+    position: relative;
+}.glitch-link {
+    color: var(--neon-cyan);
+    text-decoration: none;
+    animation: linkGlitch 1s steps(8, end) infinite;
+    position: relative;
+    display: inline-block;
+}
+
+.glitch-link:hover {
+    animation: linkGlitch 0.4s steps(6, end) infinite, colorCycle 0.6s steps(6, end) infinite;
+}
+
+.chaos-status {
+    animation: chaosText 0.8s steps(10, end) infinite, colorShift 1.5s steps(6, end) infinite;
+    font-weight: bold;
+}
+
+/* Extreme glitch animations */
+@keyframes extremeGlitch {
+    0%, 100% {
+        transform: translate(0, 0);
+        border-color: var(--neon-pink);
+        filter: hue-rotate(0deg);
+    }
+    5% {
+        transform: translate(-1px, 1px);
+        border-color: var(--neon-cyan);
+        filter: contrast(1.2);
+    }
+    10% {
+        transform: translate(1px, -1px);
+        border-color: #ffffff;
+        filter: invert(0.1);
+    }
+    15% {
+        transform: translate(-1px, -1px);
+        border-color: var(--neon-pink);
+        filter: contrast(0.8);
+    }
+    20% {
+        transform: translate(1px, 1px);
+        border-color: var(--neon-cyan);
+        filter: brightness(1.3);
+    }
+    25% {
+        transform: translate(0, 0);
+        border-color: #cccccc;
+        filter: contrast(1.5);
+    }
+    30% {
+        transform: translate(-1px, 0);
+        border-color: var(--neon-pink);
+        filter: brightness(0.8);
+    }
+    35% {
+        transform: translate(1px, 0);
+        border-color: var(--neon-cyan);
+        filter: invert(0.05);
+    }
+    40% {
+        transform: translate(0, -1px);
+        border-color: #ffffff;
+        filter: contrast(1.1);
+    }
+    45% {
+        transform: translate(0, 1px);
+        border-color: var(--neon-pink);
+        filter: brightness(1.1);
+    }
+    50% {
+        transform: translate(-1px, 1px);
+        border-color: var(--neon-cyan);
+        filter: contrast(0.9);
+    }
+    55% {
+        transform: translate(1px, -1px);
+        border-color: #cccccc;
+        filter: invert(0.08);
+    }
+    60% {
+        transform: translate(0, 0);
+        border-color: var(--neon-pink);
+        filter: brightness(0.9);
+    }
+    65% {
+        transform: translate(-1px, -1px);
+        border-color: var(--neon-cyan);
+        filter: contrast(1.3);
+    }
+    70% {
+        transform: translate(1px, 1px);
+        border-color: #ffffff;
+        filter: brightness(1.2);
+    }
+    75% {
+        transform: translate(0, -1px);
+        border-color: var(--neon-pink);
+        filter: invert(0.03);
+    }
+    80% {
+        transform: translate(0, 1px);
+        border-color: var(--neon-cyan);
+        filter: contrast(0.85);
+    }
+    85% {
+        transform: translate(-1px, 0);
+        border-color: #cccccc;
+        filter: brightness(1.15);
+    }
+    90% {
+        transform: translate(1px, 0);
+        border-color: var(--neon-pink);
+        filter: contrast(1.4);
+    }
+    95% {
+        transform: translate(0, 0);
+        border-color: var(--neon-cyan);
+        filter: invert(0.02);
+    }
+}
+
+@keyframes colorShift {
+    0% { background: rgba(0, 0, 0, 0.9); }
+    25% { background: rgba(255, 0, 255, 0.05); }
+    50% { background: rgba(0, 255, 255, 0.05); }
+    75% { background: rgba(200, 200, 200, 0.03); }
+    100% { background: rgba(0, 0, 0, 0.9); }
+}
+
+@keyframes glitchSweep {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes horizontalGlitch {
+    0%, 100% { transform: translateX(0) scaleX(1); opacity: 0; }
+    25% { transform: translateX(-100%) scaleX(0.5); opacity: 0.8; }
+    50% { transform: translateX(100%) scaleX(1.5); opacity: 0.6; }
+    75% { transform: translateX(-50%) scaleX(0.8); opacity: 0.4; }
+}
+
+@keyframes colorFlash {
+    0% { color: var(--neon-cyan); }
+    20% { color: var(--neon-pink); }
+    40% { color: #ffffff; }
+    60% { color: var(--neon-cyan); }
+    80% { color: #cccccc; }
+    100% { color: var(--neon-pink); }
+}
+
+@keyframes hueRotate {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+@keyframes itemGlitch {
+    0%, 100% {
+        transform: translate(0, 0);
+        box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+    }
+    10% {
+        transform: translate(-1px, 0);
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
+    }
+    20% {
+        transform: translate(1px, 0);
+        box-shadow: 0 0 25px rgba(255, 255, 0, 0.6);
+    }
+    30% {
+        transform: translate(0, -1px);
+        box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    }
+    40% {
+        transform: translate(0, 1px);
+        box-shadow: 0 0 18px rgba(255, 0, 255, 0.6);
+    }
+    50% {
+        transform: translate(-1px, -1px);
+        box-shadow: 0 0 22px rgba(0, 255, 255, 0.8);
+    }
+    60% {
+        transform: translate(1px, 1px);
+        box-shadow: 0 0 16px rgba(255, 255, 0, 0.4);
+    }
+    70% {
+        transform: translate(-1px, 1px);
+        box-shadow: 0 0 24px rgba(0, 255, 0, 0.7);
+    }
+    80% {
+        transform: translate(1px, -1px);
+        box-shadow: 0 0 19px rgba(255, 0, 255, 0.5);
+    }
+    90% {
+        transform: translate(0, 0);
+        box-shadow: 0 0 21px rgba(0, 255, 255, 0.6);
+    }
+}
+
+@keyframes sweepEffect {
+    0% { left: -100%; }
+    50% { left: 100%; }
+    100% { left: -100%; }
+}
+
+@keyframes labelGlitch {
+    0%, 100% {
+        transform: translate(0, 0);
+        text-shadow:
+            0 0 5px currentColor,
+            2px 0 var(--neon-pink),
+            -2px 0 var(--neon-cyan);
+    }
+    33% {
+        transform: translate(-1px, 0);
+        text-shadow:
+            0 0 8px currentColor,
+            3px 0 var(--neon-green),
+            -1px 0 var(--neon-yellow);
+    }
+    66% {
+        transform: translate(1px, 0);
+        text-shadow:
+            0 0 10px currentColor,
+            -2px 0 #ff0000,
+            1px 0 #ffffff;
+    }
+}
+
+@keyframes textWaver {
+    0%, 100% { transform: translate(0, 0); }
+    8% { transform: translate(-1px, 0); }
+    16% { transform: translate(1px, 0); }
+    24% { transform: translate(0, -1px); }
+    32% { transform: translate(0, 1px); }
+    40% { transform: translate(-1px, -1px); }
+    48% { transform: translate(1px, 1px); }
+    56% { transform: translate(-1px, 1px); }
+    64% { transform: translate(1px, -1px); }
+    72% { transform: translate(0, 0); }
+    80% { transform: translate(-1px, 0); }
+    88% { transform: translate(1px, 0); }
+    96% { transform: translate(0, -1px); }
+}
+
+@keyframes linkGlitch {
+    0%, 100% {
+        transform: translate(0, 0);
+        color: var(--neon-cyan);
+        text-shadow: 0 0 10px currentColor;
+    }
+    20% {
+        transform: translate(-1px, 1px);
+        color: var(--neon-pink);
+        text-shadow: 0 0 15px currentColor;
+    }
+    40% {
+        transform: translate(1px, -1px);
+        color: var(--neon-green);
+        text-shadow: 0 0 20px currentColor;
+    }
+    60% {
+        transform: translate(-1px, -1px);
+        color: var(--neon-yellow);
+        text-shadow: 0 0 15px currentColor;
+    }
+    80% {
+        transform: translate(1px, 1px);
+        color: #ff0000;
+        text-shadow: 0 0 25px currentColor;
+    }
+}
+
+@keyframes colorCycle {
+    0% { color: var(--neon-cyan); }
+    16% { color: var(--neon-pink); }
+    32% { color: var(--neon-green); }
+    48% { color: var(--neon-yellow); }
+    64% { color: #ff0000; }
+    80% { color: #ffffff; }
+    100% { color: var(--neon-cyan); }
+}
+
+@keyframes chaosText {
+    0%, 100% {
+        transform: translate(0, 0);
+        filter: contrast(1);
+    }
+    5% {
+        transform: translate(-1px, 0);
+        filter: invert(0.1);
+    }
+    10% {
+        transform: translate(1px, 0);
+        filter: contrast(1.2);
+    }
+    15% {
+        transform: translate(0, -1px);
+        filter: brightness(1.1);
+    }
+    20% {
+        transform: translate(0, 1px);
+        filter: invert(0.05);
+    }
+    25% {
+        transform: translate(-1px, -1px);
+        filter: contrast(0.9);
+    }
+    30% {
+        transform: translate(1px, 1px);
+        filter: brightness(0.9);
+    }
+    35% {
+        transform: translate(-1px, 1px);
+        filter: invert(0.08);
+    }
+    40% {
+        transform: translate(1px, -1px);
+        filter: contrast(1.3);
+    }
+    45% {
+        transform: translate(0, 0);
+        filter: brightness(1.2);
+    }
+    50% {
+        transform: translate(-1px, 0);
+        filter: invert(0.03);
+    }
+    55% {
+        transform: translate(1px, 0);
+        filter: contrast(0.8);
+    }
+    60% {
+        transform: translate(0, -1px);
+        filter: brightness(0.8);
+    }
+    65% {
+        transform: translate(0, 1px);
+        filter: invert(0.06);
+    }
+    70% {
+        transform: translate(-1px, -1px);
+        filter: contrast(1.1);
+    }
+    75% {
+        transform: translate(1px, 1px);
+        filter: brightness(1.15);
+    }
+    80% {
+        transform: translate(0, 0);
+        filter: invert(0.02);
+    }
+    85% {
+        transform: translate(-1px, 1px);
+        filter: contrast(0.95);
+    }
+    90% {
+        transform: translate(1px, -1px);
+        filter: brightness(1.05);
+    }
+    95% {
+        transform: translate(0, 0);
+        filter: invert(0.04);
+    }
+}
