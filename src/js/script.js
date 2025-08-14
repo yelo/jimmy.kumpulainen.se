@@ -235,6 +235,7 @@ class DoomFire {
     start() {
         this.createCanvas();
         this.render();
+        // Fire burns forever - no automatic extinguishing
     }
 
     stop() {
@@ -288,134 +289,72 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 5000);
 });
 
-// Konami code easter egg
-let konamiCode = [];
-const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+// IDDQD cheat code easter egg (Doom god mode cheat)
+let cheatCode = [];
+const iddqdSequence = ['I', 'D', 'D', 'Q', 'D'];
 
 document.addEventListener('keydown', (e) => {
-    konamiCode.push(e.keyCode);
-    if (konamiCode.length > 10) konamiCode.shift();
+    cheatCode.push(e.key.toUpperCase());
+    if (cheatCode.length > 5) cheatCode.shift();
 
-    if (JSON.stringify(konamiCode) === JSON.stringify(konamiSequence)) {
-        triggerPageDestructionAndRebuild();
+    if (JSON.stringify(cheatCode) === JSON.stringify(iddqdSequence)) {
+        triggerDoomChaosMode();
     }
 });
 
-function triggerPageDestructionAndRebuild() {
-    // Get all terminal elements and other major components
-    const terminals = document.querySelectorAll('.terminal');
-    const header = document.querySelector('.header');
-    const allElements = [header, ...terminals];
-
-    // Create deep clones of all elements to restore later
-    const elementClones = new Map();
-    allElements.forEach(element => {
-        if (element) {
-            elementClones.set(element, element.cloneNode(true));
-        }
-    });
-
-    // Start the Doom fire effect
+function triggerDoomChaosMode() {
+    // Start the permanent Doom fire effect
     const doomFire = new DoomFire();
     doomFire.start();
 
-    // Add screen shatter effect to body
-    document.body.style.animation = 'screenShatter 8s ease-in-out';
+    // Create a full-screen gradient overlay that covers everything
+    const gradientOverlay = document.createElement('div');
+    gradientOverlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        z-index: 9997;
+        animation: screenShatter 8s ease-in-out infinite;
+    `;
+    document.body.appendChild(gradientOverlay);
 
-    // Create static noise overlay
+    // Create permanent static noise overlay
     const staticOverlay = document.createElement('div');
     staticOverlay.style.cssText = `
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
+        width: 100vw;
+        height: 100vh;
         background:
             radial-gradient(circle at 20% 50%, transparent 20%, rgba(255,255,255,0.1) 21%, rgba(255,255,255,0.1) 25%, transparent 26%),
             radial-gradient(circle at 80% 50%, transparent 20%, rgba(255,255,255,0.1) 21%, rgba(255,255,255,0.1) 25%, transparent 26%),
             radial-gradient(circle at 40% 80%, transparent 20%, rgba(255,255,255,0.1) 21%, rgba(255,255,255,0.1) 25%, transparent 26%);
         background-size: 50px 50px, 60px 60px, 40px 40px;
         pointer-events: none;
-        z-index: 9999;
-        opacity: 0;
-        animation: staticNoise 8s ease-in-out;
+        z-index: 9998;
+        opacity: 0.5;
+        animation: staticNoise 2s ease-in-out infinite;
     `;
     document.body.appendChild(staticOverlay);
 
-    // Make elements fall apart
-    allElements.forEach((element, index) => {
-        if (element) {
-            const delay = index * 200; // Stagger the destruction
-
-            setTimeout(() => {
-                // Set random fall variables
-                const fallX = (Math.random() - 0.5) * 800;
-                const fallY = (Math.random() - 0.5) * 600;
-                const fallRotation = (Math.random() - 0.5) * 720;
-
-                element.style.setProperty('--fall-x', fallX + 'px');
-                element.style.setProperty('--fall-y', fallY + 'px');
-                element.style.setProperty('--fall-rotation', fallRotation + 'deg');
-
-                element.style.animation = 'fallApart 8s ease-in-out';
-
-                // Add glitch effect to text content
-                const textElements = element.querySelectorAll('h1, h2, h3, p, div');
-                textElements.forEach((textEl, textIndex) => {
-                    setTimeout(() => {
-                        if (textEl.textContent) {
-                            glitchText(textEl);
-                        }
-                    }, textIndex * 100);
-                });
-
-            }, delay);
-        }
-    });
-
-    // Start extinguishing the fire after 4 seconds
-    setTimeout(() => {
-        doomFire.extinguish();
-    }, 4000);
-
-    // Clean up after animation
-    setTimeout(() => {
-        // Restore body
-        document.body.style.animation = '';
-        staticOverlay.remove();
-
-        // Completely replace each element with its original clone
-        allElements.forEach(element => {
-            if (element && element.parentNode) {
-                const clone = elementClones.get(element);
-                if (clone) {
-                    // Replace the modified element with the pristine clone
-                    element.parentNode.replaceChild(clone, element);
-                }
-            }
-        });
-
-        // Re-initialize the interactive effects on the restored elements
-        setTimeout(() => {
-            addGlitchEffect();
-            addSparkleEffect();
-        }, 100);
-
-        // Trigger a "system reboot" message
-        showRebootMessage();
-    }, 8000);
+    // Start aggressive glitching on ALL text elements
+    startPermanentGlitching();
 }
 
 function glitchText(element) {
     const originalText = element.textContent;
-    const glitchChars = '!@#$%^&*(){}[]|\\:";\'<>?/.,`~';
+    const glitchChars = '!@#$%^&*(){}[]|\\:";\'<>?/.,`~█▓▒░▄▀▐▌▬♫☼►◄▲▼';
     let glitchCount = 0;
-    const maxGlitches = 12;
+    const maxGlitches = 20; // Increased for more intense glitching
 
     const glitchInterval = setInterval(() => {
         let glitchedText = '';
         for (let i = 0; i < originalText.length; i++) {
-            if (Math.random() < 0.15) {
+            if (Math.random() < 0.25) { // Increased probability for more glitching
                 glitchedText += glitchChars[Math.floor(Math.random() * glitchChars.length)];
             } else {
                 glitchedText += originalText[i];
@@ -426,41 +365,71 @@ function glitchText(element) {
         glitchCount++;
         if (glitchCount >= maxGlitches) {
             clearInterval(glitchInterval);
-            element.textContent = originalText;
+            // Don't restore original text - keep it glitched!
+            let finalGlitchedText = '';
+            for (let i = 0; i < originalText.length; i++) {
+                if (Math.random() < 0.15) {
+                    finalGlitchedText += glitchChars[Math.floor(Math.random() * glitchChars.length)];
+                } else {
+                    finalGlitchedText += originalText[i];
+                }
+            }
+            element.textContent = finalGlitchedText;
         }
-    }, 150);
+    }, 100); // Faster glitching
 }
 
-function showRebootMessage() {
-    const rebootDiv = document.createElement('div');
-    rebootDiv.style.cssText = `
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: rgba(0, 0, 0, 0.9);
-        border: 2px solid var(--neon-green);
-        padding: 30px;
-        border-radius: 10px;
-        color: var(--neon-green);
-        font-family: 'Courier New', monospace;
-        font-size: 1.2rem;
-        text-align: center;
-        z-index: 10000;
-        box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
-        animation: glitch 0.5s ease-in-out 3;
-    `;
+function startPermanentGlitching() {
+    // Get ALL text elements on the page
+    const allTextElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, div, span, a, li, td, th, label, button');
 
-    rebootDiv.innerHTML = `
-        <div>SYSTEM REBOOT COMPLETE</div>
-        <div style="margin-top: 10px; color: var(--neon-cyan);">>>> PORTFOLIO.EXE RESTORED <<<</div>
-        <div style="margin-top: 10px; font-size: 0.9rem; color: var(--neon-yellow);">Konami Code + Doom Fire Detected âœ"</div>
-        <div style="margin-top: 10px; font-size: 0.8rem; color: var(--neon-pink);">IDDQD IDKFA</div>
-    `;
+    // Start glitching all text elements with staggered timing
+    allTextElements.forEach((textEl, index) => {
+        if (textEl.textContent && textEl.textContent.trim() !== '') {
+            // Stagger the start of glitching
+            setTimeout(() => {
+                glitchText(textEl);
 
-    document.body.appendChild(rebootDiv);
+                // Also add continuous periodic glitching
+                setInterval(() => {
+                    if (Math.random() < 0.3) { // 30% chance every interval
+                        glitchText(textEl);
+                    }
+                }, Math.random() * 5000 + 3000); // Random interval between 3-8 seconds
+            }, index * 50); // Stagger by 50ms each
+        }
+    });
 
-    setTimeout(() => {
-        rebootDiv.remove();
-    }, 4000);
+    // Add aggressive glitching to the main title
+    const mainTitle = document.querySelector('.glitch');
+    if (mainTitle) {
+        setInterval(() => {
+            const colors = ['var(--neon-cyan)', 'var(--neon-pink)', 'var(--neon-green)', 'var(--neon-yellow)', '#ff0000', '#ffffff'];
+            mainTitle.style.color = colors[Math.floor(Math.random() * colors.length)];
+
+            // Randomly change text shadow intensity
+            const intensity = Math.random() * 30 + 10;
+            mainTitle.style.textShadow = `
+                0 0 ${intensity}px currentColor,
+                0 0 ${intensity * 2}px currentColor,
+                0 0 ${intensity * 3}px currentColor,
+                0 0 ${intensity * 4}px currentColor
+            `;
+        }, 200);
+    }
+
+    // Add random color changes to all terminals
+    const terminals = document.querySelectorAll('.terminal');
+    terminals.forEach(terminal => {
+        setInterval(() => {
+            const colors = ['var(--neon-cyan)', 'var(--neon-pink)', 'var(--neon-green)', 'var(--neon-yellow)', '#ff0000'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            terminal.style.borderColor = randomColor;
+            terminal.style.boxShadow = `
+                0 0 20px ${randomColor}33,
+                inset 0 0 20px ${randomColor}11
+            `;
+        }, Math.random() * 2000 + 1000);
+    });
 }
+
