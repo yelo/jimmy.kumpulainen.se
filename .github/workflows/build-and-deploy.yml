@@ -1,0 +1,111 @@
+name: Build and Deploy Website
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'terraform/**'
+      - '**.md'
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - main
+    paths-ignore:
+      - 'terraform/**'
+      - '**.md'
+
+jobs:
+  build_and_deploy_job:
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    runs-on: ubuntu-latest
+    name: Build and Deploy Job
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+          lfs: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install build dependencies
+        run: |
+          npm install -g terser clean-css-cli html-minifier-terser
+
+      - name: Minify CSS and JavaScript
+        run: |
+          # Create build directory
+          mkdir -p build/src
+          cp -r src/* build/src/
+
+          # Minify CSS files
+          echo "🎨 Minifying CSS..."
+          find build/src -name "*.css" -type f | while read file; do
+            echo "Minifying: $file"
+            cleancss -o "$file.min" "$file"
+            mv "$file.min" "$file"
+          done
+
+          # Minify JavaScript files
+          echo "⚡ Minifying JavaScript..."
+          find build/src -name "*.js" -type f | while read file; do
+            echo "Minifying: $file"
+            terser "$file" --compress --mangle --output "$file.min"
+            mv "$file.min" "$file"
+          done
+
+          # Minify HTML files (optional but recommended)
+          echo "🔧 Minifying HTML..."
+          find build/src -name "*.html" -type f | while read file; do
+            echo "Minifying: $file"
+            html-minifier-terser \
+              --collapse-whitespace \
+              --remove-comments \
+              --remove-optional-tags \
+              --remove-redundant-attributes \
+              --remove-script-type-attributes \
+              --remove-tag-whitespace \
+              --use-short-doctype \
+              --minify-css true \
+              --minify-js true \
+              --output "$file.min" \
+              "$file"
+            mv "$file.min" "$file"
+          done
+
+          echo "✅ Minification complete!"
+
+          # Show file size comparison
+          echo "📊 File size comparison:"
+          echo "Original src/ directory:"
+          du -sh src/
+          echo "Minified build/src/ directory:"
+          du -sh build/src/
+
+      - name: Build And Deploy
+        id: builddeploy
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: "upload"
+          app_location: "/build/src"
+          output_location: "/build/src"
+
+  close_pull_request_job:
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    name: Close Pull Request Job
+    steps:
+      - name: Close Pull Request
+        id: closepullrequest
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          action: "close"
+          app_location: "/build/src"
