@@ -75,7 +75,7 @@ graph TD
 #### **🔐 Security-First Architecture**
 
 - **Least Privilege Access**: Service principals with minimal required permissions
-- **Secret Isolation**: Azure credentials stored as GitHub secrets
+- **Secret Isolation**: Azure ARM credentials stored as separate GitHub secrets
 - **Infrastructure Review**: All changes visible before deployment
 - **Automated Compliance**: Security scanning integrated into every deployment
 
@@ -122,12 +122,11 @@ The deployment is fully automated through Infrastructure as Code. Configure thes
 #### **Required Secrets:**
 
 ```bash
-AZURE_CREDENTIALS='{
-  "clientId": "your-service-principal-id",
-  "clientSecret": "your-service-principal-secret",
-  "subscriptionId": "your-azure-subscription-id",
-  "tenantId": "your-azure-tenant-id"
-}'
+# Azure Service Principal credentials for Terraform
+ARM_CLIENT_ID="your-service-principal-client-id"
+ARM_CLIENT_SECRET="your-service-principal-client-secret"
+ARM_SUBSCRIPTION_ID="your-azure-subscription-id"
+ARM_TENANT_ID="your-azure-tenant-id"
 ```
 
 #### **Optional Variables (with defaults):**
@@ -145,10 +144,13 @@ ENVIRONMENT="prod"                               # Optional
 # Create service principal for Terraform automation
 az ad sp create-for-rbac --name "sp-jimmy-portfolio-terraform" \
   --role contributor \
-  --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group-name} \
-  --sdk-auth
+  --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}
 
-# Copy the JSON output to AZURE_CREDENTIALS secret in GitHub
+# The output will provide the values you need:
+# - "appId" → ARM_CLIENT_ID
+# - "password" → ARM_CLIENT_SECRET
+# - "tenant" → ARM_TENANT_ID
+# Use your subscription ID for ARM_SUBSCRIPTION_ID
 ```
 
 ### 🚀 Deployment Process
@@ -173,6 +175,13 @@ This portfolio embodies the beautiful contradiction of using corporate cloud inf
 - **🏴‍☠️ Cyberpunk Aesthetic**: Anti-corporate, glitch-filled, neon-soaked rebellion
 - **🏢 Enterprise Infrastructure**: Azure clouds, Terraform automation, GitHub Actions
 - **🎯 Perfect Irony**: Using "the system" to showcase skills that transcend "the system"
+
+### 🔧 **Quick Setup Guide**
+
+1. **Create Azure Service Principal** and configure the four ARM secrets in GitHub
+2. **Set required GitHub variables** (at minimum `AZURE_RESOURCE_GROUP`)
+3. **Push to main branch** → Infrastructure and app deploy automatically
+4. **Create PRs** → See Terraform plans in comments before merging
 
 ## 🌆 Contributing to the Cyber-Future
 
