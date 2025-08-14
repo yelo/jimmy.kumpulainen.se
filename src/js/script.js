@@ -333,6 +333,64 @@ function enhanceMainTitleGlitch() {
     }
 }
 
+// Add extreme glitching to the information box
+function addExtremeGlitchBoxEffects() {
+    const glitchBox = document.getElementById('glitchBox');
+    if (!glitchBox) return;
+
+    // Get all text elements within the glitch box
+    const glitchTexts = glitchBox.querySelectorAll('.glitch-text, .glitch-label, .glitch-header, .glitch-title');
+
+    // Store original text content
+    const originalTexts = new Map();
+    glitchTexts.forEach(element => {
+        originalTexts.set(element, element.textContent);
+    });
+
+    // Function to glitch text content by changing characters
+    function glitchTextContent(element) {
+        const originalText = originalTexts.get(element);
+        if (!originalText) return;
+
+        const glitchChars = '!@#$%^&*(){}[]|\\:";\'<>?/.,`~█▓▒░▄▀▐▌▬♫☼►◄▲▼0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        let glitchedText = '';
+
+        for (let i = 0; i < originalText.length; i++) {
+            if (Math.random() < 0.15) { // 15% chance per character
+                glitchedText += glitchChars[Math.floor(Math.random() * glitchChars.length)];
+            } else {
+                glitchedText += originalText[i];
+            }
+        }
+
+        element.textContent = glitchedText;
+
+        // Restore original text after a short delay
+        setTimeout(() => {
+            element.textContent = originalText;
+        }, 150 + Math.random() * 200); // 150-350ms duration
+    }
+
+    // Add continuous character glitching to each text element
+    glitchTexts.forEach((element, index) => {
+        setInterval(() => {
+            if (Math.random() < 0.25) { // 25% chance every interval
+                glitchTextContent(element);
+            }
+        }, Math.random() * 3000 + 2000); // Random interval between 2-5 seconds
+    });
+
+    // Add more aggressive glitching to the status text
+    const chaosStatus = glitchBox.querySelector('.chaos-status');
+    if (chaosStatus) {
+        setInterval(() => {
+            if (Math.random() < 0.4) { // 40% chance for the status text
+                glitchTextContent(chaosStatus);
+            }
+        }, Math.random() * 1500 + 1000); // More frequent: 1-2.5 seconds
+    }
+}
+
 // Add glitching to system status messages
 function addSystemStatusGlitching() {
     // Create additional glitched status messages
@@ -505,6 +563,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addTypingEffect();
     addPeriodicGlitching();
     enhanceMainTitleGlitch();
+    addExtremeGlitchBoxEffects();
     addSystemStatusGlitching();
     createGlitchingOverlay();
 
