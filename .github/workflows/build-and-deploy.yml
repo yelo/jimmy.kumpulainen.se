@@ -2,8 +2,8 @@ name: Build and Deploy to Azure Static Web Apps
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - 'v*'
 
 jobs:
   build_and_deploy_job:
