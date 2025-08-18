@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.1.0](https://github.com/yelo/jimmy.kumpulainen.se/compare/v2.0.1...v2.1.0) (2025-08-18)
+
+
+### Features
+
+* release deployment setup ([#16](https://github.com/yelo/jimmy.kumpulainen.se/issues/16)) ([e2289c6](https://github.com/yelo/jimmy.kumpulainen.se/commit/e2289c65ef111ea8f8602d4017c55cf5fd77486b))
+
+
+### Bug Fixes
+
+* deployment tracking error ([#19](https://github.com/yelo/jimmy.kumpulainen.se/issues/19)) ([8fd28c4](https://github.com/yelo/jimmy.kumpulainen.se/commit/8fd28c43455843967d1eafa755978efd0e876e10))
+
 ## [2.0.1](https://github.com/yelo/jimmy.kumpulainen.se/compare/v2.0.0...v2.0.1) (2025-08-18)
 
 
