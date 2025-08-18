@@ -16,6 +16,7 @@
 
 [![Release Please](https://github.com/yelo/jimmy.kumpulainen.se/actions/workflows/release-please.yml/badge.svg)](https://github.com/yelo/jimmy.kumpulainen.se/actions/workflows/release-please.yml)
 [![CodeQL](https://github.com/yelo/jimmy.kumpulainen.se/actions/workflows/codeql.yml/badge.svg)](https://github.com/yelo/jimmy.kumpulainen.se/actions/workflows/codeql.yml)
+[![Deployment Status](https://img.shields.io/github/deployments/yelo/jimmy.kumpulainen.se/production?label=deployment&logo=azure)](https://github.com/yelo/jimmy.kumpulainen.se/deployments)
 
 Welcome to the matrix, digital wanderer. This repository houses the source code for a cutting-edge CV website that exists at the intersection of artificial intelligence and pure neon-soaked cyberpunk aesthetics.
 
