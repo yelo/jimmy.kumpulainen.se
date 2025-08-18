@@ -1,9 +1,13 @@
-name: Build and Deploy to Azure Static Web Apps
+# This workflow has been integrated into release-please.yml
+# It will run automatically when a release is created
+# This file is kept for reference but is no longer used
+
+name: Build and Deploy to Azure Static Web Apps (DEPRECATED)
 
 on:
-  push:
-    tags:
-      - 'v*'
+  # This workflow is no longer triggered
+  # Build and deploy now happens in release-please.yml
+  workflow_dispatch: # Only manual trigger for testing
 
 jobs:
   build_and_deploy_job:
