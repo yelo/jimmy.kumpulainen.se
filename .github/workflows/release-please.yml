@@ -27,7 +27,7 @@ jobs:
 
   build-and-deploy:
     needs: release-please
-    if: ${{ needs.release-please.outputs.releases_created }}
+    if: ${{ needs.release-please.outputs.releases_created && needs.release-please.outputs.tag_name }}
     runs-on: ubuntu-latest
     steps:
       - name: Create deployment
