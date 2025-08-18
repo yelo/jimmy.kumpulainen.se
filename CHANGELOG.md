@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/yelo/jimmy.kumpulainen.se/compare/v2.0.0...v2.0.1) (2025-08-18)
+
+
+### Bug Fixes
+
+* **ci:** integrate build-and-deploy into release-please workflow ([#14](https://github.com/yelo/jimmy.kumpulainen.se/issues/14)) ([50169ee](https://github.com/yelo/jimmy.kumpulainen.se/commit/50169ee66cf57422f77132bf23a3d904580eb1b9))
+
 ## [2.0.0](https://github.com/yelo/jimmy.kumpulainen.se/compare/v1.0.0...v2.0.0) (2025-08-18)
 
 
