@@ -593,41 +593,27 @@ function triggerDoomChaosMode() {
     const doomFire = new DoomFire();
     doomFire.start();
 
-    // Create a full-screen gradient overlay that covers everything
+    // Create a full-screen ultra-glitch gradient overlay
     const gradientOverlay = document.createElement('div');
-    gradientOverlay.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        pointer-events: none;
-        z-index: 9997;
-        animation: screenShatter 8s ease-in-out infinite;
-    `;
+    gradientOverlay.className = 'ultra-glitch-gradient';
     document.body.appendChild(gradientOverlay);
 
-    // Create permanent static noise overlay
+    // Create permanent ultra-glitch static overlay
     const staticOverlay = document.createElement('div');
-    staticOverlay.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background:
-            radial-gradient(circle at 20% 50%, transparent 20%, rgba(255,255,255,0.1) 21%, rgba(255,255,255,0.1) 25%, transparent 26%),
-            radial-gradient(circle at 80% 50%, transparent 20%, rgba(255,255,255,0.1) 21%, rgba(255,255,255,0.1) 25%, transparent 26%),
-            radial-gradient(circle at 40% 80%, transparent 20%, rgba(255,255,255,0.1) 21%, rgba(255,255,255,0.1) 25%, transparent 26%);
-        background-size: 50px 50px, 60px 60px, 40px 40px;
-        pointer-events: none;
-        z-index: 9998;
-        opacity: 0.5;
-        animation: staticNoise 2s ease-in-out infinite;
-    `;
+    staticOverlay.className = 'ultra-glitch-static';
     document.body.appendChild(staticOverlay);
 
-    // Start aggressive glitching on ALL text elements
+    // Randomize overlay properties for chaos
+    setInterval(() => {
+        gradientOverlay.style.opacity = (0.3 + Math.random() * 0.7).toFixed(2);
+        gradientOverlay.style.filter = `blur(${Math.random()*8}px) hue-rotate(${Math.random()*360}deg) saturate(${1+Math.random()*2})`;
+        gradientOverlay.style.transform = `scale(${1+Math.random()*0.2}) rotate(${Math.random()*360}deg)`;
+        gradientOverlay.style.mixBlendMode = ["screen","difference","exclusion","color-dodge"][Math.floor(Math.random()*4)];
+        staticOverlay.style.opacity = (0.2 + Math.random() * 0.6).toFixed(2);
+        staticOverlay.style.filter = `contrast(${1+Math.random()*2}) brightness(${0.7+Math.random()*0.6})`;
+    }, 400);
+
+    // Start ultra-aggressive glitching on ALL text elements
     startPermanentGlitching();
 }
 

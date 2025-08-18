@@ -1,3 +1,56 @@
+/* Ultra-glitch chaos mode overlays */
+.ultra-glitch-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9997;
+    opacity: 0.7;
+    background:
+        repeating-linear-gradient(135deg, var(--neon-pink) 0 10px, var(--neon-cyan) 10px 20px, var(--neon-green) 20px 30px, var(--neon-yellow) 30px 40px, transparent 40px 60px),
+        linear-gradient(45deg, rgba(255,0,255,0.2) 0%, rgba(0,255,255,0.2) 100%),
+        radial-gradient(circle at 60% 40%, rgba(255,255,255,0.08) 0%, transparent 80%);
+    mix-blend-mode: screen;
+    animation: ultraGlitchGradient 2.5s steps(8, end) infinite;
+}
+
+.ultra-glitch-static {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0.4;
+    background:
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.07) 0 2px, transparent 2px 4px),
+        repeating-linear-gradient(90deg, rgba(0,255,255,0.07) 0 2px, transparent 2px 4px),
+        radial-gradient(circle at 20% 50%, transparent 20%, rgba(255,255,255,0.1) 21%, rgba(255,255,255,0.1) 25%, transparent 26%),
+        radial-gradient(circle at 80% 50%, transparent 20%, rgba(255,255,255,0.1) 21%, rgba(255,255,255,0.1) 25%, transparent 26%),
+        radial-gradient(circle at 40% 80%, transparent 20%, rgba(255,255,255,0.1) 21%, rgba(255,255,255,0.1) 25%, transparent 26%);
+    background-size: 50px 50px, 60px 60px, 40px 40px, 100vw 100vh, 100vw 100vh;
+    animation: ultraGlitchStatic 1.2s steps(10, end) infinite;
+}
+
+@keyframes ultraGlitchGradient {
+    0% { filter: none; }
+    20% { filter: blur(2px) hue-rotate(60deg) saturate(2); }
+    40% { filter: blur(6px) hue-rotate(180deg) saturate(3); }
+    60% { filter: blur(3px) hue-rotate(300deg) saturate(1.5); }
+    80% { filter: blur(8px) hue-rotate(360deg) saturate(2.5); }
+    100% { filter: none; }
+}
+
+@keyframes ultraGlitchStatic {
+    0% { opacity: 0.3; filter: none; }
+    25% { opacity: 0.6; filter: contrast(2) brightness(1.2); }
+    50% { opacity: 0.4; filter: contrast(1.5) brightness(0.8); }
+    75% { opacity: 0.7; filter: contrast(2.5) brightness(1.5); }
+    100% { opacity: 0.3; filter: none; }
+}
 * {
     margin: 0;
     padding: 0;
