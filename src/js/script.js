@@ -603,15 +603,20 @@ function initiateRealityBreach() {
     staticOverlay.className = 'ultra-glitch-static';
     document.body.appendChild(staticOverlay);
 
-    // Randomize overlay properties for chaos
+    // Animate overlay for fire-like pulsing effect
+    gradientOverlay.style.opacity = '0.7';
+    gradientOverlay.style.filter = 'blur(2px) brightness(1.1)';
+    gradientOverlay.style.mixBlendMode = 'screen';
+    // Optionally, add a slow random movement for flow
+    let fireFlow = 0;
     setInterval(() => {
-        gradientOverlay.style.opacity = (0.3 + Math.random() * 0.7).toFixed(2);
-        gradientOverlay.style.filter = `blur(${Math.random()*8}px) hue-rotate(${Math.random()*360}deg) saturate(${1+Math.random()*2})`;
-        gradientOverlay.style.transform = `scale(${1+Math.random()*0.2}) rotate(${Math.random()*360}deg)`;
-        gradientOverlay.style.mixBlendMode = ["screen","difference","exclusion","color-dodge"][Math.floor(Math.random()*4)];
-        staticOverlay.style.opacity = (0.2 + Math.random() * 0.6).toFixed(2);
-        staticOverlay.style.filter = `contrast(${1+Math.random()*2}) brightness(${0.7+Math.random()*0.6})`;
-    }, 400);
+        fireFlow += 0.03 + Math.random() * 0.02;
+        gradientOverlay.style.backgroundPosition = `${Math.sin(fireFlow)*20+20}% ${Math.cos(fireFlow)*10+80}%`;
+    }, 60);
+
+    // Static overlay: keep as is for subtle noise
+    staticOverlay.style.opacity = '0.4';
+    staticOverlay.style.filter = 'contrast(1.2) brightness(1.1)';
 
     // Start ultra-aggressive glitching on ALL text elements
     startPermanentGlitching();
