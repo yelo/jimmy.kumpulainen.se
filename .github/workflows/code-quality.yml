@@ -1,0 +1,95 @@
+name: Code Quality
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint:
+    name: Lint and Validate Code
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: |
+          npm init -y
+          npm install --save-dev eslint @eslint/js globals
+          npm install --save-dev prettier
+
+      - name: Create ESLint config
+        run: |
+          cat > eslint.config.js << 'EOF'
+          import js from '@eslint/js';
+          import globals from 'globals';
+
+          export default [
+            js.configs.recommended,
+            {
+              languageOptions: {
+                globals: {
+                  ...globals.browser,
+                  ...globals.es2021
+                }
+              },
+              rules: {
+                'no-unused-vars': 'warn',
+                'no-console': 'warn',
+                'prefer-const': 'error',
+                'no-var': 'error'
+              }
+            }
+          ];
+          EOF
+
+      - name: Create Prettier config
+        run: |
+          cat > .prettierrc << 'EOF'
+          {
+            "semi": true,
+            "trailingComma": "es5",
+            "singleQuote": true,
+            "printWidth": 80,
+            "tabWidth": 2
+          }
+          EOF
+
+      - name: Lint JavaScript files
+        run: npx eslint src/js/**/*.js
+
+      - name: Check code formatting
+        run: npx prettier --check src/js/**/*.js src/css/**/*.css src/**/*.html
+
+      - name: Validate HTML structure
+        run: |
+          # Install html5validator
+          pip install html5validator
+          html5validator --root src/
+
+      - name: Check for common security issues
+        run: |
+          # Basic security checks for common issues
+          echo "🔍 Checking for potential security issues..."
+          
+          # Check for inline JavaScript (potential XSS)
+          if grep -r "javascript:" src/ || grep -r "onclick=" src/ || grep -r "onload=" src/; then
+            echo "⚠️  Found inline JavaScript - review for XSS vulnerabilities"
+          else
+            echo "✅ No inline JavaScript found"
+          fi
+          
+          # Check for external script sources
+          if grep -r "src=\"http" src/; then
+            echo "⚠️  Found external HTTP resources - ensure HTTPS is used"
+          else
+            echo "✅ No insecure external resources found"
+          fi
