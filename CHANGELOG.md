@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.3.0](https://github.com/yelo/jimmy.kumpulainen.se/compare/v2.2.0...v2.3.0) (2025-08-18)
+
+
+### Features
+
+* **chaos-mode:** replace colored lines with fire-inspired pulsing ov… ([#25](https://github.com/yelo/jimmy.kumpulainen.se/issues/25)) ([f7be766](https://github.com/yelo/jimmy.kumpulainen.se/commit/f7be7668dd0f3d0423f4587b961923009c631f3d))
+* **chaos-mode:** replace colored lines with fire-inspired pulsing overlay ([f7be766](https://github.com/yelo/jimmy.kumpulainen.se/commit/f7be7668dd0f3d0423f4587b961923009c631f3d))
+* **chaos-mode:** ultra-glitch overlays and gradients for chaos mode ([#24](https://github.com/yelo/jimmy.kumpulainen.se/issues/24)) ([e86530a](https://github.com/yelo/jimmy.kumpulainen.se/commit/e86530aec750eceadb459a4410273f1eec63ac3c))
+* enhance hidden sequence with cyberpunk terminology and obfuscation ([#23](https://github.com/yelo/jimmy.kumpulainen.se/issues/23)) ([41a11e0](https://github.com/yelo/jimmy.kumpulainen.se/commit/41a11e0876a4860e7edb6ea012c8d28a89a118f3))
+
 ## [2.2.0](https://github.com/yelo/jimmy.kumpulainen.se/compare/v2.1.0...v2.2.0) (2025-08-18)
 
 
