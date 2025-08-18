@@ -1,0 +1,8 @@
+# Global code owner - all files in this repository are owned by yelo
+* @yelo
+
+# Specific patterns for important files
+/.github/ @yelo
+/src/ @yelo
+README.md @yelo
+CHANGELOG.md @yelo
