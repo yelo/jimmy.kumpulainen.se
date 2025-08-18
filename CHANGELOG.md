@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://github.com/yelo/jimmy.kumpulainen.se/compare/v2.1.0...v2.2.0) (2025-08-18)
+
+
+### Features
+
+* add CODEOWNERS file and deployment status badge ([#20](https://github.com/yelo/jimmy.kumpulainen.se/issues/20)) ([5372a3f](https://github.com/yelo/jimmy.kumpulainen.se/commit/5372a3f19f00a5745f80f547f8b17362ee64e64a))
+
 ## [2.1.0](https://github.com/yelo/jimmy.kumpulainen.se/compare/v2.0.1...v2.1.0) (2025-08-18)
 
 
