@@ -16,6 +16,8 @@
 
 [![Release Please](https://github.com/yelo/jimmy.kumpulainen.se/actions/workflows/release-please.yml/badge.svg)](https://github.com/yelo/jimmy.kumpulainen.se/actions/workflows/release-please.yml)
 [![CodeQL](https://github.com/yelo/jimmy.kumpulainen.se/actions/workflows/codeql.yml/badge.svg)](https://github.com/yelo/jimmy.kumpulainen.se/actions/workflows/codeql.yml)
+[![Code Quality](https://github.com/yelo/jimmy.kumpulainen.se/actions/workflows/code-quality.yml/badge.svg)](https://github.com/yelo/jimmy.kumpulainen.se/actions/workflows/code-quality.yml)
+[![Web Standards](https://github.com/yelo/jimmy.kumpulainen.se/actions/workflows/web-validation.yml/badge.svg)](https://github.com/yelo/jimmy.kumpulainen.se/actions/workflows/web-validation.yml)
 [![Deployment Status](https://img.shields.io/github/deployments/yelo/jimmy.kumpulainen.se/production?label=deployment&logo=azure)](https://github.com/yelo/jimmy.kumpulainen.se/deployments)
 
 Welcome to the matrix, digital wanderer. This repository houses the source code for a cutting-edge CV website that exists at the intersection of artificial intelligence and pure neon-soaked cyberpunk aesthetics.
@@ -39,11 +41,14 @@ The site undergoes a sophisticated build process that would make any tech corp p
 1. **🔍 CodeQL Security Analysis**: Separate workflow that scans JavaScript code for vulnerabilities on every push and pull request
 2. **🚀 Release Management**: Automated releases using release-please for semantic versioning
 3. **📦 GitHub Deployments**: Tracked deployments created for each release with status updates
-4. **⚡ Asset Minification**:
+4. **🔧 Dependency Management**: Automated dependency updates via Dependabot for GitHub Actions
+5. **✨ Code Quality**: ESLint and Prettier validation for consistent code standards
+6. **🌐 Web Standards**: HTML5 and CSS validation with accessibility checks
+7. **⚡ Asset Minification**:
    - HTML compression using system minify tools
    - CSS minification for lean stylesheets
    - JavaScript compression and optimization
-5. **🌐 Azure Deployment**: Automatic deployment to Azure Static Web Apps on every release
+8. **🌐 Azure Deployment**: Automatic deployment to Azure Static Web Apps on every release
 
 ### 🎯 Technologies in the Stack
 
@@ -52,9 +57,10 @@ const techStack = {
   frontend: ['HTML5', 'CSS3', 'Vanilla JavaScript'],
   styling: ['Cyberpunk Design', 'Neon Animations', 'Glitch Effects'],
   deployment: ['Azure Static Web Apps', 'GitHub Actions', 'GitHub Deployments'],
-  security: ['CodeQL Analysis', 'Automated Scanning'],
+  security: ['CodeQL Analysis', 'Automated Scanning', 'Dependabot Updates'],
+  quality: ['ESLint', 'Prettier', 'HTML5 Validation', 'CSS Validation'],
   optimization: ['System Minify Tools', 'GitHub Actions'],
-  workflows: ['Release Please', 'CodeQL Analysis', 'Release-based Deployments'],
+  workflows: ['Release Please', 'CodeQL Analysis', 'Code Quality', 'Web Standards'],
   aiGenerated: true,
   vibeCheck: '🔥 MAXIMUM CYBERPUNK 🔥'
 };
