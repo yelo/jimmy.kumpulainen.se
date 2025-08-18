@@ -9,6 +9,7 @@ permissions:
   contents: write
   pull-requests: write
   issues: write
+  deployments: write
 
 jobs:
   release-please:
@@ -33,7 +34,6 @@ jobs:
         id: deployment
         uses: actions/github-script@v7
         with:
-          result-encoding: string
           script: |
             const deployment = await github.rest.repos.createDeployment({
               owner: context.repo.owner,
@@ -53,6 +53,7 @@ jobs:
               description: 'Deployment started'
             });
 
+            core.setOutput('deployment_id', deployment.data.id);
             return deployment.data.id;
 
       - name: Checkout repository
@@ -106,28 +107,28 @@ jobs:
           output_location: "/"
 
       - name: Update deployment status - Success
-        if: success()
+        if: success() && steps.deployment.outputs.deployment_id
         uses: actions/github-script@v7
         with:
           script: |
             await github.rest.repos.createDeploymentStatus({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              deployment_id: '${{ steps.deployment.outputs.result }}',
+              deployment_id: '${{ steps.deployment.outputs.deployment_id }}',
               state: 'success',
               description: 'Deployment completed successfully',
               environment_url: 'https://jimmy.kumpulainen.se'
             });
 
       - name: Update deployment status - Failure
-        if: failure()
+        if: failure() && steps.deployment.outputs.deployment_id
         uses: actions/github-script@v7
         with:
           script: |
             await github.rest.repos.createDeploymentStatus({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              deployment_id: '${{ steps.deployment.outputs.result }}',
+              deployment_id: '${{ steps.deployment.outputs.deployment_id }}',
               state: 'failure',
               description: 'Deployment failed'
             });
