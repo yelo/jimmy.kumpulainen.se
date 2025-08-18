@@ -575,20 +575,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 5000);
 });
 
-// IDDQD cheat code easter egg (Doom god mode cheat)
-let cheatCode = [];
-const iddqdSequence = ['I', 'D', 'D', 'Q', 'D'];
+// IDDQD neural override sequence (ancient god mode protocol)
+let neuralInput = [];
+const godModeSequence = ['I', 'D', 'D', 'Q', 'D'];
 
 document.addEventListener('keydown', (e) => {
-    cheatCode.push(e.key.toUpperCase());
-    if (cheatCode.length > 5) cheatCode.shift();
+    neuralInput.push(e.key.toUpperCase());
+    if (neuralInput.length > 5) neuralInput.shift();
 
-    if (JSON.stringify(cheatCode) === JSON.stringify(iddqdSequence)) {
-        triggerDoomChaosMode();
+    if (JSON.stringify(neuralInput) === JSON.stringify(godModeSequence)) {
+        initiateRealityBreach();
     }
 });
 
-function triggerDoomChaosMode() {
+function initiateRealityBreach() {
     // Start the permanent Doom fire effect
     const doomFire = new DoomFire();
     doomFire.start();
