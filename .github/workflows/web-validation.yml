@@ -1,0 +1,97 @@
+name: Web Standards Validation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    name: Validate Web Standards
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python for HTML validation
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Setup Node.js for CSS validation
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install validation tools
+        run: |
+          # HTML5 validator
+          pip install html5validator
+          
+          # CSS validator
+          npm install -g css-validator
+
+      - name: Validate HTML files
+        run: |
+          echo "🔍 Validating HTML files..."
+          html5validator --root src/ --also-check-css --also-check-svg
+          echo "✅ HTML validation completed"
+
+      - name: Validate CSS files
+        run: |
+          echo "🔍 Validating CSS files..."
+          for file in src/css/*.css; do
+            if [ -f "$file" ]; then
+              echo "Validating $file..."
+              css-validator "$file" || echo "⚠️  Issues found in $file"
+            fi
+          done
+          echo "✅ CSS validation completed"
+
+      - name: Check accessibility basics
+        run: |
+          echo "🔍 Running basic accessibility checks..."
+          
+          # Check for alt attributes on images
+          if grep -r "<img" src/ | grep -v "alt="; then
+            echo "⚠️  Found images without alt attributes"
+            grep -r "<img" src/ | grep -v "alt=" || true
+          else
+            echo "✅ All images have alt attributes"
+          fi
+          
+          # Check for proper heading hierarchy
+          echo "📋 Heading structure analysis:"
+          grep -r "<h[1-6]" src/ || echo "No headings found"
+          
+          # Check for semantic HTML elements
+          echo "📋 Semantic elements found:"
+          grep -rE "<(header|nav|main|section|article|aside|footer)" src/ || echo "No semantic elements found"
+
+      - name: Performance checks
+        run: |
+          echo "🔍 Running basic performance checks..."
+          
+          # Check image file sizes (warn if >500KB)
+          find src/ -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" -o -name "*.webp" | while read file; do
+            size=$(stat -f%z "$file" 2>/dev/null || stat -c%s "$file" 2>/dev/null || echo 0)
+            if [ "$size" -gt 512000 ]; then
+              echo "⚠️  Large image detected: $file ($(echo $size | awk '{print int($1/1024)"KB"}'))"
+            fi
+          done
+          
+          # Check CSS file sizes
+          find src/css/ -name "*.css" | while read file; do
+            size=$(stat -f%z "$file" 2>/dev/null || stat -c%s "$file" 2>/dev/null || echo 0)
+            lines=$(wc -l < "$file")
+            echo "📊 $file: $(echo $size | awk '{print int($1/1024)"KB"}'), $lines lines"
+          done
+          
+          # Check JS file sizes
+          find src/js/ -name "*.js" | while read file; do
+            size=$(stat -f%z "$file" 2>/dev/null || stat -c%s "$file" 2>/dev/null || echo 0)
+            lines=$(wc -l < "$file")
+            echo "📊 $file: $(echo $size | awk '{print int($1/1024)"KB"}'), $lines lines"
+          done
