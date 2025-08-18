@@ -26,6 +26,7 @@ jobs:
 
   build-and-deploy:
     needs: release-please
+    # Only run when release-please actually creates a release (not just updates PR)
     if: ${{ needs.release-please.outputs.releases_created }}
     runs-on: ubuntu-latest
     steps:
