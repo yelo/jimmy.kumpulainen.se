@@ -14,7 +14,7 @@
 **🔮 AI GENERATION LEVEL: MAXIMUM SYNTHWAVE**
 **⚡ CYBERPUNK AESTHETICS: ENGAGED**
 
-[![Build and Deploy](https://github.com/yelo/jimmy.kumpulainen.se/actions/workflows/build-and-deploy.yml/badge.svg)](https://github.com/yelo/jimmy.kumpulainen.se/actions/workflows/build-and-deploy.yml)
+[![Release Please](https://github.com/yelo/jimmy.kumpulainen.se/actions/workflows/release-please.yml/badge.svg)](https://github.com/yelo/jimmy.kumpulainen.se/actions/workflows/release-please.yml)
 [![CodeQL](https://github.com/yelo/jimmy.kumpulainen.se/actions/workflows/codeql.yml/badge.svg)](https://github.com/yelo/jimmy.kumpulainen.se/actions/workflows/codeql.yml)
 
 Welcome to the matrix, digital wanderer. This repository houses the source code for a cutting-edge CV website that exists at the intersection of artificial intelligence and pure neon-soaked cyberpunk aesthetics.
@@ -36,11 +36,13 @@ This isn't just another static website—it's a **fully AI-generated digital per
 The site undergoes a sophisticated build process that would make any tech corp proud:
 
 1. **🔍 CodeQL Security Analysis**: Separate workflow that scans JavaScript code for vulnerabilities on every push and pull request
-2. **⚡ Asset Minification**:
+2. **🚀 Release Management**: Automated releases using release-please for semantic versioning
+3. **📦 GitHub Deployments**: Tracked deployments created for each release with status updates
+4. **⚡ Asset Minification**:
    - HTML compression using system minify tools
    - CSS minification for lean stylesheets
    - JavaScript compression and optimization
-3. **🚀 Azure Deployment**: Automatic deployment to Azure Static Web Apps on every push to main
+5. **🌐 Azure Deployment**: Automatic deployment to Azure Static Web Apps on every release
 
 ### 🎯 Technologies in the Stack
 
@@ -48,10 +50,10 @@ The site undergoes a sophisticated build process that would make any tech corp p
 const techStack = {
   frontend: ['HTML5', 'CSS3', 'Vanilla JavaScript'],
   styling: ['Cyberpunk Design', 'Neon Animations', 'Glitch Effects'],
-  deployment: ['Azure Static Web Apps', 'GitHub Actions'],
+  deployment: ['Azure Static Web Apps', 'GitHub Actions', 'GitHub Deployments'],
   security: ['CodeQL Analysis', 'Automated Scanning'],
   optimization: ['System Minify Tools', 'GitHub Actions'],
-  workflows: ['Separate CodeQL Analysis', 'Build and Deploy'],
+  workflows: ['Release Please', 'CodeQL Analysis', 'Release-based Deployments'],
   aiGenerated: true,
   vibeCheck: '🔥 MAXIMUM CYBERPUNK 🔥'
 };
