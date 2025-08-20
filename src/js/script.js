@@ -576,14 +576,18 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // IDDQD neural override sequence (ancient god mode protocol)
+
 let neuralInput = [];
 const godModeSequence = ['I', 'D', 'D', 'Q', 'D'];
+let godModeActivated = false;
 
 document.addEventListener('keydown', (e) => {
+    if (godModeActivated) return;
     neuralInput.push(e.key.toUpperCase());
     if (neuralInput.length > 5) neuralInput.shift();
 
     if (JSON.stringify(neuralInput) === JSON.stringify(godModeSequence)) {
+        godModeActivated = true;
         initiateRealityBreach();
     }
 });
@@ -721,20 +725,21 @@ function startPermanentGlitching() {
         "EXISTENCE_BUFFER_FULL"
     ];
 
-    for (let i = 0; i < 6; i++) {
+    // Increase number and spread of chaos overlays for more coverage
+    for (let i = 0; i < 18; i++) {
         const chaosOverlay = document.createElement('div');
         chaosOverlay.className = 'chaos-text';
         chaosOverlay.style.cssText = `
             position: fixed;
-            top: ${Math.random() * 80 + 10}%;
-            left: ${Math.random() * 80 + 10}%;
+            top: ${Math.random() * 95}%;
+            left: ${Math.random() * 95}%;
             font-family: 'Courier New', monospace;
-            font-size: ${Math.random() * 0.5 + 0.8}rem;
+            font-size: ${Math.random() * 1.2 + 1.2}rem;
             color: #ff0000;
             z-index: 9999;
             pointer-events: none;
-            opacity: 0.8;
-            text-shadow: 0 0 15px currentColor;
+            opacity: 0.85;
+            text-shadow: 0 0 18px currentColor;
             animation: chaosFloat 3s ease-in-out infinite;
         `;
 
@@ -744,13 +749,13 @@ function startPermanentGlitching() {
         // Constant aggressive glitching for chaos text
         setInterval(() => {
             glitchText(chaosOverlay);
-        }, Math.random() * 800 + 200);
+        }, Math.random() * 700 + 150);
 
         // Move chaos text around
         setInterval(() => {
-            chaosOverlay.style.top = Math.random() * 80 + 10 + '%';
-            chaosOverlay.style.left = Math.random() * 80 + 10 + '%';
-        }, Math.random() * 5000 + 2000);
+            chaosOverlay.style.top = Math.random() * 95 + '%';
+            chaosOverlay.style.left = Math.random() * 95 + '%';
+        }, Math.random() * 4000 + 1200);
     }
 }
 
