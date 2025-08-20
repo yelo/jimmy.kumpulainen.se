@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.4.0](https://github.com/yelo/jimmy.kumpulainen.se/compare/v2.3.0...v2.4.0) (2025-08-20)
+
+
+### Features
+
+* **godmode:** expand glitch overlays for greater screen coverage and prevent repeated activation ([3892713](https://github.com/yelo/jimmy.kumpulainen.se/commit/389271387d29a31233ef4db042082acd4038567b))
+* **godmode:** expand glitch overlays for greater screen coverage and… ([#28](https://github.com/yelo/jimmy.kumpulainen.se/issues/28)) ([3892713](https://github.com/yelo/jimmy.kumpulainen.se/commit/389271387d29a31233ef4db042082acd4038567b))
+
 ## [2.3.0](https://github.com/yelo/jimmy.kumpulainen.se/compare/v2.2.0...v2.3.0) (2025-08-18)
 
 
