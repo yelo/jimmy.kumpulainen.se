@@ -72,12 +72,30 @@ function createMatrixRain() {
 function addGlitchEffect() {
     const skills = document.querySelectorAll('.skill');
     skills.forEach(skill => {
+        // Add scanlines overlay if not present
+        if (!skill.querySelector('.scanlines')) {
+            const scan = document.createElement('div');
+            scan.className = 'scanlines';
+            skill.appendChild(scan);
+        }
+
+        // Hover triggers glitchy effect
         skill.addEventListener('mouseenter', () => {
-            skill.style.animation = 'glitch 0.3s ease-in-out';
+            skill.classList.add('glitchy');
             setTimeout(() => {
-                skill.style.animation = '';
-            }, 300);
+                skill.classList.remove('glitchy');
+            }, 350);
         });
+
+        // Random idle glitching
+        setInterval(() => {
+            if (Math.random() < 0.12) { // ~12% chance every 3s
+                skill.classList.add('glitchy');
+                setTimeout(() => {
+                    skill.classList.remove('glitchy');
+                }, 350);
+            }
+        }, 3000 + Math.random() * 2000);
     });
 }
 
@@ -573,6 +591,25 @@ document.addEventListener('DOMContentLoaded', () => {
         const randomColor = colors[Math.floor(Math.random() * colors.length)];
         document.documentElement.style.setProperty('--grid-color', randomColor + '20');
     }, 5000);
+
+    // Mobile chaos/god mode trigger: long-press on main title
+    const mainTitle = document.querySelector('.glitch');
+    if (mainTitle) {
+        let touchTimer = null;
+        mainTitle.addEventListener('touchstart', function(e) {
+            if (godModeActivated) return;
+            touchTimer = setTimeout(() => {
+                godModeActivated = true;
+                initiateRealityBreach();
+            }, 1200); // 1.2s long-press
+        });
+        mainTitle.addEventListener('touchend', function(e) {
+            if (touchTimer) clearTimeout(touchTimer);
+        });
+        mainTitle.addEventListener('touchmove', function(e) {
+            if (touchTimer) clearTimeout(touchTimer);
+        });
+    }
 });
 
 // IDDQD neural override sequence (ancient god mode protocol)
