@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.5.0](https://github.com/yelo/jimmy.kumpulainen.se/compare/v2.4.0...v2.5.0) (2025-08-21)
+
+
+### Features
+
+* neon glow mobile chaos mode ([#30](https://github.com/yelo/jimmy.kumpulainen.se/issues/30)) ([28a3cc9](https://github.com/yelo/jimmy.kumpulainen.se/commit/28a3cc9ad067276859a22c2523342b582cec74b5))
+* **skill:** update skill box markup to support glitch effects with s… ([#32](https://github.com/yelo/jimmy.kumpulainen.se/issues/32)) ([3d3ccb9](https://github.com/yelo/jimmy.kumpulainen.se/commit/3d3ccb9eab54a865aee6cbd416bdd276cc5c4815))
+* **skill:** update skill box markup to support glitch effects with skill-text span ([3d3ccb9](https://github.com/yelo/jimmy.kumpulainen.se/commit/3d3ccb9eab54a865aee6cbd416bdd276cc5c4815))
+
 ## [2.4.0](https://github.com/yelo/jimmy.kumpulainen.se/compare/v2.3.0...v2.4.0) (2025-08-20)
 
 
