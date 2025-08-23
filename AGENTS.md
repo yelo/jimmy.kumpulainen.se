@@ -43,9 +43,9 @@ This section lists the agents, bots, and automated systems involved in the devel
 
 ### CI/CD Agents (if applicable)
 
-- **Role:** Automate build, test, and deployment processes
-- **Purpose:** Ensure code quality and automate deployment
-- **Usage:** Typically configured via GitHub Actions, Travis CI, or similar (not detected in this repo as of August 2025)
+	- **Role:** Automate build, test, and deployment processes
+	- **Purpose:** Ensure code quality and automate deployment
+	- **Usage:** Configured via GitHub Actions (detected and actively used in this repository for release management, build, and deployment workflows)
 
 ### Other Agents
 
