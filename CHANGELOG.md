@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.6.0](https://github.com/yelo/jimmy.kumpulainen.se/compare/v2.5.0...v2.6.0) (2025-08-23)
+
+
+### Features
+
+* enhance chaos text overlays with CRT and RGB effects ([#35](https://github.com/yelo/jimmy.kumpulainen.se/issues/35)) ([efafdb8](https://github.com/yelo/jimmy.kumpulainen.se/commit/efafdb8c19c849deb10387c21b39d10bb51823db))
+
 ## [2.5.0](https://github.com/yelo/jimmy.kumpulainen.se/compare/v2.4.0...v2.5.0) (2025-08-21)
 
 
