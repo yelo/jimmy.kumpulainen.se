@@ -35,17 +35,17 @@ Refer to [Conventional Commits](https://www.conventionalcommits.org/) for detail
 
 This section lists the agents, bots, and automated systems involved in the development, deployment, or operation of this project.
 
-### GitHub Copilot
+### AI Assistants & LLMs
 
-- **Role:** AI coding assistant
-- **Purpose:** Assists with code generation, suggestions, and documentation
-- **Usage:** Integrated in VS Code for developer productivity
+- **Role:** AI coding assistants and language models
+- **Purpose:** Assist with code generation, suggestions, documentation, debugging, and general development tasks
+- **Usage:** Various AI tools including GitHub Copilot, Claude, ChatGPT, and other LLMs integrated across different development environments and workflows
 
 ### CI/CD Agents (if applicable)
 
-- **Role:** Automate build, test, and deployment processes
-- **Purpose:** Ensure code quality and automate deployment
-- **Usage:** Typically configured via GitHub Actions, Travis CI, or similar (not detected in this repo as of August 2025)
+	- **Role:** Automate build, test, and deployment processes
+	- **Purpose:** Ensure code quality and automate deployment
+	- **Usage:** Configured via GitHub Actions (detected and actively used in this repository for release management, build, and deployment workflows)
 
 ### Other Agents
 
