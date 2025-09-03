@@ -39,7 +39,7 @@ This section lists the agents, bots, and automated systems involved in the devel
 
 - **Role:** AI coding assistants and language models
 - **Purpose:** Assist with code generation, suggestions, documentation, debugging, and general development tasks
-- **Usage:** Various AI tools including GitHub Copilot, Claude, ChatGPT, and other LLMs integrated across different development environments and workflows
+- **Usage:** Various AI tools including GitHub Copilot, Claude, ChatGPT, Gemini CLI, and other LLMs integrated across different development environments and workflows
 
 ### CI/CD Agents (if applicable)
 
