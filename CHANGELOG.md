@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.6.1](https://github.com/yelo/jimmy.kumpulainen.se/compare/v2.6.0...v2.6.1) (2025-09-03)
+
+
+### Performance Improvements
+
+* **animations:** Optimize rendering and script performance ([#39](https://github.com/yelo/jimmy.kumpulainen.se/issues/39)) ([1458fb5](https://github.com/yelo/jimmy.kumpulainen.se/commit/1458fb56549c9ce9518a84b042a19161ef691bd8))
+
 ## [2.6.0](https://github.com/yelo/jimmy.kumpulainen.se/compare/v2.5.0...v2.6.0) (2025-08-23)
 
 
