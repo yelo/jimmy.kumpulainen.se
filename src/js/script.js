@@ -52,7 +52,7 @@ function createMatrixRain() {
         }
     }
 
-    setInterval(draw, 35);
+    setInterval(draw, 66);
 
     // Resize canvas on window resize
     window.addEventListener('resize', () => {
@@ -165,8 +165,8 @@ function addTypingEffect() {
 // Doom Fire Effect
 class DoomFire {
     constructor() {
-        this.width = Math.floor(window.innerWidth / 4);
-        this.height = Math.floor(window.innerHeight / 4);
+        this.width = Math.floor(window.innerWidth / 8);
+        this.height = Math.floor(window.innerHeight / 8);
         this.firePixels = new Array(this.width * this.height).fill(0);
         this.canvas = null;
         this.ctx = null;
@@ -395,7 +395,7 @@ function addExtremeGlitchBoxEffects() {
             if (Math.random() < 0.25) { // 25% chance every interval
                 glitchTextContent(element);
             }
-        }, Math.random() * 3000 + 2000); // Random interval between 2-5 seconds
+        }, Math.random() * 4000 + 3000); // Random interval between 3-7 seconds
     });
 
     // Add more aggressive glitching to the status text
@@ -405,7 +405,7 @@ function addExtremeGlitchBoxEffects() {
             if (Math.random() < 0.4) { // 40% chance for the status text
                 glitchTextContent(chaosStatus);
             }
-        }, Math.random() * 1500 + 1000); // More frequent: 1-2.5 seconds
+        }, Math.random() * 2500 + 2000); // More frequent: 2-4.5 seconds
     }
 }
 
@@ -665,9 +665,9 @@ function initiateRealityBreach() {
 
 function glitchText(element) {
     const originalText = element.textContent;
-    const glitchChars = '!@#$%^&*(){}[]|\\:";\'<>?/.,`~█▓▒░▄▀▐▌▬♫☼►◄▲▼';
+    const glitchChars = '!@#$%^&*(){}[]|\:";\'<>?/.,`~█▓▒░▄▀▐▌▬♫☼►◄▲▼';
     let glitchCount = 0;
-    const maxGlitches = 20; // Increased for more intense glitching
+    const maxGlitches = 10; // Reduced for performance
 
     const glitchInterval = setInterval(() => {
         let glitchedText = '';
@@ -694,7 +694,7 @@ function glitchText(element) {
             }
             element.textContent = finalGlitchedText;
         }
-    }, 100); // Faster glitching
+    }, 150); // Slower glitching
 }
 
 function startPermanentGlitching() {
@@ -713,7 +713,7 @@ function startPermanentGlitching() {
                     if (Math.random() < 0.6) { // Increased to 60% chance every interval
                         glitchText(textEl);
                     }
-                }, Math.random() * 2000 + 1000); // Faster intervals: 1-3 seconds
+                }, Math.random() * 4000 + 3000); // Slower intervals: 3-7 seconds
             }, index * 30); // Faster stagger: 30ms each
         }
     });
@@ -763,7 +763,7 @@ function startPermanentGlitching() {
     ];
 
     // Increase number and spread of chaos overlays for more coverage
-    for (let i = 0; i < 18; i++) {
+    for (let i = 0; i < 8; i++) {
         const chaosOverlay = document.createElement('div');
         chaosOverlay.className = 'chaos-text';
         chaosOverlay.style.cssText = `
