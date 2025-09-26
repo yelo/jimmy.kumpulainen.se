@@ -1,3 +1,5 @@
+let matrixModeActive = false; // Moved to global scope
+
 document.addEventListener('DOMContentLoaded', () => {
     // Fake Visitor Counter
     const visitorCountElement = document.getElementById('visitor-count');
@@ -16,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Easter Egg: Type 'matrix'
     let matrixCode = ['m', 'a', 't', 'r', 'i', 'x'];
     let matrixIndex = 0;
-    let matrixModeActive = false;
     document.addEventListener('keydown', (e) => {
         if (matrixModeActive) return;
         if (e.key.toLowerCase() === matrixCode[matrixIndex]) {
@@ -39,6 +40,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Interactive Jobs
     addJobInteractivity();
+
+    // Theme Switcher
+    addThemeSwitcher();
+
+    // Typewriter Effect
+    initTypewriter();
+
+    // Bubbly Links
+    addBubblyLinks();
 });
 
 function createSeapunkVisuals() {
@@ -224,4 +234,94 @@ function createParticle(x, y) {
     setTimeout(() => {
         particle.remove();
     }, 700);
+}
+
+function addThemeSwitcher() {
+    const fabContainer = document.querySelector('.theme-fab-container');
+    const fabButton = document.querySelector('.theme-fab-button');
+    const swatches = document.querySelectorAll('.theme-swatch');
+
+    if (fabButton) {
+        fabButton.addEventListener('click', () => {
+            fabContainer.classList.toggle('active');
+        });
+    }
+
+    swatches.forEach(swatch => {
+        swatch.addEventListener('click', () => {
+            const theme = swatch.dataset.theme;
+            document.body.className = ''; // Clear existing classes
+            if (theme !== 'default') {
+                document.body.classList.add(`theme-${theme}`);
+            }
+            // Re-apply matrix mode if it was active
+            if (matrixModeActive) {
+                 document.body.classList.add('matrix-mode');
+            }
+            // Hide the panel after selection
+            fabContainer.classList.remove('active');
+        });
+    });
+}
+
+function initTypewriter() {
+    const targetElement = document.getElementById('profession-text');
+    const cursorElement = document.querySelector('#profession-text + .blink');
+    const textToType = "Senior Software Engineer";
+    let charIndex = 0;
+
+    function typeChar() {
+        if (charIndex < textToType.length) {
+            targetElement.textContent += textToType.charAt(charIndex);
+            charIndex++;
+            setTimeout(typeChar, 100); // Adjust typing speed here
+        } else {
+            // Animation finished
+            if(cursorElement) cursorElement.style.visibility = 'visible';
+        }
+    }
+
+    // Start the animation
+    if(targetElement) {
+        typeChar();
+    }
+}
+
+function addBubblyLinks() {
+    const links = document.querySelectorAll('.contact-links a');
+    links.forEach(link => {
+        let bubbleInterval;
+
+        link.addEventListener('mouseenter', () => {
+            bubbleInterval = setInterval(() => {
+                createBubble(link);
+            }, 100); // Create a bubble every 100ms
+        });
+
+        link.addEventListener('mouseleave', () => {
+            clearInterval(bubbleInterval);
+        });
+    });
+}
+
+function createBubble(element) {
+    const bubble = document.createElement('div');
+    bubble.className = 'bubble-particle';
+    document.body.appendChild(bubble);
+
+    const rect = element.getBoundingClientRect();
+    const size = Math.random() * 15 + 5; // 5px to 20px
+    bubble.style.width = `${size}px`;
+    bubble.style.height = `${size}px`;
+
+    // Position bubble randomly along the width of the link
+    const x = rect.left + Math.random() * rect.width;
+    const y = rect.top + rect.height / 2;
+    bubble.style.left = `${x}px`;
+    bubble.style.top = `${y}px`;
+
+    // Remove the bubble from the DOM after animation
+    setTimeout(() => {
+        bubble.remove();
+    }, 1500);
 }
