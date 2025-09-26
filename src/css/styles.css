@@ -109,6 +109,12 @@ body {
     margin-bottom: 1.5rem;
     padding-left: 1rem;
     border-left: 4px dotted var(--duration-color);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.job:hover {
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 .job h3 {
