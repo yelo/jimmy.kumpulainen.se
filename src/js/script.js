@@ -36,6 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Interactive Skills
     addSkillInteractivity();
+
+    // Interactive Jobs
+    addJobInteractivity();
 });
 
 function createSeapunkVisuals() {
@@ -181,6 +184,21 @@ function addSkillInteractivity() {
             for (let i = 0; i < 20; i++) {
                 createParticle(rect.left + x, rect.top + y);
             }
+        });
+    });
+}
+
+function addJobInteractivity() {
+    const jobs = document.querySelectorAll('.job');
+    jobs.forEach(job => {
+        job.addEventListener('click', () => {
+            // Prevent effect in matrix mode
+            if (document.body.classList.contains('matrix-mode')) return;
+
+            job.classList.add('job-clicked');
+            setTimeout(() => {
+                job.classList.remove('job-clicked');
+            }, 400); // Timeout should be longer than the transition
         });
     });
 }

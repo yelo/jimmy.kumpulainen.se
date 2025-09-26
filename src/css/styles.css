@@ -106,15 +106,18 @@ body {
 }
 
 .job {
+    background-color: rgba(255, 255, 255, 0.3); /* Lighter, more subtle background */
+    padding: 1rem;
     margin-bottom: 1.5rem;
-    padding-left: 1rem;
-    border-left: 4px dotted var(--duration-color);
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border: 2px outset var(--title-color);
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    box-shadow: 3px 3px 5px rgba(0,0,0,0.3); /* Add a default shadow */
 }
 
 .job:hover {
-    transform: translateY(-3px) scale(1.01);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
 }
 
 .job h3 {
@@ -290,6 +293,11 @@ footer {
 @keyframes swirls {
     from { transform: rotate(0deg) scale(1); }
     to { transform: rotate(360deg) scale(1.5); }
+}
+
+.job.job-clicked {
+    transform: scale(1.03);
+    background-color: var(--background-color); /* Aquamarine */
 }
 
 /* Matrix Mode Easter Egg */
