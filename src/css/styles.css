@@ -117,15 +117,32 @@ body {
     border-color: #ff69b4 #9400d3 #9400d3 #ff69b4;
     padding: 15px;
     margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
 }
 
 .widget-title {
-    background-color: var(--title-color);
-    color: #ffffff;
+    color: var(--text-color); /* Changed from white to Indigo */
     padding: 5px 10px;
     font-size: 1.2rem;
     margin: -15px -15px 15px -15px;
-    border-bottom: 2px solid var(--widget-border-dark);
+    border-bottom: 2px solid rgba(0,0,0,0.3);
+    text-shadow: none; /* Remove text-shadow as darker text won't need it */
+
+    /* New animated gradient background */
+    background: linear-gradient(
+        45deg,
+        var(--title-color),
+        var(--duration-color)
+    );
+    background-size: 200% 200%; /* For gradient animation */
+    animation: title-gradient-shift 20s ease infinite; /* Slower animation */
+}
+
+@keyframes title-gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .widget-content p {
@@ -355,6 +372,155 @@ footer {
 @keyframes blink-and-move {
     0%, 100% { opacity: 0.8; transform: translateY(0) scale(1); }
     50% { opacity: 0.2; transform: translateY(10px) scale(0.8); }
+}
+
+.bubble-particle {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: rise-and-fade 1.5s ease-out forwards;
+    z-index: 1000;
+}
+
+@keyframes rise-and-fade {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-80px) scale(0);
+        opacity: 0;
+    }
+}
+
+.widget::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%; /* Start off-screen */
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(255, 255, 255, 0.2) 50%,
+        transparent 100%
+    );
+    transform: skewX(-25deg);
+    transition: transform 0.5s;
+}
+
+.widget:hover::after {
+    transform: translateX(250%) skewX(-25deg);
+    transition: transform 0.5s ease-in-out;
+}
+
+.theme-fab-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1001;
+}
+
+.theme-fab-button {
+    width: 60px;
+    height: 60px;
+    background-color: var(--title-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease;
+}
+
+.theme-fab-button:hover {
+    transform: scale(1.1);
+}
+
+.theme-swatch-panel {
+    position: absolute;
+    bottom: 70px; /* Position above the button */
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 10px;
+    transform: scale(0);
+    transform-origin: bottom right;
+    transition: transform 0.2s ease;
+}
+
+.theme-fab-container.active .theme-swatch-panel {
+    transform: scale(1);
+}
+
+.theme-swatch {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.theme-swatch:hover {
+    transform: scale(1.1);
+}
+
+/* Vaporwave Theme */
+body.theme-vaporwave {
+    --background-color: #010048;
+    --widget-bg: #ff71ce;
+    --title-color: #01cdfe;
+    --text-color: #05ffa1;
+    --link-color: #fcee09;
+    --duration-color: #b400ff;
+}
+
+/* Cyberpunk Theme */
+body.theme-cyberpunk {
+    --background-color: #000000;
+    --widget-bg: #ff003c;
+    --title-color: #fcee09;
+    --text-color: #ffffff;
+    --link-color: #00f6ff;
+    --duration-color: #fcee09;
+}
+
+/* Hotdog Stand Theme */
+body.theme-hotdog {
+    --background-color: #ff0000;
+    --widget-bg: #ffff00;
+    --title-color: #ff0000;
+    --text-color: #000000;
+    --link-color: #0000ff;
+    --duration-color: #000000;
+}
+
+/* Bubblegum Theme */
+body.theme-bubblegum {
+    --background-color: #ffb6c1; /* Light Pink */
+    --widget-bg: #87cefa; /* Light Sky Blue */
+    --title-color: #da70d6; /* Orchid */
+    --text-color: #4682b4; /* Steel Blue */
+    --link-color: #ff69b4; /* Hot Pink */
+    --duration-color: #9370db; /* Medium Purple */
+}
+
+/* Sunset Theme */
+body.theme-sunset {
+    --background-color: #ff7e5f; /* Coral */
+    --widget-bg: #feb47b; /* Peach */
+    --title-color: #ff4500; /* Orange Red */
+    --text-color: #8b0000; /* Dark Red */
+    --link-color: #4b0082; /* Indigo */
+    --duration-color: #800080; /* Purple */
 }
 
 /* Matrix Mode Easter Egg */
