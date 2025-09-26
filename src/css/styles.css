@@ -5,14 +5,12 @@
 }
 
 :root {
-    --background-color: #008080; /* Teal */
-    --widget-bg: #c0c0c0; /* Silver */
-    --widget-border-light: #ffffff;
-    --widget-border-dark: #808080;
-    --text-color: #000000;
-    --title-color: #000080; /* Navy */
+    --background-color: #7fffd4; /* Aquamarine */
+    --widget-bg: #ffc0cb; /* Pink */
+    --title-color: #ff1493; /* Deep Pink */
+    --text-color: #4b0082; /* Indigo */
     --link-color: #0000ff; /* Blue */
-    --duration-color: #800080; /* Purple */
+    --duration-color: #9400d3; /* Dark Violet */
 }
 
 body {
@@ -21,14 +19,15 @@ body {
     color: var(--text-color);
     background-image: url('https://www.cameronsworld.net/img/backgrounds/tiled-background.gif');
     background-attachment: fixed;
+    transition: background-color 1s, color 1s;
 }
 
 .container {
     max-width: 960px;
     margin: 0 auto;
     padding: 20px;
-    background-color: rgba(192, 192, 192, 0.8);
-    border: 4px ridge #c0c0c0;
+    background-color: rgba(255, 192, 203, 0.8);
+    border: 4px ridge #ff1493;
     box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
 }
 
@@ -36,8 +35,8 @@ body {
     text-align: center;
     margin-bottom: 2rem;
     padding: 1rem;
-    background: #ffc0cb; /* Pink */
-    border-bottom: 4px double #ff69b4; /* Hot Pink */
+    background: #40e0d0; /* Turquoise */
+    border-bottom: 4px double #13887d;
 }
 
 .main-header h1 {
@@ -65,11 +64,10 @@ body {
 }
 
 .spinning-dolphin {
-    width: 80px;
-    height: 80px;
+    font-size: 60px;
+    display: inline-block;
     animation: spin 4s linear infinite;
     margin: 1rem auto;
-    display: block;
 }
 
 @keyframes spin {
@@ -78,32 +76,20 @@ body {
 }
 
 .construction-banner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
     background-color: #ffff00; /* Yellow */
     padding: 10px;
     margin-bottom: 2rem;
     border: 2px dashed #000;
-}
-
-.construction-banner span {
     font-weight: bold;
-    margin: 0 1rem;
-}
-
-.construction-banner img {
-    width: 40px;
-    height: 40px;
 }
 
 .widget {
     background-color: var(--widget-bg);
     border: 2px solid;
-    border-color: var(--widget-border-light) var(--widget-border-dark) var(--widget-border-dark) var(--widget-border-light);
+    border-color: #ff69b4 #9400d3 #9400d3 #ff69b4;
     padding: 15px;
     margin-bottom: 2rem;
-    box-shadow: inset 1px 1px 0px var(--widget-border-light), inset -1px -1px 0px var(--widget-border-dark);
 }
 
 .widget-title {
@@ -155,7 +141,7 @@ body {
 }
 
 .skill-list span {
-    background-color: #800080; /* Purple */
+    background-color: #9400d3; /* Dark Violet */
     color: #ffffff;
     padding: 5px 10px;
     border-radius: 15px;
@@ -183,16 +169,16 @@ body {
     color: var(--link-color);
     margin: 10px;
     font-weight: bold;
+    font-size: 24px;
 }
 
 .contact-links a:hover {
     text-decoration: underline;
 }
 
-.contact-links img {
-    width: 24px;
-    height: 24px;
-    margin-right: 8px;
+.contact-links span {
+    font-size: 1rem;
+    margin-left: 8px;
 }
 
 footer {
@@ -222,62 +208,31 @@ footer {
     }
 }
 
-/* Seapunk Mode Easter Egg */
-body.seapunk-mode {
-    --background-color: #7fffd4; /* Aquamarine */
-    --widget-bg: #ffc0cb; /* Pink */
-    --title-color: #ff1493; /* Deep Pink */
-    --text-color: #4b0082; /* Indigo */
-    animation: color-cycle 10s infinite;
-}
-
-@keyframes color-cycle {
-    0% { filter: hue-rotate(0deg); }
-    100% { filter: hue-rotate(360deg); }
-}
-
-#seapunk-mode-visuals {
-    display: none;
+/* Default Seapunk Visuals */
+#default-visuals {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 9999;
-}
-
-body.seapunk-mode #seapunk-mode-visuals {
-    display: block;
+    z-index: 9998;
 }
 
 .swimming-dolphin {
     position: absolute;
-    width: 100px;
-    height: 100px;
-    background-image: url('https://www.animatedimages.org/data/media/14/animated-dolphin-image-0112.gif');
-    background-size: contain;
-    background-repeat: no-repeat;
+    font-size: 50px;
     animation: swim 15s linear infinite;
     opacity: 0.8;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
 @keyframes swim {
-    0% {
-        transform: translate(-100px, 50vh) rotate(0deg);
-    }
-    25% {
-        transform: translate(40vw, 20vh) rotate(-20deg);
-    }
-    50% {
-        transform: translate(100vw, 40vh) rotate(10deg);
-    }
-    75% {
-        transform: translate(50vw, 80vh) rotate(20deg);
-    }
-    100% {
-        transform: translate(-100px, 50vh) rotate(0deg);
-    }
+    0% { transform: translate(-100px, 50vh) rotate(0deg); }
+    25% { transform: translate(40vw, 20vh) rotate(-20deg); }
+    50% { transform: translate(100vw, 40vh) rotate(10deg); }
+    75% { transform: translate(50vw, 80vh) rotate(20deg); }
+    100% { transform: translate(-100px, 50vh) rotate(0deg); }
 }
 
 .bubble {
@@ -291,14 +246,8 @@ body.seapunk-mode #seapunk-mode-visuals {
 }
 
 @keyframes rise {
-    0% {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-105vh) scale(1.5);
-        opacity: 0;
-    }
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-105vh) scale(1.5); opacity: 0; }
 }
 
 .background-swirls {
@@ -319,4 +268,57 @@ body.seapunk-mode #seapunk-mode-visuals {
 @keyframes swirls {
     from { transform: rotate(0deg) scale(1); }
     to { transform: rotate(360deg) scale(1.5); }
+}
+
+/* Matrix Mode Easter Egg */
+body.matrix-mode {
+    background-color: #000000;
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+}
+
+body.matrix-mode .container {
+    background-color: rgba(0, 10, 0, 0.8);
+    border-color: #00ff00;
+}
+
+body.matrix-mode .widget {
+    background-color: #050505;
+    border-color: #005500;
+}
+
+body.matrix-mode .widget-title {
+    background-color: #003300;
+    color: #00ff00;
+}
+
+body.matrix-mode .main-header {
+    background: #0a0a0a;
+    border-bottom-color: #00ff00;
+}
+
+body.matrix-mode .rainbow-text {
+    animation: none;
+    background: none;
+    color: #00ff00;
+}
+
+body.matrix-mode .skill-list span {
+    background-color: #003300;
+    color: #00ff00;
+    border-color: #00ff00;
+}
+
+body.matrix-mode .contact-links a {
+    color: #00ff00;
+}
+
+#easter-egg-visuals .matrix-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    pointer-events: none;
 }

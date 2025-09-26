@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Fake Visitor Counter
     const visitorCountElement = document.getElementById('visitor-count');
     if (visitorCountElement) {
-        let count = Math.floor(Math.random() * 10000) + 5000; // Start with a random high number
+        let count = Math.floor(Math.random() * 10000) + 5000;
         visitorCountElement.textContent = count;
         setInterval(() => {
             count += Math.floor(Math.random() * 3) + 1;
@@ -10,18 +10,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3000);
     }
 
-    // Konami Code for Seapunk Mode
-    const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-    let konamiIndex = 0;
+    // Default Seapunk Visuals
+    createSeapunkVisuals();
+
+    // Easter Egg: Type 'matrix'
+    let matrixCode = ['m', 'a', 't', 'r', 'i', 'x'];
+    let matrixIndex = 0;
+    let matrixModeActive = false;
     document.addEventListener('keydown', (e) => {
-        if (e.key === konamiCode[konamiIndex]) {
-            konamiIndex++;
-            if (konamiIndex === konamiCode.length) {
-                activateSeapunkMode();
-                konamiIndex = 0;
+        if (matrixModeActive) return;
+        if (e.key === matrixCode[matrixIndex]) {
+            matrixIndex++;
+            if (matrixIndex === matrixCode.length) {
+                activateMatrixMode();
+                matrixIndex = 0;
+                matrixModeActive = true;
             }
         } else {
-            konamiIndex = 0;
+            matrixIndex = 0;
         }
     });
 
@@ -29,14 +35,15 @@ document.addEventListener('DOMContentLoaded', () => {
     createCursorTrail();
 });
 
-function activateSeapunkMode() {
-    document.body.classList.add('seapunk-mode');
-    const visualsContainer = document.getElementById('seapunk-mode-visuals');
+function createSeapunkVisuals() {
+    const visualsContainer = document.getElementById('default-visuals');
+    if (!visualsContainer) return;
 
     // Add swimming dolphins
     for (let i = 0; i < 5; i++) {
         const dolphin = document.createElement('div');
         dolphin.className = 'swimming-dolphin';
+        dolphin.textContent = '🐬';
         dolphin.style.left = `${Math.random() * 100}vw`;
         dolphin.style.top = `${Math.random() * 100}vh`;
         dolphin.style.animationDuration = `${Math.random() * 10 + 10}s`;
@@ -55,6 +62,66 @@ function activateSeapunkMode() {
         bubble.style.height = bubble.style.width;
         visualsContainer.appendChild(bubble);
     }
+}
+
+function activateMatrixMode() {
+    // Clear seapunk visuals
+    const defaultVisuals = document.getElementById('default-visuals');
+    if (defaultVisuals) defaultVisuals.innerHTML = '';
+    const backgroundSwirls = document.querySelector('.background-swirls');
+    if (backgroundSwirls) backgroundSwirls.style.display = 'none';
+
+    // Add matrix class to body
+    document.body.classList.add('matrix-mode');
+
+    // Create matrix rain
+    createMatrixRain();
+}
+
+function createMatrixRain() {
+    const visualsContainer = document.getElementById('easter-egg-visuals');
+    const canvas = document.createElement('canvas');
+    canvas.className = 'matrix-rain';
+    visualsContainer.appendChild(canvas);
+
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
+    const matrixArray = matrix.split("");
+    const font_size = 10;
+    const columns = canvas.width / font_size;
+    const drops = [];
+
+    for (let x = 0; x < columns; x++) {
+        drops[x] = 1;
+    }
+
+    function draw() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = '#00ff00';
+        ctx.font = font_size + 'px courier';
+
+        for (let i = 0; i < drops.length; i++) {
+            const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
+            ctx.fillText(text, i * font_size, drops[i] * font_size);
+
+            if (drops[i] * font_size > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+    }
+
+    setInterval(draw, 66);
+
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
 }
 
 function createCursorTrail() {
