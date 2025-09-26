@@ -91,9 +91,9 @@ function createMatrixRain() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
+    const matrix = "ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩアイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヰヱヲン0123456789@#$%^&*()*&^%+-/~{[|`]}";
     const matrixArray = matrix.split("");
-    const font_size = 10;
+    const font_size = 20;
     const columns = canvas.width / font_size;
     const drops = [];
 
@@ -102,14 +102,25 @@ function createMatrixRain() {
     }
 
     function draw() {
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+        ctx.fillStyle = 'rgba(127, 255, 212, 0.04)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        ctx.fillStyle = '#00ff00';
         ctx.font = font_size + 'px courier';
+
+        // Define the color palette from the site's theme
+        const mainColor = '#ff1493'; // Deep Pink
+        const highlightColors = ['#FFFFFF', '#4b0082', '#0000FF']; // White, Indigo, Blue
 
         for (let i = 0; i < drops.length; i++) {
             const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
+            
+            // Occasionally use a highlight color
+            if (Math.random() > 0.98) {
+                ctx.fillStyle = highlightColors[Math.floor(Math.random() * highlightColors.length)];
+            } else {
+                ctx.fillStyle = mainColor;
+            }
+
             ctx.fillText(text, i * font_size, drops[i] * font_size);
 
             if (drops[i] * font_size > canvas.height && Math.random() > 0.975) {
