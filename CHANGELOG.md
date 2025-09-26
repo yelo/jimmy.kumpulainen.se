@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.1.0](https://github.com/yelo/jimmy.kumpulainen.se/compare/v3.0.0...v3.1.0) (2025-09-26)
+
+
+### Features
+
+* **header:** add dynamic animations and decorative elements ([#45](https://github.com/yelo/jimmy.kumpulainen.se/issues/45)) ([5179999](https://github.com/yelo/jimmy.kumpulainen.se/commit/5179999b9f3b97e496bfdc50dbeea34bc37db53d))
+* implement creative enhancements and UI refinements ([#47](https://github.com/yelo/jimmy.kumpulainen.se/issues/47)) ([7b90431](https://github.com/yelo/jimmy.kumpulainen.se/commit/7b90431723ada03f6e09a76cf137ad6cde56e78b))
+* **matrix-mode:** enhance visuals and character set ([#43](https://github.com/yelo/jimmy.kumpulainen.se/issues/43)) ([df0d536](https://github.com/yelo/jimmy.kumpulainen.se/commit/df0d53641bb25966a7e785d40b7366c0e747bf76))
+* **work-history:** improve item styling and add click effect ([#44](https://github.com/yelo/jimmy.kumpulainen.se/issues/44)) ([07b5704](https://github.com/yelo/jimmy.kumpulainen.se/commit/07b5704bfe015cc78fabb7d19ca1760fa99d98f8))
+
 ## [3.0.0](https://github.com/yelo/jimmy.kumpulainen.se/compare/v2.6.1...v3.0.0) (2025-09-26)
 
 
