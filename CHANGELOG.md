@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0](https://github.com/yelo/jimmy.kumpulainen.se/compare/v2.6.1...v3.0.0) (2025-09-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* complete redesign to 90s seapunk theme ([#41](https://github.com/yelo/jimmy.kumpulainen.se/issues/41))
+
+### Features
+
+* complete redesign to 90s seapunk theme ([#41](https://github.com/yelo/jimmy.kumpulainen.se/issues/41)) ([fa83602](https://github.com/yelo/jimmy.kumpulainen.se/commit/fa8360236171cda6a5cdb53ff55a15f52e64b725))
+
 ## [2.6.1](https://github.com/yelo/jimmy.kumpulainen.se/compare/v2.6.0...v2.6.1) (2025-09-03)
 
 
