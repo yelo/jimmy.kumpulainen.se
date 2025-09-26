@@ -122,37 +122,53 @@ body {
     margin-bottom: 5px;
 }
 
-.skills-container {
-    overflow: hidden;
-    width: 100%;
+.skill-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
     padding: 1rem 0;
 }
 
-.skill-marquee {
-    display: flex;
-    width: 200%;
-    animation: marquee 30s linear infinite;
-}
-
-.skill-list {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-}
-
-.skill-list span {
+.skill-item {
     background-color: #9400d3; /* Dark Violet */
     color: #ffffff;
-    padding: 5px 10px;
-    border-radius: 15px;
+    padding: 8px 15px;
+    border-radius: 20px;
     border: 2px solid #ffc0cb;
-    margin: 0 10px;
-    white-space: nowrap;
+    cursor: pointer;
+    transition: transform 0.1s;
+    user-select: none;
 }
 
-@keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+.skill-item:hover {
+    animation: jiggle 0.3s infinite;
+}
+
+@keyframes jiggle {
+    0%, 100% { transform: rotate(-1deg); }
+    50% { transform: rotate(1deg); }
+}
+
+.particle {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10001;
+    animation: explode 0.7s ease-out forwards;
+}
+
+@keyframes explode {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--x), var(--y)) scale(0);
+        opacity: 0;
+    }
 }
 
 .contact-links {
@@ -303,10 +319,11 @@ body.matrix-mode .rainbow-text {
     color: #00ff00;
 }
 
-body.matrix-mode .skill-list span {
+body.matrix-mode .skill-item {
     background-color: #003300;
     color: #00ff00;
     border-color: #00ff00;
+    animation: none; /* Disable jiggle in matrix mode */
 }
 
 body.matrix-mode .contact-links a {

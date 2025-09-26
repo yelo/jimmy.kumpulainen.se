@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let matrixModeActive = false;
     document.addEventListener('keydown', (e) => {
         if (matrixModeActive) return;
-        if (e.key === matrixCode[matrixIndex]) {
+        if (e.key.toLowerCase() === matrixCode[matrixIndex]) {
             matrixIndex++;
             if (matrixIndex === matrixCode.length) {
                 activateMatrixMode();
@@ -33,6 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fun Cursor Trail
     createCursorTrail();
+
+    // Interactive Skills
+    addSkillInteractivity();
 });
 
 function createSeapunkVisuals() {
@@ -151,4 +154,45 @@ function createCursorTrail() {
         trail[0].style.left = `${e.clientX - 7}px`;
         trail[0].style.top = `${e.clientY - 7}px`;
     });
+}
+
+function addSkillInteractivity() {
+    const skills = document.querySelectorAll('.skill-item');
+    skills.forEach(skill => {
+        skill.addEventListener('click', (e) => {
+            // Prevent creating particles in matrix mode
+            if (document.body.classList.contains('matrix-mode')) return;
+
+            const rect = skill.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            for (let i = 0; i < 20; i++) {
+                createParticle(rect.left + x, rect.top + y);
+            }
+        });
+    });
+}
+
+function createParticle(x, y) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    document.body.appendChild(particle);
+
+    const size = Math.floor(Math.random() * 10 + 5);
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+    particle.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+    particle.style.left = `${x}px`;
+    particle.style.top = `${y}px`;
+
+    const angle = Math.random() * 360;
+    const distance = Math.random() * 50 + 50;
+
+    particle.style.setProperty('--x', `${Math.cos(angle * Math.PI / 180) * distance}px`);
+    particle.style.setProperty('--y', `${Math.sin(angle * Math.PI / 180) * distance}px`);
+
+    setTimeout(() => {
+        particle.remove();
+    }, 700);
 }
