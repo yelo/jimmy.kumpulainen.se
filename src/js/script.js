@@ -1,4 +1,4 @@
-let matrixModeActive = false; // Moved to global scope
+let hyperspaceModeActive = false; // Moved to global scope
 
 document.addEventListener('DOMContentLoaded', () => {
     // Fake Visitor Counter
@@ -15,20 +15,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Default Seapunk Visuals
     createSeapunkVisuals();
 
-    // Easter Egg: Type 'matrix'
-    let matrixCode = ['m', 'a', 't', 'r', 'i', 'x'];
-    let matrixIndex = 0;
+    // Easter Egg: Type 'hyperspace'
+    let hyperspaceCode = ['h', 'y', 'p', 'e', 'r', 's', 'p', 'a', 'c', 'e'];
+    let hyperspaceIndex = 0;
     document.addEventListener('keydown', (e) => {
-        if (matrixModeActive) return;
-        if (e.key.toLowerCase() === matrixCode[matrixIndex]) {
-            matrixIndex++;
-            if (matrixIndex === matrixCode.length) {
-                activateMatrixMode();
-                matrixIndex = 0;
-                matrixModeActive = true;
+        if (hyperspaceModeActive) return;
+        if (e.key.toLowerCase() === hyperspaceCode[hyperspaceIndex]) {
+            hyperspaceIndex++;
+            if (hyperspaceIndex === hyperspaceCode.length) {
+                activateHyperspaceMode();
+                hyperspaceIndex = 0;
+                hyperspaceModeActive = true;
             }
         } else {
-            matrixIndex = 0;
+            hyperspaceIndex = 0;
         }
     });
 
@@ -80,70 +80,74 @@ function createSeapunkVisuals() {
     }
 }
 
-function activateMatrixMode() {
+function activateHyperspaceMode() {
     // Clear seapunk visuals
     const defaultVisuals = document.getElementById('default-visuals');
     if (defaultVisuals) defaultVisuals.innerHTML = '';
     const backgroundSwirls = document.querySelector('.background-swirls');
     if (backgroundSwirls) backgroundSwirls.style.display = 'none';
 
-    // Add matrix class to body
-    document.body.classList.add('matrix-mode');
+    // Add hyperspace class to body
+    document.body.classList.add('hyperspace-mode');
 
-    // Create matrix rain
-    createMatrixRain();
+    // Create hyperspace effect
+    createHyperspace();
 }
 
-function createMatrixRain() {
+function createHyperspace() {
     const visualsContainer = document.getElementById('easter-egg-visuals');
     const canvas = document.createElement('canvas');
-    canvas.className = 'matrix-rain';
+    canvas.className = 'hyperspace-effect';
     visualsContainer.appendChild(canvas);
 
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const matrix = "ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩアイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヰヱヲン0123456789@#$%^&*()*&^%+-/~{[|`]}";
-    const matrixArray = matrix.split("");
-    const font_size = 20;
-    const columns = canvas.width / font_size;
-    const drops = [];
+    const stars = [];
+    const numStars = 1000;
+    const speed = 5;
 
-    for (let x = 0; x < columns; x++) {
-        drops[x] = 1;
+    for (let i = 0; i < numStars; i++) {
+        stars.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            z: Math.random() * canvas.width
+        });
     }
 
     function draw() {
-        ctx.fillStyle = 'rgba(127, 255, 212, 0.04)';
+        ctx.fillStyle = 'black';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        ctx.font = font_size + 'px courier';
+        ctx.fillStyle = 'white';
 
-        // Define the color palette from the site's theme
-        const mainColor = '#ff1493'; // Deep Pink
-        const highlightColors = ['#FFFFFF', '#4b0082', '#0000FF']; // White, Indigo, Blue
+        for (let i = 0; i < numStars; i++) {
+            const star = stars[i];
+            star.z -= speed;
 
-        for (let i = 0; i < drops.length; i++) {
-            const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
-            
-            // Occasionally use a highlight color
-            if (Math.random() > 0.98) {
-                ctx.fillStyle = highlightColors[Math.floor(Math.random() * highlightColors.length)];
-            } else {
-                ctx.fillStyle = mainColor;
+            if (star.z <= 0) {
+                star.x = Math.random() * canvas.width;
+                star.y = Math.random() * canvas.height;
+                star.z = canvas.width;
             }
 
-            ctx.fillText(text, i * font_size, drops[i] * font_size);
+            const k = 128 / star.z;
+            const px = star.x * k + canvas.width / 2;
+            const py = star.y * k + canvas.height / 2;
 
-            if (drops[i] * font_size > canvas.height && Math.random() > 0.975) {
-                drops[i] = 0;
+            if (px >= 0 && px <= canvas.width && py >= 0 && py <= canvas.height) {
+                const size = (1 - star.z / canvas.width) * 5;
+                ctx.beginPath();
+                ctx.arc(px, py, size, 0, Math.PI * 2);
+                ctx.fill();
             }
-            drops[i]++;
         }
+
+        requestAnimationFrame(draw);
     }
 
-    setInterval(draw, 66);
+    draw();
 
     window.addEventListener('resize', () => {
         canvas.width = window.innerWidth;
@@ -184,8 +188,8 @@ function addSkillInteractivity() {
     const skills = document.querySelectorAll('.skill-item');
     skills.forEach(skill => {
         skill.addEventListener('click', (e) => {
-            // Prevent creating particles in matrix mode
-            if (document.body.classList.contains('matrix-mode')) return;
+            // Prevent creating particles in hyperspace mode
+            if (document.body.classList.contains('hyperspace-mode')) return;
 
             const rect = skill.getBoundingClientRect();
             const x = e.clientX - rect.left;
@@ -202,8 +206,8 @@ function addJobInteractivity() {
     const jobs = document.querySelectorAll('.job');
     jobs.forEach(job => {
         job.addEventListener('click', () => {
-            // Prevent effect in matrix mode
-            if (document.body.classList.contains('matrix-mode')) return;
+            // Prevent effect in hyperspace mode
+            if (document.body.classList.contains('hyperspace-mode')) return;
 
             job.classList.add('job-clicked');
             setTimeout(() => {
@@ -254,9 +258,9 @@ function addThemeSwitcher() {
             if (theme !== 'default') {
                 document.body.classList.add(`theme-${theme}`);
             }
-            // Re-apply matrix mode if it was active
-            if (matrixModeActive) {
-                 document.body.classList.add('matrix-mode');
+            // Re-apply hyperspace mode if it was active
+            if (hyperspaceModeActive) {
+                 document.body.classList.add('hyperspace-mode');
             }
             // Hide the panel after selection
             fabContainer.classList.remove('active');

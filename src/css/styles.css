@@ -523,51 +523,17 @@ body.theme-sunset {
     --duration-color: #800080; /* Purple */
 }
 
-/* Matrix Mode Easter Egg */
-body.matrix-mode {
-    background-color: var(--background-color); /* Aquamarine */
-    color: var(--text-color); /* Indigo */
-    font-family: 'Courier New', monospace;
+/* Hyperspace Mode Easter Egg */
+body.hyperspace-mode {
+    background-color: #000;
+    color: #fff;
 }
 
-body.matrix-mode .container {
-    background-color: rgba(255, 192, 203, 0.8); /* Keep original pink transparency */
-    border-color: var(--title-color); /* Deep Pink */
+body.hyperspace-mode .container {
+    display: none;
 }
 
-body.matrix-mode .widget {
-    background-color: var(--widget-bg); /* Pink */
-    border-color: var(--title-color); /* Deep Pink */
-}
-
-body.matrix-mode .widget-title {
-    background-color: var(--title-color); /* Deep Pink */
-    color: #ffffff; /* White text for contrast */
-}
-
-body.matrix-mode .main-header {
-    background: var(--background-color); /* Aquamarine */
-    border-bottom-color: var(--title-color); /* Deep Pink */
-}
-
-body.matrix-mode .rainbow-text {
-    animation: none;
-    background: none;
-    color: var(--title-color); /* Deep Pink */
-}
-
-body.matrix-mode .skill-item {
-    background-color: var(--duration-color); /* Dark Violet */
-    color: #ffffff; /* White text */
-    border-color: var(--widget-bg); /* Pink */
-    animation: none; /* Disable jiggle in matrix mode */
-}
-
-body.matrix-mode .contact-links a {
-    color: var(--link-color); /* Blue */
-}
-
-#easter-egg-visuals .matrix-rain {
+#easter-egg-visuals .hyperspace-effect {
     position: fixed;
     top: 0;
     left: 0;
