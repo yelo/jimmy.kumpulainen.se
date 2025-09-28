@@ -25,7 +25,7 @@ All branches and commit messages must follow the Conventional Commit standard.
 
 - **Branch Naming:** Use prefixes such as `feat/`, `fix/`, `chore/`, etc., followed by a short description (e.g., `feat/login-form`).
 - **Commit Messages:** Structure commit messages according to Conventional Commit guidelines (e.g., `feat: add login form`).
-- **Pull Requests:** Ensure all pull requests reference relevant issues and provide a clear description of changes.
+- **Pull Requests:** Ensure all pull requests reference relevant issues and provide a clear description of changes. All pull requests, especially those from AI assistants, must include the original task and the thought process behind the solution in the "Task and Thought Process" section.
 
 Refer to [Conventional Commits](https://www.conventionalcommits.org/) for details and examples.
 
