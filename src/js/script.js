@@ -1,4 +1,4 @@
-let matrixModeActive = false; // Moved to global scope
+let seapunkModeActive = false; // Moved to global scope
 
 document.addEventListener('DOMContentLoaded', () => {
     // Fake Visitor Counter
@@ -15,20 +15,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Default Seapunk Visuals
     createSeapunkVisuals();
 
-    // Easter Egg: Type 'matrix'
-    let matrixCode = ['m', 'a', 't', 'r', 'i', 'x'];
-    let matrixIndex = 0;
+    // Easter Egg: Type 'seapunk'
+    let seapunkCode = ['s', 'e', 'a', 'p', 'u', 'n', 'k'];
+    let seapunkIndex = 0;
     document.addEventListener('keydown', (e) => {
-        if (matrixModeActive) return;
-        if (e.key.toLowerCase() === matrixCode[matrixIndex]) {
-            matrixIndex++;
-            if (matrixIndex === matrixCode.length) {
-                activateMatrixMode();
-                matrixIndex = 0;
-                matrixModeActive = true;
+        if (seapunkModeActive) return;
+        if (e.key.toLowerCase() === seapunkCode[seapunkIndex]) {
+            seapunkIndex++;
+            if (seapunkIndex === seapunkCode.length) {
+                activateSeapunkMode();
+                seapunkIndex = 0;
+                seapunkModeActive = true;
             }
         } else {
-            matrixIndex = 0;
+            seapunkIndex = 0;
         }
     });
 
@@ -80,33 +80,33 @@ function createSeapunkVisuals() {
     }
 }
 
-function activateMatrixMode() {
+function activateSeapunkMode() {
     // Clear seapunk visuals
     const defaultVisuals = document.getElementById('default-visuals');
     if (defaultVisuals) defaultVisuals.innerHTML = '';
     const backgroundSwirls = document.querySelector('.background-swirls');
     if (backgroundSwirls) backgroundSwirls.style.display = 'none';
 
-    // Add matrix class to body
-    document.body.classList.add('matrix-mode');
+    // Add seapunk class to body
+    document.body.classList.add('seapunk-mode');
 
-    // Create matrix rain
-    createMatrixRain();
+    // Create seapunk rain
+    createSeapunkRain();
 }
 
-function createMatrixRain() {
+function createSeapunkRain() {
     const visualsContainer = document.getElementById('easter-egg-visuals');
     const canvas = document.createElement('canvas');
-    canvas.className = 'matrix-rain';
+    canvas.className = 'seapunk-rain';
     visualsContainer.appendChild(canvas);
 
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const matrix = "ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩアイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヰヱヲン0123456789@#$%^&*()*&^%+-/~{[|`]}";
-    const matrixArray = matrix.split("");
-    const font_size = 20;
+    const seapunkChars = "🐬🐠🐙🐚🌊💧✨🔱💠";
+    const chars = seapunkChars.split("");
+    const font_size = 24;
     const columns = canvas.width / font_size;
     const drops = [];
 
@@ -115,35 +115,31 @@ function createMatrixRain() {
     }
 
     function draw() {
-        ctx.fillStyle = 'rgba(127, 255, 212, 0.04)';
+        ctx.fillStyle = 'rgba(127, 255, 212, 0.1)'; // Fainter, more transparent trail
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        ctx.font = font_size + 'px courier';
+        ctx.font = font_size + 'px sans-serif';
 
-        // Define the color palette from the site's theme
-        const mainColor = '#ff1493'; // Deep Pink
-        const highlightColors = ['#FFFFFF', '#4b0082', '#0000FF']; // White, Indigo, Blue
+        // Seapunk color palette
+        const colors = ['#ff1493', '#0000ff', '#9400d3', '#7fffd4', '#ffc0cb'];
 
         for (let i = 0; i < drops.length; i++) {
-            const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
+            const text = chars[Math.floor(Math.random() * chars.length)];
             
-            // Occasionally use a highlight color
-            if (Math.random() > 0.98) {
-                ctx.fillStyle = highlightColors[Math.floor(Math.random() * highlightColors.length)];
-            } else {
-                ctx.fillStyle = mainColor;
-            }
+            // Assign a random color from the palette
+            ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
 
             ctx.fillText(text, i * font_size, drops[i] * font_size);
 
-            if (drops[i] * font_size > canvas.height && Math.random() > 0.975) {
+            // Add a random element to reset drops for a more chaotic, bubbly effect
+            if (drops[i] * font_size > canvas.height && Math.random() > 0.9) {
                 drops[i] = 0;
             }
             drops[i]++;
         }
     }
 
-    setInterval(draw, 66);
+    setInterval(draw, 80); // Slightly slower for a more graceful flow
 
     window.addEventListener('resize', () => {
         canvas.width = window.innerWidth;
@@ -184,8 +180,8 @@ function addSkillInteractivity() {
     const skills = document.querySelectorAll('.skill-item');
     skills.forEach(skill => {
         skill.addEventListener('click', (e) => {
-            // Prevent creating particles in matrix mode
-            if (document.body.classList.contains('matrix-mode')) return;
+            // Prevent creating particles in seapunk mode
+            if (document.body.classList.contains('seapunk-mode')) return;
 
             const rect = skill.getBoundingClientRect();
             const x = e.clientX - rect.left;
@@ -202,8 +198,8 @@ function addJobInteractivity() {
     const jobs = document.querySelectorAll('.job');
     jobs.forEach(job => {
         job.addEventListener('click', () => {
-            // Prevent effect in matrix mode
-            if (document.body.classList.contains('matrix-mode')) return;
+            // Prevent effect in seapunk mode
+            if (document.body.classList.contains('seapunk-mode')) return;
 
             job.classList.add('job-clicked');
             setTimeout(() => {
@@ -254,9 +250,9 @@ function addThemeSwitcher() {
             if (theme !== 'default') {
                 document.body.classList.add(`theme-${theme}`);
             }
-            // Re-apply matrix mode if it was active
-            if (matrixModeActive) {
-                 document.body.classList.add('matrix-mode');
+            // Re-apply seapunk mode if it was active
+            if (seapunkModeActive) {
+                 document.body.classList.add('seapunk-mode');
             }
             // Hide the panel after selection
             fabContainer.classList.remove('active');

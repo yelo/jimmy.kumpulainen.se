@@ -523,51 +523,51 @@ body.theme-sunset {
     --duration-color: #800080; /* Purple */
 }
 
-/* Matrix Mode Easter Egg */
-body.matrix-mode {
+/* Seapunk Mode Easter Egg */
+body.seapunk-mode {
     background-color: var(--background-color); /* Aquamarine */
     color: var(--text-color); /* Indigo */
     font-family: 'Courier New', monospace;
 }
 
-body.matrix-mode .container {
+body.seapunk-mode .container {
     background-color: rgba(255, 192, 203, 0.8); /* Keep original pink transparency */
     border-color: var(--title-color); /* Deep Pink */
 }
 
-body.matrix-mode .widget {
+body.seapunk-mode .widget {
     background-color: var(--widget-bg); /* Pink */
     border-color: var(--title-color); /* Deep Pink */
 }
 
-body.matrix-mode .widget-title {
+body.seapunk-mode .widget-title {
     background-color: var(--title-color); /* Deep Pink */
     color: #ffffff; /* White text for contrast */
 }
 
-body.matrix-mode .main-header {
+body.seapunk-mode .main-header {
     background: var(--background-color); /* Aquamarine */
     border-bottom-color: var(--title-color); /* Deep Pink */
 }
 
-body.matrix-mode .rainbow-text {
+body.seapunk-mode .rainbow-text {
     animation: none;
     background: none;
     color: var(--title-color); /* Deep Pink */
 }
 
-body.matrix-mode .skill-item {
+body.seapunk-mode .skill-item {
     background-color: var(--duration-color); /* Dark Violet */
     color: #ffffff; /* White text */
     border-color: var(--widget-bg); /* Pink */
-    animation: none; /* Disable jiggle in matrix mode */
+    animation: none; /* Disable jiggle in seapunk mode */
 }
 
-body.matrix-mode .contact-links a {
+body.seapunk-mode .contact-links a {
     color: var(--link-color); /* Blue */
 }
 
-#easter-egg-visuals .matrix-rain {
+#easter-egg-visuals .seapunk-rain {
     position: fixed;
     top: 0;
     left: 0;
