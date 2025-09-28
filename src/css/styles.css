@@ -527,7 +527,7 @@ body.theme-sunset {
 body.seapunk-mode {
     background-color: var(--background-color); /* Aquamarine */
     color: var(--text-color); /* Indigo */
-    font-family: 'Courier New', monospace;
+    font-family: sans-serif;
 }
 
 body.seapunk-mode .container {

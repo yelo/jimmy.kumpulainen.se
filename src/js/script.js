@@ -118,7 +118,7 @@ function createSeapunkRain() {
         ctx.fillStyle = 'rgba(127, 255, 212, 0.1)'; // Fainter, more transparent trail
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        ctx.font = font_size + 'px sans-serif';
+        ctx.font = font_size + 'px "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif';
 
         // Seapunk color palette
         const colors = ['#ff1493', '#0000ff', '#9400d3', '#7fffd4', '#ffc0cb'];
