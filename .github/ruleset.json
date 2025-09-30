@@ -1,0 +1,38 @@
+{
+  "name": "Main Branch Protection",
+  "enforcement": "active",
+  "target": "branch",
+  "conditions": {
+    "ref_name": {
+      "include": [
+        "main"
+      ]
+    }
+  },
+  "rules": [
+    {
+      "type": "pull_request",
+      "parameters": {
+        "required_approving_review_count": 1,
+        "dismiss_stale_reviews_on_push": true,
+        "require_code_owner_reviews": false,
+        "required_review_thread_resolution": true
+      }
+    },
+    {
+      "type": "required_linear_history"
+    },
+    {
+      "type": "force_push",
+      "parameters": {
+        "blocks_bypass_actors": true
+      }
+    },
+    {
+      "type": "deletion",
+      "parameters": {
+        "blocks_bypass_actors": true
+      }
+    }
+  ]
+}
