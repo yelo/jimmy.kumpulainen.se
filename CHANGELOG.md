@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.2.0](https://github.com/yelo/jimmy.kumpulainen.se/compare/v3.1.0...v3.2.0) (2025-09-30)
+
+
+### Features
+
+* **mobile:** improve animation responsiveness on mobile ([#51](https://github.com/yelo/jimmy.kumpulainen.se/issues/51)) ([d956023](https://github.com/yelo/jimmy.kumpulainen.se/commit/d9560238fa79e1e3b81fea8def07a5380ed13bc9))
+* **ux:** add fun animation to work history ([#50](https://github.com/yelo/jimmy.kumpulainen.se/issues/50)) ([7e0c21f](https://github.com/yelo/jimmy.kumpulainen.se/commit/7e0c21f7fdd3c8a69aa905f0ac1f50deb7969649))
+
 ## [3.1.0](https://github.com/yelo/jimmy.kumpulainen.se/compare/v3.0.0...v3.1.0) (2025-09-26)
 
 
