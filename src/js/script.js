@@ -201,16 +201,43 @@ function addSkillInteractivity() {
 function addJobInteractivity() {
     const jobs = document.querySelectorAll('.job');
     jobs.forEach(job => {
-        job.addEventListener('click', () => {
-            // Prevent effect in matrix mode
+        job.addEventListener('click', (e) => {
             if (document.body.classList.contains('matrix-mode')) return;
 
-            job.classList.add('job-clicked');
-            setTimeout(() => {
-                job.classList.remove('job-clicked');
-            }, 400); // Timeout should be longer than the transition
+            // Create the explosion at the cursor's location
+            const x = e.clientX;
+            const y = e.clientY;
+
+            for (let i = 0; i < 30; i++) {
+                createCharacterParticle(x, y);
+            }
         });
     });
+}
+
+function createCharacterParticle(x, y) {
+    const characters = ['🐬', '✨', '💖', '⭐', '🚀'];
+    const character = characters[Math.floor(Math.random() * characters.length)];
+
+    const particle = document.createElement('div');
+    particle.className = 'character-particle';
+    particle.textContent = character;
+    document.body.appendChild(particle);
+
+    particle.style.left = `${x}px`;
+    particle.style.top = `${y}px`;
+
+    const angle = Math.random() * 360;
+    const distance = Math.random() * 100 + 50;
+    const rotation = Math.random() * 720 - 360;
+
+    particle.style.setProperty('--x', `${Math.cos(angle * Math.PI / 180) * distance}px`);
+    particle.style.setProperty('--y', `${Math.sin(angle * Math.PI / 180) * distance}px`);
+    particle.style.setProperty('--r', `${rotation}deg`);
+
+    setTimeout(() => {
+        particle.remove();
+    }, 1000);
 }
 
 function createParticle(x, y) {
