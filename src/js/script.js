@@ -183,35 +183,84 @@ function createCursorTrail() {
 function addSkillInteractivity() {
     const skills = document.querySelectorAll('.skill-item');
     skills.forEach(skill => {
-        skill.addEventListener('click', (e) => {
+        const triggerAnimation = (e) => {
             // Prevent creating particles in matrix mode
             if (document.body.classList.contains('matrix-mode')) return;
 
+            // Determine coordinates based on event type
+            let clientX, clientY;
+            if (e.type === 'touchstart') {
+                e.preventDefault(); // Prevent potential 300ms delay and double-tap zoom
+                clientX = e.touches[0].clientX;
+                clientY = e.touches[0].clientY;
+            } else { // click event
+                clientX = e.clientX;
+                clientY = e.clientY;
+            }
+
             const rect = skill.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
+            const x = clientX - rect.left;
+            const y = clientY - rect.top;
 
             for (let i = 0; i < 20; i++) {
                 createParticle(rect.left + x, rect.top + y);
             }
-        });
+        };
+        skill.addEventListener('click', triggerAnimation);
+        skill.addEventListener('touchstart', triggerAnimation);
     });
+}
+
+function createParticle(x, y) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    document.body.appendChild(particle);
+
+    const size = Math.floor(Math.random() * 10 + 5);
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+    particle.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+    particle.style.left = `${x}px`;
+    particle.style.top = `${y}px`;
+
+    const angle = Math.random() * 360;
+    const distance = Math.random() * 50 + 50;
+
+    particle.style.setProperty('--x', `${Math.cos(angle * Math.PI / 180) * distance}px`);
+    particle.style.setProperty('--y', `${Math.sin(angle * Math.PI / 180) * distance}px`);
+
+    setTimeout(() => {
+        particle.remove();
+    }, 700);
 }
 
 function addJobInteractivity() {
     const jobs = document.querySelectorAll('.job');
     jobs.forEach(job => {
-        job.addEventListener('click', (e) => {
+        const triggerAnimation = (e) => {
             if (document.body.classList.contains('matrix-mode')) return;
 
+            // Determine coordinates based on event type
+            let clientX, clientY;
+            if (e.type === 'touchstart') {
+                e.preventDefault(); // Prevent potential 300ms delay and double-tap zoom
+                clientX = e.touches[0].clientX;
+                clientY = e.touches[0].clientY;
+            } else { // click event
+                clientX = e.clientX;
+                clientY = e.clientY;
+            }
+
             // Create the explosion at the cursor's location
-            const x = e.clientX;
-            const y = e.clientY;
+            const x = clientX;
+            const y = clientY;
 
             for (let i = 0; i < 30; i++) {
                 createCharacterParticle(x, y);
             }
-        });
+        };
+        job.addEventListener('click', triggerAnimation);
+        job.addEventListener('touchstart', triggerAnimation);
     });
 }
 
