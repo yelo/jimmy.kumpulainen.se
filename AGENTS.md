@@ -19,6 +19,13 @@ Any use of non-standard technologies or third-party libraries must be discussed 
 
 ---
 
+## Documentation Standards
+
+- **README.md Integrity:** The `README.md` file must be kept meticulously up-to-date. It is the single source of truth for the project's status, features, and how to run it.
+- **AI Responsibility:** The AI assistant is explicitly responsible for updating the `README.md` file to reflect any changes it makes to the codebase, dependencies, or deployment process.
+
+---
+
 ## Way of Working: Branches & Pull Requests
 
 All branches and commit messages must follow the Conventional Commit standard.
