@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.3.0](https://github.com/yelo/jimmy.kumpulainen.se/compare/v3.2.0...v3.3.0) (2025-10-02)
+
+
+### Features
+
+* revamp easter egg to KidPix-style art mode ([#54](https://github.com/yelo/jimmy.kumpulainen.se/issues/54)) ([240fcde](https://github.com/yelo/jimmy.kumpulainen.se/commit/240fcde5e23fab0cc002091dbdd705aa026cec1d))
+
 ## [3.2.0](https://github.com/yelo/jimmy.kumpulainen.se/compare/v3.1.0...v3.2.0) (2025-09-30)
 
 
