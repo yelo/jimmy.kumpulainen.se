@@ -1,4 +1,4 @@
-let matrixModeActive = false; // Moved to global scope
+let artModeActive = false; // Moved to global scope
 
 document.addEventListener('DOMContentLoaded', () => {
     // Fake Visitor Counter
@@ -15,20 +15,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Default Seapunk Visuals
     createSeapunkVisuals();
 
-    // Easter Egg: Type 'matrix'
-    let matrixCode = ['m', 'a', 't', 'r', 'i', 'x'];
-    let matrixIndex = 0;
+    // Easter Egg: Type 'art'
+    let artCode = ['a', 'r', 't'];
+    let artIndex = 0;
     document.addEventListener('keydown', (e) => {
-        if (matrixModeActive) return;
-        if (e.key.toLowerCase() === matrixCode[matrixIndex]) {
-            matrixIndex++;
-            if (matrixIndex === matrixCode.length) {
-                activateMatrixMode();
-                matrixIndex = 0;
-                matrixModeActive = true;
+        if (artModeActive) return;
+        if (e.key.toLowerCase() === artCode[artIndex]) {
+            artIndex++;
+            if (artIndex === artCode.length) {
+                activateArtMode();
+                artIndex = 0;
+                artModeActive = true;
             }
         } else {
-            matrixIndex = 0;
+            artIndex = 0;
         }
     });
 
@@ -80,75 +80,148 @@ function createSeapunkVisuals() {
     }
 }
 
-function activateMatrixMode() {
+function activateArtMode() {
     // Clear seapunk visuals
     const defaultVisuals = document.getElementById('default-visuals');
     if (defaultVisuals) defaultVisuals.innerHTML = '';
     const backgroundSwirls = document.querySelector('.background-swirls');
     if (backgroundSwirls) backgroundSwirls.style.display = 'none';
 
-    // Add matrix class to body
-    document.body.classList.add('matrix-mode');
+    // Add art mode class to body
+    document.body.classList.add('art-mode');
 
-    // Create matrix rain
-    createMatrixRain();
+    // Create art canvas
+    createArtCanvas();
 }
 
-function createMatrixRain() {
+function createArtCanvas() {
     const visualsContainer = document.getElementById('easter-egg-visuals');
-    const canvas = document.createElement('canvas');
-    canvas.className = 'matrix-rain';
-    visualsContainer.appendChild(canvas);
+    visualsContainer.innerHTML = `
+        <div id="art-toolbar">
+            <button id="color-black" class="color-swatch active" style="background-color: black;"></button>
+            <button id="color-red" class="color-swatch" style="background-color: red;"></button>
+            <button id="color-green" class="color-swatch" style="background-color: green;"></button>
+            <button id="color-blue" class="color-swatch" style="background-color: blue;"></button>
+            <input type="color" id="color-picker" value="#FFFF00">
+            <input type="range" id="brush-size" min="1" max="50" value="5">
+            <button id="eraser">Eraser</button>
+            <button id="clear-canvas">Clear</button>
+            <button id="rainbow-brush">Rainbow</button>
+            <button id="close-art-mode">❌</button>
+        </div>
+        <canvas id="art-canvas"></canvas>
+    `;
 
+    const canvas = document.getElementById('art-canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const matrix = "ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩアイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヰヱヲン0123456789@#$%^&*()*&^%+-/~{[|`]}";
-    const matrixArray = matrix.split("");
-    const font_size = 20;
-    const columns = canvas.width / font_size;
-    const drops = [];
+    let drawing = false;
+    let brushColor = 'black';
+    let brushSize = 5;
+    let rainbowMode = false;
+    let hue = 0;
 
-    for (let x = 0; x < columns; x++) {
-        drops[x] = 1;
+    function startPosition(e) {
+        drawing = true;
+        draw(e);
     }
 
-    function draw() {
-        ctx.fillStyle = 'rgba(127, 255, 212, 0.04)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    function endPosition() {
+        drawing = false;
+        ctx.beginPath();
+    }
 
-        ctx.font = font_size + 'px courier';
+    function draw(e) {
+        if (!drawing) return;
 
-        // Define the color palette from the site's theme
-        const mainColor = '#ff1493'; // Deep Pink
-        const highlightColors = ['#FFFFFF', '#4b0082', '#0000FF']; // White, Indigo, Blue
-
-        for (let i = 0; i < drops.length; i++) {
-            const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
-            
-            // Occasionally use a highlight color
-            if (Math.random() > 0.98) {
-                ctx.fillStyle = highlightColors[Math.floor(Math.random() * highlightColors.length)];
-            } else {
-                ctx.fillStyle = mainColor;
-            }
-
-            ctx.fillText(text, i * font_size, drops[i] * font_size);
-
-            if (drops[i] * font_size > canvas.height && Math.random() > 0.975) {
-                drops[i] = 0;
-            }
-            drops[i]++;
+        if (rainbowMode) {
+            ctx.globalCompositeOperation = 'source-over';
+            ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+            hue = (hue + 1) % 360;
+        } else {
+            ctx.strokeStyle = brushColor;
         }
+
+        ctx.lineWidth = brushSize;
+        ctx.lineCap = 'round';
+
+        ctx.lineTo(e.clientX, e.clientY);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(e.clientX, e.clientY);
     }
 
-    setInterval(draw, 66);
+    canvas.addEventListener('mousedown', startPosition);
+    canvas.addEventListener('mouseup', endPosition);
+    canvas.addEventListener('mousemove', draw);
+
+    document.getElementById('art-toolbar').addEventListener('click', (e) => {
+        if (e.target.id === 'clear-canvas') {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+        if (e.target.id === 'eraser') {
+            rainbowMode = false;
+            ctx.globalCompositeOperation = 'destination-out';
+        }
+        if (e.target.id === 'rainbow-brush') {
+            rainbowMode = !rainbowMode;
+            ctx.globalCompositeOperation = 'source-over';
+        }
+        if (e.target.id === 'close-art-mode') {
+            document.body.classList.remove('art-mode');
+            visualsContainer.innerHTML = '';
+            createSeapunkVisuals();
+            artModeActive = false;
+            const backgroundSwirls = document.querySelector('.background-swirls');
+            if (backgroundSwirls) backgroundSwirls.style.display = 'block';
+        }
+    });
+
+    document.getElementById('color-picker').addEventListener('input', (e) => {
+        rainbowMode = false;
+        brushColor = e.target.value;
+        ctx.globalCompositeOperation = 'source-over';
+    });
+
+    document.getElementById('brush-size').addEventListener('input', (e) => {
+        brushSize = e.target.value;
+    });
+
+    const colorSwatches = document.querySelectorAll('.color-swatch');
+    colorSwatches.forEach(swatch => {
+        swatch.addEventListener('click', (e) => {
+            rainbowMode = false;
+            brushColor = e.target.style.backgroundColor;
+            ctx.globalCompositeOperation = 'source-over';
+            colorSwatches.forEach(s => s.classList.remove('active'));
+            e.target.classList.add('active');
+        });
+    });
 
     window.addEventListener('resize', () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
     });
+
+    createFlyingToasters();
+}
+
+function createFlyingToasters() {
+    const visualsContainer = document.getElementById('easter-egg-visuals');
+    if (!visualsContainer) return;
+
+    for (let i = 0; i < 10; i++) {
+        const toaster = document.createElement('div');
+        toaster.className = 'flying-toaster';
+        toaster.textContent = '🍞';
+        toaster.style.left = `${Math.random() * 100}vw`;
+        toaster.style.top = `${Math.random() * 100}vh`;
+        toaster.style.animationDuration = `${Math.random() * 10 + 5}s`;
+        toaster.style.animationDelay = `${Math.random() * 10}s`;
+        visualsContainer.appendChild(toaster);
+    }
 }
 
 function createCursorTrail() {
@@ -184,8 +257,8 @@ function addSkillInteractivity() {
     const skills = document.querySelectorAll('.skill-item');
     skills.forEach(skill => {
         const triggerAnimation = (e) => {
-            // Prevent creating particles in matrix mode
-            if (document.body.classList.contains('matrix-mode')) return;
+            // Prevent creating particles in art mode
+            if (document.body.classList.contains('art-mode')) return;
 
             // Determine coordinates based on event type
             let clientX, clientY;
@@ -238,7 +311,7 @@ function addJobInteractivity() {
     const jobs = document.querySelectorAll('.job');
     jobs.forEach(job => {
         const triggerAnimation = (e) => {
-            if (document.body.classList.contains('matrix-mode')) return;
+            if (document.body.classList.contains('art-mode')) return;
 
             // Determine coordinates based on event type
             let clientX, clientY;
@@ -330,9 +403,9 @@ function addThemeSwitcher() {
             if (theme !== 'default') {
                 document.body.classList.add(`theme-${theme}`);
             }
-            // Re-apply matrix mode if it was active
-            if (matrixModeActive) {
-                 document.body.classList.add('matrix-mode');
+            // Re-apply art mode if it was active
+            if (artModeActive) {
+                 document.body.classList.add('art-mode');
             }
             // Hide the panel after selection
             fabContainer.classList.remove('active');
