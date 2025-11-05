@@ -537,9 +537,26 @@ body.theme-sunset {
     --duration-color: #800080; /* Purple */
 }
 
+/* XMAS Theme */
+body.theme-xmas {
+    --background-color: #1a531b; /* Dark Green */
+    --widget-bg: #d72323; /* Red */
+    --title-color: #ffd700; /* Gold */
+    --text-color: #ffffff; /* White */
+    --link-color: #ffd700; /* Gold */
+    --duration-color: #ffffff; /* White */
+}
+
 /* Art Mode Easter Egg */
 body.art-mode .container {
     display: none;
+}
+
+/* Matrix Mode Easter Egg */
+body.matrix-mode {
+    background-color: var(--background-color); /* Aquamarine */
+    color: var(--text-color); /* Indigo */
+    font-family: 'Courier New', monospace;
 }
 
 body.art-mode .theme-fab-container {
