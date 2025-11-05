@@ -33,6 +33,11 @@ All branches and commit messages must follow the Conventional Commit standard.
 - **Branch Naming:** Use prefixes such as `feat/`, `fix/`, `chore/`, etc., followed by a short description (e.g., `feat/login-form`).
 - **Commit Messages:** Structure commit messages according to Conventional Commit guidelines (e.g., `feat: add login form`).
 - **Pull Requests:** Ensure all pull requests reference relevant issues and provide a clear description of changes. All pull requests, especially those from AI assistants, must include the original task and the thought process behind the solution in the "Task and Thought Process" section.
+- **Do Not Commit Directly to `main`:** All changes must be made in a feature, fix, or chore branch and submitted as a pull request. Direct commits to the `main` branch are not allowed.
+
+### Working with Pull Requests
+
+When creating a pull request, especially when the body is complex, it is recommended to use a temporary file named `pr_body.md`. This file should be added to `.gitignore` to prevent it from being committed to the repository. The pull request can then be created using the `gh pr create --body-file pr_body.md` command.
 
 Refer to [Conventional Commits](https://www.conventionalcommits.org/) for details and examples.
 
