@@ -1,0 +1,19 @@
+
+.snowflake {
+    position: fixed;
+    top: -10px;
+    background-color: white;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    animation: snowfall linear infinite;
+}
+
+@keyframes snowfall {
+    from {
+        transform: translateY(0) rotate(0deg);
+    }
+    to {
+        transform: translateY(105vh) rotate(360deg);
+    }
+}

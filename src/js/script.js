@@ -1,4 +1,5 @@
-let artModeActive = false; // Moved to global scope
+let artModeActive = false;
+let matrixModeActive = false;
 
 document.addEventListener('DOMContentLoaded', () => {
     // Fake Visitor Counter
@@ -13,13 +14,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Default Seapunk Visuals
-    createSeapunkVisuals();
+    createSeapunkVisuals(false);
 
-    // Easter Egg: Type 'art'
+    // Easter Egg: Type 'art' or 'matrix'
     let artCode = ['a', 'r', 't'];
     let artIndex = 0;
+    let matrixCode = ['m', 'a', 't', 'r', 'i', 'x'];
+    let matrixIndex = 0;
+
     document.addEventListener('keydown', (e) => {
-        if (artModeActive) return;
+        if (artModeActive || matrixModeActive) return;
+
+        // Check for 'art' code
         if (e.key.toLowerCase() === artCode[artIndex]) {
             artIndex++;
             if (artIndex === artCode.length) {
@@ -29,6 +35,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } else {
             artIndex = 0;
+        }
+
+        // Check for 'matrix' code
+        if (e.key.toLowerCase() === matrixCode[matrixIndex]) {
+            matrixIndex++;
+            if (matrixIndex === matrixCode.length) {
+                activateMatrixMode();
+                matrixIndex = 0;
+                matrixModeActive = true;
+            }
+        } else {
+            matrixIndex = 0;
         }
     });
 
@@ -51,32 +69,51 @@ document.addEventListener('DOMContentLoaded', () => {
     addBubblyLinks();
 });
 
-function createSeapunkVisuals() {
+function createSeapunkVisuals(isXmas = false) {
     const visualsContainer = document.getElementById('default-visuals');
     if (!visualsContainer) return;
 
-    // Add swimming dolphins
-    for (let i = 0; i < 5; i++) {
-        const dolphin = document.createElement('div');
-        dolphin.className = 'swimming-dolphin';
-        dolphin.textContent = '🐬';
-        dolphin.style.left = `${Math.random() * 100}vw`;
-        dolphin.style.top = `${Math.random() * 100}vh`;
-        dolphin.style.animationDuration = `${Math.random() * 10 + 10}s`;
-        dolphin.style.animationDelay = `${Math.random() * 5}s`;
-        visualsContainer.appendChild(dolphin);
-    }
+    const headerDolphins = document.querySelectorAll('.jumping-dolphin');
 
-    // Add rising bubbles
-    for (let i = 0; i < 50; i++) {
-        const bubble = document.createElement('div');
-        bubble.className = 'bubble';
-        bubble.style.left = `${Math.random() * 100}vw`;
-        bubble.style.animationDuration = `${Math.random() * 5 + 5}s`;
-        bubble.style.animationDelay = `${Math.random() * 5}s`;
-        bubble.style.width = `${Math.random() * 20 + 10}px`;
-        bubble.style.height = bubble.style.width;
-        visualsContainer.appendChild(bubble);
+    if (isXmas) {
+        headerDolphins.forEach(dolphin => dolphin.textContent = '🦌');
+        const xmasEmojis = ['🎅', '🎄', '🎁', '🌟'];
+        for (let i = 0; i < 15; i++) {
+            const xmasElement = document.createElement('div');
+            xmasElement.className = 'swimming-dolphin'; // Reuse swimming animation
+            xmasElement.textContent = xmasEmojis[Math.floor(Math.random() * xmasEmojis.length)];
+            xmasElement.style.left = `${Math.random() * 100}vw`;
+            xmasElement.style.top = `${Math.random() * 100}vh`;
+            xmasElement.style.animationDuration = `${Math.random() * 10 + 10}s`;
+            xmasElement.style.animationDelay = `${Math.random() * 5}s`;
+            xmasElement.style.fontSize = `${Math.random() * 20 + 30}px`;
+            visualsContainer.appendChild(xmasElement);
+        }
+    } else {
+        headerDolphins.forEach(dolphin => dolphin.textContent = '🐬');
+        // Add swimming dolphins
+        for (let i = 0; i < 5; i++) {
+            const dolphin = document.createElement('div');
+            dolphin.className = 'swimming-dolphin';
+            dolphin.textContent = '🐬';
+            dolphin.style.left = `${Math.random() * 100}vw`;
+            dolphin.style.top = `${Math.random() * 100}vh`;
+            dolphin.style.animationDuration = `${Math.random() * 10 + 10}s`;
+            dolphin.style.animationDelay = `${Math.random() * 5}s`;
+            visualsContainer.appendChild(dolphin);
+        }
+
+        // Add rising bubbles
+        for (let i = 0; i < 50; i++) {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.style.left = `${Math.random() * 100}vw`;
+            bubble.style.animationDuration = `${Math.random() * 5 + 5}s`;
+            bubble.style.animationDelay = `${Math.random() * 5}s`;
+            bubble.style.width = `${Math.random() * 20 + 10}px`;
+            bubble.style.height = bubble.style.width;
+            visualsContainer.appendChild(bubble);
+        }
     }
 }
 
@@ -362,27 +399,24 @@ function createCharacterParticle(x, y) {
     }, 1000);
 }
 
-function createParticle(x, y) {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    document.body.appendChild(particle);
+function createSnowfall() {
+    const visualsContainer = document.getElementById('default-visuals');
+    if (!visualsContainer) return;
 
-    const size = Math.floor(Math.random() * 10 + 5);
-    particle.style.width = `${size}px`;
-    particle.style.height = `${size}px`;
-    particle.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
-    particle.style.left = `${x}px`;
-    particle.style.top = `${y}px`;
+    // Clear existing visuals
+    visualsContainer.innerHTML = '';
 
-    const angle = Math.random() * 360;
-    const distance = Math.random() * 50 + 50;
-
-    particle.style.setProperty('--x', `${Math.cos(angle * Math.PI / 180) * distance}px`);
-    particle.style.setProperty('--y', `${Math.sin(angle * Math.PI / 180) * distance}px`);
-
-    setTimeout(() => {
-        particle.remove();
-    }, 700);
+    for (let i = 0; i < 100; i++) {
+        const snowflake = document.createElement('div');
+        snowflake.className = 'snowflake';
+        snowflake.style.left = `${Math.random() * 100}vw`;
+        snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`;
+        snowflake.style.animationDelay = `${Math.random() * 5}s`;
+        const size = `${Math.random() * 5 + 2}px`;
+        snowflake.style.width = size;
+        snowflake.style.height = size;
+        visualsContainer.appendChild(snowflake);
+    }
 }
 
 function addThemeSwitcher() {
@@ -403,9 +437,24 @@ function addThemeSwitcher() {
             if (theme !== 'default') {
                 document.body.classList.add(`theme-${theme}`);
             }
+
+            const defaultVisuals = document.getElementById('default-visuals');
+            if (defaultVisuals) {
+                defaultVisuals.innerHTML = ''; // Clear visuals
+            }
+
+            if (theme === 'xmas') {
+                createSnowfall();
+                createSeapunkVisuals(true);
+            } else {
+                createSeapunkVisuals(false);
+            }
+
             // Re-apply art mode if it was active
             if (artModeActive) {
                  document.body.classList.add('art-mode');
+            } else if (matrixModeActive) {
+                 document.body.classList.add('matrix-mode');
             }
             // Hide the panel after selection
             fabContainer.classList.remove('active');
