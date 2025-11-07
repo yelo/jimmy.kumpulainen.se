@@ -67,7 +67,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Bubbly Links
     addBubblyLinks();
+
+    // Set seasonal theme
+    setSeasonalTheme();
 });
+
+function setSeasonalTheme() {
+    const now = new Date();
+    const month = now.getMonth() + 1; // getMonth() is 0-indexed
+    const day = now.getDate();
+
+    // Disable all seasonal themes initially
+    document.getElementById('xmas-theme').disabled = true;
+    document.getElementById('spring-theme').disabled = true;
+    document.getElementById('summer-theme').disabled = true;
+    document.getElementById('autumn-theme').disabled = true;
+
+    // Determine the season and enable the correct theme
+    if ((month === 12 && day >= 21) || (month === 1) || (month === 2) || (month === 3 && day < 20)) {
+        // Winter (Xmas)
+        document.getElementById('xmas-theme').disabled = false;
+    } else if ((month === 3 && day >= 20) || (month === 4) || (month === 5) || (month === 6 && day < 21)) {
+        // Spring
+        document.getElementById('spring-theme').disabled = false;
+    } else if ((month === 6 && day >= 21) || (month === 7) || (month === 8) || (month === 9 && day < 23)) {
+        // Summer
+        document.getElementById('summer-theme').disabled = false;
+    } else if ((month === 9 && day >= 23) || (month === 10) || (month === 11) || (month === 12 && day < 21)) {
+        // Autumn
+        document.getElementById('autumn-theme').disabled = false;
+    }
+}
 
 function createSeapunkVisuals(isXmas = false) {
     const visualsContainer = document.getElementById('default-visuals');
