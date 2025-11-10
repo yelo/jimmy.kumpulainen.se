@@ -72,6 +72,41 @@ document.addEventListener('DOMContentLoaded', () => {
     setSeasonalTheme();
 });
 
+function getCurrentSeason(month, day) {
+    const seasonBoundaries = [
+        { name: 'winter', start: { month: 12, day: 21 }, end: { month: 3, day: 19 } },
+        { name: 'spring', start: { month: 3, day: 20 }, end: { month: 6, day: 20 } },
+        { name: 'summer', start: { month: 6, day: 21 }, end: { month: 9, day: 22 } },
+        { name: 'autumn', start: { month: 9, day: 23 }, end: { month: 12, day: 20 } }
+    ];
+
+    for (const season of seasonBoundaries) {
+        if (isDateInSeason(month, day, season)) {
+            return season.name;
+        }
+    }
+    return null;
+}
+
+function isDateInSeason(month, day, season) {
+    const startMonth = season.start.month;
+    const startDay = season.start.day;
+    const endMonth = season.end.month;
+    const endDay = season.end.day;
+
+    // Handle seasons that span across year boundary (winter)
+    if (startMonth > endMonth) {
+        return (month > startMonth || month < endMonth) ||
+               (month === startMonth && day >= startDay) ||
+               (month === endMonth && day <= endDay);
+    }
+
+    // Handle seasons within the same calendar year
+    return (month > startMonth && month < endMonth) ||
+           (month === startMonth && day >= startDay) ||
+           (month === endMonth && day <= endDay);
+}
+
 function setSeasonalTheme() {
     const now = new Date();
     const month = now.getMonth() + 1; // getMonth() is 0-indexed
@@ -83,18 +118,15 @@ function setSeasonalTheme() {
     document.getElementById('summer-theme').disabled = true;
     document.getElementById('autumn-theme').disabled = true;
 
-    // Determine the season and enable the correct theme
-    if ((month === 12 && day >= 21) || (month === 1) || (month === 2) || (month === 3 && day < 20)) {
-        // Winter (Xmas)
+    // Get the current season and enable the correct theme
+    const season = getCurrentSeason(month, day);
+    if (season === 'winter') {
         document.getElementById('xmas-theme').disabled = false;
-    } else if ((month === 3 && day >= 20) || (month === 4) || (month === 5) || (month === 6 && day < 21)) {
-        // Spring
+    } else if (season === 'spring') {
         document.getElementById('spring-theme').disabled = false;
-    } else if ((month === 6 && day >= 21) || (month === 7) || (month === 8) || (month === 9 && day < 23)) {
-        // Summer
+    } else if (season === 'summer') {
         document.getElementById('summer-theme').disabled = false;
-    } else if ((month === 9 && day >= 23) || (month === 10) || (month === 11) || (month === 12 && day < 21)) {
-        // Autumn
+    } else if (season === 'autumn') {
         document.getElementById('autumn-theme').disabled = false;
     }
 }
