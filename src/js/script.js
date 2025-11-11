@@ -78,10 +78,10 @@ function setSeasonalTheme() {
     const day = now.getDate();
 
     // Disable all seasonal themes initially
-    document.getElementById('xmas-theme')?.disabled = true;
-    document.getElementById('spring-theme')?.disabled = true;
-    document.getElementById('summer-theme')?.disabled = true;
-    document.getElementById('autumn-theme')?.disabled = true;
+    const themeIds = ['xmas-theme', 'spring-theme', 'summer-theme', 'autumn-theme'];
+    themeIds.forEach(id => {
+        document.getElementById(id)?.disabled = true;
+    });
 
     // Determine the season and enable the correct theme
     if ((month === 12 && day >= 21) || (month === 1) || (month === 2) || (month === 3 && day < 20)) {
