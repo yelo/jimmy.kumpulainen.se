@@ -102,7 +102,7 @@ function setSeasonalTheme() {
 
     // Determine the season and enable the correct theme
     let themeEnabled = false;
-    if ((month === 12 && day >= 21) || (month === 1) || (month === 2) || (month === 3 && day <= 20)) {
+    if ((month === 12 && day >= 21) || (month === 1) || (month === 2) || (month === 3 && day <= 19)) {
         // Winter (Xmas)
         themeEnabled = enableThemeById('xmas-theme');
     } else if ((month === 3 && day >= 20) || (month === 4) || (month === 5) || (month === 6 && day <= 21)) {
