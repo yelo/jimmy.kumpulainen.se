@@ -111,7 +111,7 @@ function setSeasonalTheme() {
     } else if ((month === 6 && day >= 21) || (month === 7) || (month === 8) || (month === 9 && day <= 23)) {
         // Summer
         themeEnabled = enableThemeById('summer-theme');
-    } else if ((month === 9 && day >= 23) || (month === 10) || (month === 11) || (month === 12 && day <= 21)) {
+    } else if ((month === 9 && day >= 23) || (month === 10) || (month === 11) || (month === 12 && day <= 20)) {
         // Autumn
         themeEnabled = enableThemeById('autumn-theme');
     }
