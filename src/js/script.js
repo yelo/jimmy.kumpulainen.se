@@ -102,16 +102,16 @@ function setSeasonalTheme() {
 
     // Determine the season and enable the correct theme
     let themeEnabled = false;
-    if ((month === 12 && day >= 21) || (month === 1) || (month === 2) || (month === 3 && day < 20)) {
+    if ((month === 12 && day >= 21) || (month === 1) || (month === 2) || (month === 3 && day <= 20)) {
         // Winter (Xmas)
         themeEnabled = enableThemeById('xmas-theme');
-    } else if ((month === 3 && day >= 20) || (month === 4) || (month === 5) || (month === 6 && day < 21)) {
+    } else if ((month === 3 && day >= 20) || (month === 4) || (month === 5) || (month === 6 && day <= 21)) {
         // Spring
         themeEnabled = enableThemeById('spring-theme');
-    } else if ((month === 6 && day >= 21) || (month === 7) || (month === 8) || (month === 9 && day < 23)) {
+    } else if ((month === 6 && day >= 21) || (month === 7) || (month === 8) || (month === 9 && day <= 23)) {
         // Summer
         themeEnabled = enableThemeById('summer-theme');
-    } else if ((month === 9 && day >= 23) || (month === 10) || (month === 11) || (month === 12 && day < 21)) {
+    } else if ((month === 9 && day >= 23) || (month === 10) || (month === 11) || (month === 12 && day <= 21)) {
         // Autumn
         themeEnabled = enableThemeById('autumn-theme');
     }
