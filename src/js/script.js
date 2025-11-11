@@ -88,54 +88,38 @@ function setSeasonalTheme() {
         }
     });
 
-    // Track if a theme was enabled
-    let themeEnabled = false;
+    // Helper to enable a theme by id, returns true if enabled, false otherwise
+    function enableThemeById(id) {
+        const el = document.getElementById(id);
+        if (el) {
+            el.disabled = false;
+            return true;
+        } else {
+            console.warn(`Theme element with id '${id}' not found.`);
+            return false;
+        }
+    }
 
     // Determine the season and enable the correct theme
+    let themeEnabled = false;
     if ((month === 12 && day >= 21) || (month === 1) || (month === 2) || (month === 3 && day < 20)) {
         // Winter (Xmas)
-        const el = document.getElementById('xmas-theme');
-        if (el) {
-            el.disabled = false;
-            themeEnabled = true;
-        } else {
-            console.warn("Theme element with id 'xmas-theme' not found.");
-        }
+        themeEnabled = enableThemeById('xmas-theme');
     } else if ((month === 3 && day >= 20) || (month === 4) || (month === 5) || (month === 6 && day < 21)) {
         // Spring
-        const el = document.getElementById('spring-theme');
-        if (el) {
-            el.disabled = false;
-            themeEnabled = true;
-        } else {
-            console.warn("Theme element with id 'spring-theme' not found.");
-        }
+        themeEnabled = enableThemeById('spring-theme');
     } else if ((month === 6 && day >= 21) || (month === 7) || (month === 8) || (month === 9 && day < 23)) {
         // Summer
-        const el = document.getElementById('summer-theme');
-        if (el) {
-            el.disabled = false;
-            themeEnabled = true;
-        } else {
-            console.warn("Theme element with id 'summer-theme' not found.");
-        }
+        themeEnabled = enableThemeById('summer-theme');
     } else if ((month === 9 && day >= 23) || (month === 10) || (month === 11) || (month === 12 && day < 21)) {
         // Autumn
-        const el = document.getElementById('autumn-theme');
-        if (el) {
-            el.disabled = false;
-            themeEnabled = true;
-        } else {
-            console.warn("Theme element with id 'autumn-theme' not found.");
-        }
+        themeEnabled = enableThemeById('autumn-theme');
     }
 
     // Fallback: if no theme was enabled, enable the first available theme
     if (!themeEnabled) {
         for (const id of themeIds) {
-            const el = document.getElementById(id);
-            if (el) {
-                el.disabled = false;
+            if (enableThemeById(id)) {
                 console.warn(`No seasonal theme enabled; falling back to '${id}'.`);
                 break;
             }
