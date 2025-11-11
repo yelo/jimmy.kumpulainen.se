@@ -105,7 +105,7 @@ function setSeasonalTheme() {
     if ((month === 12 && day >= 21) || (month === 1) || (month === 2) || (month === 3 && day <= 19)) {
         // Winter (Xmas)
         themeEnabled = enableThemeById('xmas-theme');
-    } else if ((month === 3 && day >= 20) || (month === 4) || (month === 5) || (month === 6 && day <= 21)) {
+    } else if ((month === 3 && day >= 20) || (month === 4) || (month === 5) || (month === 6 && day <= 20)) {
         // Spring
         themeEnabled = enableThemeById('spring-theme');
     } else if ((month === 6 && day >= 21) || (month === 7) || (month === 8) || (month === 9 && day <= 23)) {
