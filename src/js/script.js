@@ -67,7 +67,65 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Bubbly Links
     addBubblyLinks();
+
+    // Set seasonal theme
+    setSeasonalTheme();
 });
+
+function setSeasonalTheme() {
+    const now = new Date();
+    const month = now.getMonth() + 1; // getMonth() is 0-indexed
+    const day = now.getDate();
+
+    // Disable all seasonal themes initially
+    const themeIds = ['xmas-theme', 'spring-theme', 'summer-theme', 'autumn-theme'];
+    themeIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.disabled = true;
+        } else {
+            console.warn(`Theme element with id '${id}' not found.`);
+        }
+    });
+
+    // Helper to enable a theme by id, returns true if enabled, false otherwise
+    function enableThemeById(id) {
+        const el = document.getElementById(id);
+        if (el) {
+            el.disabled = false;
+            return true;
+        } else {
+            console.warn(`Theme element with id '${id}' not found.`);
+            return false;
+        }
+    }
+
+    // Determine the season and enable the correct theme
+    let themeEnabled = false;
+    if ((month === 12 && day >= 21) || (month === 1) || (month === 2) || (month === 3 && day <= 19)) {
+        // Winter (Xmas)
+        themeEnabled = enableThemeById('xmas-theme');
+    } else if ((month === 3 && day >= 20) || (month === 4) || (month === 5) || (month === 6 && day <= 20)) {
+        // Spring
+        themeEnabled = enableThemeById('spring-theme');
+    } else if ((month === 6 && day >= 21) || (month === 7) || (month === 8) || (month === 9 && day <= 23)) {
+        // Summer
+        themeEnabled = enableThemeById('summer-theme');
+    } else if ((month === 9 && day >= 23) || (month === 10) || (month === 11) || (month === 12 && day <= 20)) {
+        // Autumn
+        themeEnabled = enableThemeById('autumn-theme');
+    }
+
+    // Fallback: if no theme was enabled, enable the first available theme
+    if (!themeEnabled) {
+        for (const id of themeIds) {
+            if (enableThemeById(id)) {
+                console.warn(`No seasonal theme enabled; falling back to '${id}'.`);
+                break;
+            }
+        }
+    }
+}
 
 function createSeapunkVisuals(isXmas = false) {
     const visualsContainer = document.getElementById('default-visuals');
