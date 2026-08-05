@@ -3,14 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>profile.org — Jimmy Kumpulainen</title>
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#1d2021" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f9f5f0" media="(prefers-color-scheme: light)">
+    <title>Jimmy Kumpulainen: Software Engineer</title>
     <link href="https://iosevka-webfonts.github.io/iosevka/Iosevka.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/styles.css">
+    <script>
+        (function() {
+            const THEME_KEY = "theme-preference";
+            const saved = localStorage.getItem(THEME_KEY);
+            const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            const theme = saved || (systemDark ? "dark" : "light");
+            if (theme === "light") {
+                document.documentElement.setAttribute("data-theme", "light");
+            }
+        })();
+    </script>
 </head>
 <body>
     <main class="buffer">
         <header class="org-header">
-            <div class="file-info">profile.org</div>
+            <div class="file-info">~/org/profile.org</div>
             <h1 class="org-title">Jimmy Kumpulainen</h1>
             <p class="org-subtitle">Software Engineer<span class="cursor">|</span></p>
             <p class="org-location">Malmö, Sweden</p>
@@ -20,8 +34,8 @@
             <h2 class="org-headline-1">* About</h2>
             <div class="org-content">
                 <p>Backend, cloud, DevOps, and product engineering with AI focus.</p>
-                <p>I am a software engineer and cloud architect based in Malmö, specializing in backend services, cloud infrastructure, and AI-driven product engineering at scale. Currently at Knowit FLX and Inter IKEA Group, where I architect resilient systems serving millions of active users worldwide.</p>
-                <p>My expertise spans backend architecture, DevOps practices, and building next-generation AI-powered features. I focus on shipping reliable, scalable systems that blend cutting-edge technology with real-world reliability. Strong experience with server-driven UI, microservices, event-driven systems, and cloud-native infrastructure across Azure and GCP ecosystems.</p>
+                <p>I am a software engineer based in Malmö, specializing in backend services, cloud infrastructure, and AI-driven product engineering at scale. Currently at Knowit FLX and Inter IKEA Group, where I build resilient systems serving millions of active users worldwide.</p>
+                <p>My expertise spans backend development, DevOps practices, and building next-generation AI-powered features. I focus on shipping reliable, scalable systems that blend cutting-edge technology with real-world reliability. Strong experience with server-driven UI, microservices, event-driven systems, and cloud-native infrastructure across Azure and GCP ecosystems.</p>
             </div>
         </section>
 
@@ -128,7 +142,7 @@
 
     <footer class="modeline">
         <span class="modeline-left">
-            <span class="modeline-file"><span class="cyan">profile.org</span></span>
+            <span class="modeline-file"><span class="cyan">~/org/profile.org</span></span>
             <span class="modeline-mode" id="modeline-mode">Org</span>
             <span class="modeline-encoding" id="modeline-encoding">utf-8</span>
         </span>
@@ -136,11 +150,13 @@
             <span class="modeline-position" id="modeline-position">L1 C1</span>
         </span>
         <span class="modeline-right">
+            <button class="theme-switcher" id="theme-switcher" title="Toggle light/dark theme" aria-label="Toggle light/dark theme"></button>
             <span id="modeline-percentage">All</span>
             <span id="modeline-clock"></span>
         </span>
     </footer>
 
+    <script src="js/theme.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
