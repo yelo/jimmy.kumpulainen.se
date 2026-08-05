@@ -68,9 +68,23 @@
         setTheme(newTheme);
     }
 
+    function enableTransitions() {
+        // Wait for two animation frames so the browser has painted with the
+        // correct theme at least once before re-enabling transitions.
+        // Otherwise the initial paint/attribute correction can itself get
+        // animated instead of applying instantly (seen in Safari as a
+        // delayed color fade on About text and position entries).
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                htmlElement.classList.remove("theme-loading");
+            });
+        });
+    }
+
     function init() {
         const effectiveTheme = getEffectiveTheme();
         setTheme(effectiveTheme);
+        enableTransitions();
 
         if (themeSwitcher) {
             themeSwitcher.addEventListener("click", toggleTheme);
