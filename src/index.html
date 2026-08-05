@@ -3,166 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>~~~ Welcome to Jimmy's World Wide Web Page! ~~~</title>
+    <title>profile.org — Jimmy Kumpulainen</title>
+    <link href="https://iosevka-webfonts.github.io/iosevka/Iosevka.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" id="xmas-theme" href="css/xmas.css" disabled>
-    <link rel="stylesheet" id="spring-theme" href="css/spring.css" disabled>
-    <link rel="stylesheet" id="summer-theme" href="css/summer.css" disabled>
-    <link rel="stylesheet" id="autumn-theme" href="css/autumn.css" disabled>
 </head>
 <body>
-    <div id="default-visuals"></div>
-    <div id="easter-egg-visuals"></div>
-    <div class="background-swirls"></div>
+    <main class="buffer">
+        <header class="org-header">
+            <div class="file-info">profile.org</div>
+            <h1 class="org-title">Jimmy Kumpulainen</h1>
+            <p class="org-subtitle">Software Engineer<span class="cursor">|</span></p>
+            <p class="org-location">Malmö, Sweden</p>
+        </header>
 
-    <header class="main-header">
-    <div class="header-decoration flower">🌻</div>
-    <div class="header-decoration star">✨</div>
-            <div class="jumping-dolphin dolphin-left">🐬</div>
-            <h1 class="header-title">Welcome to Jimmy's Digital Ocean!</h1>
-            <div class="jumping-dolphin dolphin-right">🐬</div>        <p>Your friendly neighborhood Software Engineer</p>
-    </header>
-
-    <div class="container">
-        <div class="construction-banner">
-            <span>🚧 This page is always under construction! 🚧</span>
-        </div>
-
-        <main>
-            <section class="widget">
-                <h2 class="widget-title">👤 ~*~ About Me ~*~</h2>
-                <div class="widget-content">
-                    <p><strong>Name:</strong> Jimmy Kumpulainen</p>
-                    <p><strong>Location:</strong> Malmö, Skåne County, Sweden</p>
-                    <p><strong>Profession:</strong> <span id="profession-text"></span><span class="blink" style="visibility: hidden;">_</span></p>
-                </div>
-            </section>
-
-
-
-            <section class="widget">
-                <h2 class="widget-title">💼 ~*~ Work History ~*~</h2>
-                <div class="widget-content">
-                    <div class="job">
-                        <h3>Senior Software Engineer @ Knowit FLX</h3>
-                        <p class="duration">March 2025 - Present</p>
-                        <p>Working with the latest and greatest technologies to build the leanest and meanest solutions around. Currently serving as DevOps Leader at Inter IKEA Group.</p>
-                    </div>
-                    <div class="job">
-                        <h3>Systems Developer @ Trygg-Hansa</h3>
-                        <p class="duration">August 2024 - March 2025</p>
-                        <p>Built and maintained internal services and tools for Claims, Marketing, and Insurance operations. Led transformation from on-premises to cloud-first services, building CI/CD pipelines.</p>
-                    </div>
-                    <div class="job">
-                        <h3>Senior Software Engineer @ Knowit (Various Projects)</h3>
-                        <p class="duration">September 2021 - July 2024</p>
-                        <p>Worked on cutting-edge projects for IKEA (Customer Item Availability, MV E-com), KIA, and Trygg-Hansa. Specialized in Golang, GCP, Terraform, DevOps, and .NET Azure solutions with Server Driven UI.</p>
-                    </div>
-                    <div class="job">
-                        <h3>Software Engineer @ Kristianstad University</h3>
-                        <p class="duration">May 2019 - July 2021</p>
-                        <p>Built full-stack solutions for students and staff using .NET Core, Angular, and Azure services. Worked with Kubernetes (AKS), microservices, and real-time queues.</p>
-                    </div>
-                    <div class="job">
-                        <h3>Software Engineer @ P&L Nordic AB</h3>
-                        <p class="duration">August 2018 - April 2019</p>
-                        <p>Full-stack development with React/Redux frontend and .NET Core backend solutions.</p>
-                    </div>
-                    <div class="job">
-                        <h3>Software Engineer @ OptiWay AB</h3>
-                        <p class="duration">January 2016 - July 2018</p>
-                        <p>Specialized in geographical information systems (GIS) and web solutions. Built festival planning tools for Sweden Rock Festival/Live Nation and administrative systems for Swedish airports handling flight planning, statistics, and invoice management.</p>
-                    </div>
-                    <div class="job">
-                        <h3>Android Developer @ Sony Mobile Communications (via Netville)</h3>
-                        <p class="duration">November 2013 - January 2016</p>
-                        <p>Developed Xperia Transfer Mobile, Backup & Restore applications. Xperia Transfer Mobile became the highest rated Sony Mobile app in Google Play Store.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="widget">
-                <h2 class="widget-title">✨ ~*~ My Skills ~*~</h2>
-                <div class="widget-content skill-grid">
-                    <div class="skill-item">Rust</div>
-                    <div class="skill-item">Golang</div>
-                    <div class="skill-item">C#</div>
-                    <div class="skill-item">.NET Core</div>
-                    <div class="skill-item">DevSecOps</div>
-                    <div class="skill-item">Cloud Architecture</div>
-                    <div class="skill-item">Full-Stack Development</div>
-                    <div class="skill-item">Artificial Intelligence</div>
-                    <div class="skill-item">Machine Learning</div>
-                    <div class="skill-item">Kubernetes</div>
-                    <div class="skill-item">Docker</div>
-                    <div class="skill-item">Infrastructure as Code</div>
-                    <div class="skill-item">Azure</div>
-                    <div class="skill-item">GCP</div>
-                    <div class="skill-item">CI/CD Pipelines</div>
-                    <div class="skill-item">Security Automation</div>
-                    <div class="skill-item">Microservices</div>
-                    <div class="skill-item">Event-Driven Architecture</div>
-                    <div class="skill-item">Cloud-Native Solutions</div>
-                    <div class="skill-item">Serverless Computing</div>
-                </div>
-            </section>
-
-            <section class="widget">
-                <h2 class="widget-title">🎓 ~*~ Education ~*~</h2>
-                <div class="widget-content">
-                    <div class="job">
-                        <h3>Bachelor of Science in Computer Science</h3>
-                        <p class="duration">Malmö University | 2010 - 2013</p>
-                        <p>Focused on software engineering and algorithms. Also served as Teaching Assistant for Web Development and Algorithmic courses, helping students and correcting assignments.</p>
-                    </div>
-                    <div style="margin-top: 1.5rem;">
-                        <p><strong>CERTIFICATIONS:</strong> LFS458: Kubernetes Administration</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="widget">
-                <h2 class="widget-title">📧 ~*~ Contact Me ~*~</h2>
-                <div class="widget-content contact-links">
-                    <a href="mailto:jimmy@kumpulainen.se">
-                        📧
-                        <span>jimmy@kumpulainen.se</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/jimmykumpulainen">
-                        💼
-                        <span>LinkedIn Profile</span>
-                    </a>
-                    <a href="https://github.com/yelo">
-                        🔧
-                        <span>GitHub Portfolio</span>
-                    </a>
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            <div class="visitor-counter">
-                <p>You are visitor number: <span id="visitor-count"></span></p>
+        <section class="org-section" data-org-level="1">
+            <h2 class="org-headline-1">* About</h2>
+            <div class="org-content">
+                <p>Backend, cloud, DevOps, and product engineering with AI focus.</p>
+                <p>I am a software engineer and cloud architect based in Malmö, specializing in backend services, cloud infrastructure, and AI-driven product engineering at scale. Currently at Knowit FLX and Inter IKEA Group, where I architect resilient systems serving millions of active users worldwide.</p>
+                <p>My expertise spans backend architecture, DevOps practices, and building next-generation AI-powered features. I focus on shipping reliable, scalable systems that blend cutting-edge technology with real-world reliability. Strong experience with server-driven UI, microservices, event-driven systems, and cloud-native infrastructure across Azure and GCP ecosystems.</p>
             </div>
-            <p>This page made with 💖 and vanilla JS!</p>
-            <p>100% Vibe Coded!</p>
-            <p>Hint: Type 'art' to unleash your inner artist...</p>
-        </footer>
-    </div>
+        </section>
+
+        <section class="org-section" data-org-level="1">
+            <h2 class="org-headline-1">* Current Work</h2>
+            <div class="org-content">
+                <div class="org-entry">
+                    <p><strong class="amber">Knowit FLX</strong> <span class="dim">·</span> Senior Software Engineer <span class="dim">| Mar 2025 – Present</span></p>
+                </div>
+                <div class="org-entry">
+                    <p><strong class="amber">Inter IKEA Group</strong> <span class="dim">·</span> Software Engineer, consultant <span class="dim">| Dec 2025 – Present</span></p>
+                    <p class="org-desc">Building and scaling the global Inter IKEA retail app (millions of active users) through a Server-Driven UI (SDUI) architecture.</p>
+                    <p class="org-desc"><strong class="cyan">Backend & Cloud Architecture:</strong> Architect and maintain resilient backend services and Azure infrastructure using .NET and cloud-native DevOps practices.</p>
+                    <p class="org-desc"><strong class="cyan">AI & Smart Shopping:</strong> Engineer foundational systems and infrastructure for next-generation AI-powered shopping features and intelligent customer agents.</p>
+                    <p class="org-desc"><strong class="cyan">Cross-Functional Integration:</strong> Execute SDUI features across iOS and Android codebases, ensuring full-stack reliability at global scale.</p>
+                </div>
+                <div class="org-entry">
+                    <p><strong class="amber">Inter IKEA Group</strong> <span class="dim">·</span> DevOps Leader, consultant <span class="dim">| Mar 2025 – Dec 2025</span></p>
+                    <p class="org-desc">Led CI/CD infrastructure and cloud engineering initiatives. Managed containerized deployments, infrastructure-as-code with Terraform, and Rust-based DevOps tooling.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="org-section" data-org-level="1">
+            <h2 class="org-headline-1">* Work History</h2>
+            <div class="org-content">
+                <div class="org-entry">
+                    <p><strong class="green">Trygg-Hansa</strong> <span class="dim">·</span> Systems Developer <span class="dim">| Aug 2024 – Mar 2025</span></p>
+                    <p class="org-desc">Built and maintained internal services and tools for claims, marketing, and insurance operations while helping move services from on-premises hosting to cloud-first delivery.</p>
+                </div>
+                <div class="org-entry">
+                    <p><strong class="green">Knowit</strong> <span class="dim">·</span> Senior Software Engineer <span class="dim">| Sep 2021 – Dec 2024</span></p>
+                    <p class="org-desc">Worked across multiple high-impact assignments spanning three years, including backend engineering at Trygg-Hansa (insurance/claims systems), KIA (serverless architectures), IKEA Customer Item Availability (GCP/Go backend), and IKEA MV E-com (server-driven UI platform). Architected solutions using .NET Core, Go, TypeScript, Azure DevOps, GCP, Terraform, and microservices patterns.</p>
+                </div>
+                <div class="org-entry">
+                    <p><strong class="green">Kristianstad University</strong> <span class="dim">·</span> Software Engineer <span class="dim">| May 2019 – Jul 2021</span></p>
+                    <p class="org-desc">Delivered full-stack solutions for students and staff using .NET Core, Angular, Azure, Kubernetes, microservices, and real-time queues.</p>
+                </div>
+                <div class="org-entry">
+                    <p><strong class="green">P&amp;L Nordic AB</strong> <span class="dim">·</span> Software Engineer <span class="dim">| Aug 2018 – Apr 2019</span></p>
+                    <p class="org-desc">Worked on front-end and back-end development with React, Redux, .NET Core, and Microsoft SQL Server.</p>
+                </div>
+                <div class="org-entry">
+                    <p><strong class="green">OptiWay AB</strong> <span class="dim">·</span> Software Engineer <span class="dim">| Jan 2016 – Jul 2018</span></p>
+                    <p class="org-desc">Built GIS-focused web applications with Angular, SignalR, OpenLayers, REST APIs, and .NET for festival planning and airport administration systems.</p>
+                </div>
+                <div class="org-entry">
+                    <p><strong class="green">Netville AB / Sony Mobile Communications</strong> <span class="dim">·</span> Android Developer <span class="dim">| Nov 2013 – Jan 2016</span></p>
+                    <p class="org-desc">Worked on Android and cloud-backed products, including Xperia Transfer Mobile, Backup &amp; Restore, and system apps.</p>
+                </div>
+                <div class="org-entry">
+                    <p><strong class="green">Malmö University</strong> <span class="dim">·</span> Teaching Assistant <span class="dim">| Jun 2011 – Jan 2013</span></p>
+                    <p class="org-desc">Assisted students and corrected assignments for Web Development and Algorithmic courses.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="org-section" data-org-level="1">
+            <h2 class="org-headline-1">* Skills</h2>
+            <div class="org-content">
+                <h3 class="org-headline-2">** Languages & Runtime</h3>
+                <p class="org-tags"><span class="org-tag">.NET</span> <span class="org-tag">C#</span> <span class="org-tag">Go</span> <span class="org-tag">Rust</span> <span class="org-tag">TypeScript</span> <span class="org-tag">Java</span></p>
+
+                <h3 class="org-headline-2">** Cloud & Infrastructure</h3>
+                <p class="org-tags"><span class="org-tag">Azure</span> <span class="org-tag">GCP</span> <span class="org-tag">AWS</span> <span class="org-tag">Kubernetes</span> <span class="org-tag">Docker</span></p>
+
+                <h3 class="org-headline-2">** DevOps & Infrastructure-as-Code</h3>
+                <p class="org-tags"><span class="org-tag">Terraform</span> <span class="org-tag">CI/CD</span> <span class="org-tag">Azure DevOps</span> <span class="org-tag">GitHub Actions</span> <span class="org-tag">Rust-based tooling</span></p>
+
+                <h3 class="org-headline-2">** Architectures & Patterns</h3>
+                <p class="org-tags"><span class="org-tag">server-driven UI</span> <span class="org-tag">microservices</span> <span class="org-tag">event-driven systems</span> <span class="org-tag">serverless</span> <span class="org-tag">RESTful APIs</span></p>
+
+                <h3 class="org-headline-2">** Specializations</h3>
+                <p class="org-tags"><span class="org-tag">backend services</span> <span class="org-tag">cloud architecture</span> <span class="org-tag">AI-powered features</span> <span class="org-tag">full-stack delivery</span> <span class="org-tag">system design at scale</span></p>
+            </div>
+        </section>
+
+        <section class="org-section" data-org-level="1">
+            <h2 class="org-headline-1">* Education</h2>
+            <div class="org-content">
+                <div class="org-entry">
+                    <p><strong class="purple">Bachelor of Science in Computer Science</strong></p>
+                    <p class="org-desc">Malmö University | 2010 – 2013</p>
+                    <p class="org-desc">Also served as Teaching Assistant for Web Development and Algorithmic courses.</p>
+                </div>
+                <p class="org-cert"><strong>CERTIFICATION:</strong> LFS458: Kubernetes Administration</p>
+            </div>
+        </section>
+
+        <section class="org-section" data-org-level="1">
+            <h2 class="org-headline-1">* Contact</h2>
+            <div class="org-content">
+                <p><span class="cyan">email</span> <span class="dim">→</span> <a href="mailto:jimmy@kumpulainen.se">jimmy@kumpulainen.se</a></p>
+                <p><span class="cyan">linkedin</span> <span class="dim">→</span> <a href="https://www.linkedin.com/in/jimmykumpulainen">linkedin.com/in/jimmykumpulainen</a></p>
+                <p><span class="cyan">github</span> <span class="dim">→</span> <a href="https://github.com/yelo">github.com/yelo</a></p>
+            </div>
+        </section>
+
+        <div class="buffer-end">
+            <p>~</p>
+            <p>~</p>
+        </div>
+    </main>
+
+    <footer class="modeline">
+        <span class="modeline-left">
+            <span class="modeline-file"><span class="cyan">profile.org</span></span>
+            <span class="modeline-mode" id="modeline-mode">Org</span>
+            <span class="modeline-encoding" id="modeline-encoding">utf-8</span>
+        </span>
+        <span class="modeline-middle">
+            <span class="modeline-position" id="modeline-position">L1 C1</span>
+        </span>
+        <span class="modeline-right">
+            <span id="modeline-percentage">All</span>
+            <span id="modeline-clock"></span>
+        </span>
+    </footer>
 
     <script src="js/script.js"></script>
-
-    <div class="theme-fab-container">
-        <div class="theme-fab-button">🎨</div>
-        <div class="theme-swatch-panel">
-            <div class="theme-swatch" data-theme="default" style="background: linear-gradient(45deg, #7fffd4, #ffc0cb);"></div>
-            <div class="theme-swatch" data-theme="vaporwave" style="background: linear-gradient(45deg, #ff71ce, #01cdfe);"></div>
-            <div class="theme-swatch" data-theme="cyberpunk" style="background: linear-gradient(45deg, #fcee09, #ff003c);"></div>
-            <div class="theme-swatch" data-theme="hotdog" style="background: linear-gradient(45deg, #ff0000, #ffff00);"></div>
-            <div class="theme-swatch" data-theme="bubblegum" style="background: linear-gradient(45deg, #ffb6c1, #87cefa);"></div>
-            <div class="theme-swatch" data-theme="sunset" style="background: linear-gradient(45deg, #ff7e5f, #feb47b);"></div>
-            <div class="theme-swatch" data-theme="xmas" style="background: linear-gradient(45deg, #d72323, #4caf50);"></div>
-        </div>
-    </div>
 </body>
 </html>
