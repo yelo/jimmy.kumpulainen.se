@@ -14,6 +14,8 @@ Inspired by Emacs org-mode and vim `:help` pages. The page renders as an org-mod
 
 - **Emacs org-mode aesthetic:** Org-mode heading hierarchy with visual distinction (*, **, ***, etc.), collapsible sections with folding support
 - **Full Emacs modeline:** Live position tracking (line/column), file encoding (utf-8), major mode (Org), percentage through buffer, and system clock
+- **Light & Dark themes:** Toggle between light (Gruvbox light) and dark (Gruvbox dark) themes; respects system color scheme preference and persists user choice
+- **Theme switcher:** Convenient theme toggle button (🌙/☀️) in the modeline footer that syncs with system-wide theme changes
 - **Org-mode elements:** Tags styled as property tags, proper heading hierarchy with color distinction
 - **Collapsible sections:** Toggle org-mode style folding (▼/▶ indicators) with vanilla JS
 - **Status indicators:** Buffer status including file mode and encoding
