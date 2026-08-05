@@ -3,104 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>resume.txt — Jimmy Kumpulainen</title>
+    <title>profile.org — Jimmy Kumpulainen</title>
     <link href="https://iosevka-webfonts.github.io/iosevka/Iosevka.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <main class="buffer">
-        <header class="section">
-            <div class="tagline">1 resume.txt</div>
-            <h1 class="name">Jimmy Kumpulainen</h1>
-            <p class="subtitle">Software Engineer<span class="cursor">|</span></p>
-            <p class="loc">Malm&ouml;, Sweden</p>
+        <header class="org-header">
+            <div class="file-info">profile.org</div>
+            <h1 class="org-title">Jimmy Kumpulainen</h1>
+            <p class="org-subtitle">Software Engineer<span class="cursor">|</span></p>
+            <p class="org-location">Malmö, Sweden</p>
         </header>
 
-        <section class="section">
-            <h2 class="tagline">│ about</h2>
-            <p>Backend, cloud, DevOps, and product engineering.</p>
-            <p>I am a software engineer based in Malm&ouml;, working at Knowit FLX and currently contracted as a consultant at Inter IKEA Group. My focus is on backend services, cloud infrastructure, and shipping reliable systems that support large-scale products.</p>
-        </section>
-
-        <section class="section">
-            <h2 class="tagline">│ current work</h2>
-            <div class="entry">
-                <p><strong class="amber">Knowit FLX</strong> &mdash; Senior Software Engineer | Mar 2025 &ndash; Present</p>
-            </div>
-            <div class="entry">
-                <p><strong class="amber">Inter IKEA Group</strong> &mdash; Software Engineer, consultant | Dec 2025 &ndash; Present</p>
-                <p class="desc">Building and scaling the global Inter IKEA retail app with server-driven UI, backend services, Azure infrastructure, and cross-platform integration.</p>
-            </div>
-            <div class="entry">
-                <p><strong class="amber">Inter IKEA Group</strong> &mdash; DevOps Leader, consultant | Mar 2025 &ndash; Dec 2025</p>
+        <section class="org-section" data-org-level="1">
+            <h2 class="org-headline-1">* About</h2>
+            <button class="org-fold-button" aria-label="Toggle About section" title="Toggle section (TAB)"></button>
+            <div class="org-content">
+                <p>Backend, cloud, DevOps, and product engineering.</p>
+                <p>I am a software engineer based in Malmö, working at Knowit FLX and currently contracted as a consultant at Inter IKEA Group. My focus is on backend services, cloud infrastructure, and shipping reliable systems that support large-scale products.</p>
             </div>
         </section>
 
-        <section class="section">
-            <h2 class="tagline">│ work history</h2>
-            <div class="entry">
-                <p><strong class="green">Trygg-Hansa</strong> &mdash; Systems Developer | Aug 2024 &ndash; Mar 2025</p>
-                <p class="desc">Built and maintained internal services and tools for claims, marketing, and insurance operations while helping move services from on-premises hosting to cloud-first delivery.</p>
-            </div>
-            <div class="entry">
-                <p><strong class="green">Knowit</strong> &mdash; Senior Software Engineer | Sep 2021 &ndash; Dec 2024</p>
-                <p class="desc">Worked across several assignments, including Trygg-Hansa, KIA, IKEA Customer Item Availability, and IKEA MV E-com. The work centered on backend services, SDUI, Azure, Go, GCP, and infrastructure.</p>
-            </div>
-            <div class="entry">
-                <p><strong class="green">Kristianstad University</strong> &mdash; Software Engineer | May 2019 &ndash; Jul 2021</p>
-                <p class="desc">Delivered full-stack solutions for students and staff using .NET Core, Angular, Azure, Kubernetes, microservices, and real-time queues.</p>
-            </div>
-            <div class="entry">
-                <p><strong class="green">P&amp;L Nordic AB</strong> &mdash; Software Engineer | Aug 2018 &ndash; Apr 2019</p>
-                <p class="desc">Worked on front-end and back-end development with React, Redux, .NET Core, and Microsoft SQL Server.</p>
-            </div>
-            <div class="entry">
-                <p><strong class="green">OptiWay AB</strong> &mdash; Software Engineer | Jan 2016 &ndash; Jul 2018</p>
-                <p class="desc">Built GIS-focused web applications with Angular, SignalR, OpenLayers, REST APIs, and .NET for festival planning and airport administration systems.</p>
-            </div>
-            <div class="entry">
-                <p><strong class="green">Netville AB / Sony Mobile Communications</strong> &mdash; Android Developer | Nov 2013 &ndash; Jan 2016</p>
-                <p class="desc">Worked on Android and cloud-backed products, including Xperia Transfer Mobile, Backup &amp; Restore, and system apps.</p>
-            </div>
-            <div class="entry">
-                <p><strong class="green">Malm&ouml; University</strong> &mdash; Teaching Assistant | Jun 2011 &ndash; Jan 2013</p>
-                <p class="desc">Assisted students and corrected assignments for Web Development and Algorithmic courses.</p>
+        <section class="org-section" data-org-level="1">
+            <h2 class="org-headline-1">* Current Work</h2>
+            <button class="org-fold-button" aria-label="Toggle Current Work section" title="Toggle section (TAB)"></button>
+            <div class="org-content">
+                <div class="org-entry">
+                    <p><strong class="amber">Knowit FLX</strong> <span class="dim">·</span> Senior Software Engineer <span class="dim">| Mar 2025 – Present</span></p>
+                </div>
+                <div class="org-entry">
+                    <p><strong class="amber">Inter IKEA Group</strong> <span class="dim">·</span> Software Engineer, consultant <span class="dim">| Dec 2025 – Present</span></p>
+                    <p class="org-desc">Building and scaling the global Inter IKEA retail app with server-driven UI, backend services, Azure infrastructure, and cross-platform integration.</p>
+                </div>
+                <div class="org-entry">
+                    <p><strong class="amber">Inter IKEA Group</strong> <span class="dim">·</span> DevOps Leader, consultant <span class="dim">| Mar 2025 – Dec 2025</span></p>
+                </div>
             </div>
         </section>
 
-        <section class="section">
-            <h2 class="tagline">│ skills</h2>
-            <p><span class="cyan">.NET</span> &middot; <span class="cyan">C#</span> &middot; <span class="cyan">Go</span> &middot; <span class="cyan">Rust</span> &middot; <span class="cyan">Azure</span> &middot; <span class="cyan">GCP</span> &middot; <span class="cyan">Terraform</span> &middot; <span class="cyan">Kubernetes</span> &middot; <span class="cyan">Docker</span> &middot; <span class="cyan">CI/CD</span> &middot; <span class="cyan">DevOps</span> &middot; <span class="cyan">server-driven UI</span> &middot; <span class="cyan">backend services</span> &middot; <span class="cyan">cloud architecture</span> &middot; <span class="cyan">microservices</span> &middot; <span class="cyan">event-driven systems</span> &middot; <span class="cyan">full-stack delivery</span></p>
-        </section>
-
-        <section class="section">
-            <h2 class="tagline">│ education</h2>
-            <div class="entry">
-                <p><strong class="purple">Bachelor of Science in Computer Science</strong></p>
-                <p class="desc">Malm&ouml; University | 2010 &ndash; 2013</p>
-                <p class="desc">Also served as Teaching Assistant for Web Development and Algorithmic courses.</p>
+        <section class="org-section" data-org-level="1">
+            <h2 class="org-headline-1">* Work History</h2>
+            <button class="org-fold-button" aria-label="Toggle Work History section" title="Toggle section (TAB)"></button>
+            <div class="org-content">
+                <div class="org-entry">
+                    <p><strong class="green">Trygg-Hansa</strong> <span class="dim">·</span> Systems Developer <span class="dim">| Aug 2024 – Mar 2025</span></p>
+                    <p class="org-desc">Built and maintained internal services and tools for claims, marketing, and insurance operations while helping move services from on-premises hosting to cloud-first delivery.</p>
+                </div>
+                <div class="org-entry">
+                    <p><strong class="green">Knowit</strong> <span class="dim">·</span> Senior Software Engineer <span class="dim">| Sep 2021 – Dec 2024</span></p>
+                    <p class="org-desc">Worked across several assignments, including Trygg-Hansa, KIA, IKEA Customer Item Availability, and IKEA MV E-com. The work centered on backend services, SDUI, Azure, Go, GCP, and infrastructure.</p>
+                </div>
+                <div class="org-entry">
+                    <p><strong class="green">Kristianstad University</strong> <span class="dim">·</span> Software Engineer <span class="dim">| May 2019 – Jul 2021</span></p>
+                    <p class="org-desc">Delivered full-stack solutions for students and staff using .NET Core, Angular, Azure, Kubernetes, microservices, and real-time queues.</p>
+                </div>
+                <div class="org-entry">
+                    <p><strong class="green">P&amp;L Nordic AB</strong> <span class="dim">·</span> Software Engineer <span class="dim">| Aug 2018 – Apr 2019</span></p>
+                    <p class="org-desc">Worked on front-end and back-end development with React, Redux, .NET Core, and Microsoft SQL Server.</p>
+                </div>
+                <div class="org-entry">
+                    <p><strong class="green">OptiWay AB</strong> <span class="dim">·</span> Software Engineer <span class="dim">| Jan 2016 – Jul 2018</span></p>
+                    <p class="org-desc">Built GIS-focused web applications with Angular, SignalR, OpenLayers, REST APIs, and .NET for festival planning and airport administration systems.</p>
+                </div>
+                <div class="org-entry">
+                    <p><strong class="green">Netville AB / Sony Mobile Communications</strong> <span class="dim">·</span> Android Developer <span class="dim">| Nov 2013 – Jan 2016</span></p>
+                    <p class="org-desc">Worked on Android and cloud-backed products, including Xperia Transfer Mobile, Backup &amp; Restore, and system apps.</p>
+                </div>
+                <div class="org-entry">
+                    <p><strong class="green">Malmö University</strong> <span class="dim">·</span> Teaching Assistant <span class="dim">| Jun 2011 – Jan 2013</span></p>
+                    <p class="org-desc">Assisted students and corrected assignments for Web Development and Algorithmic courses.</p>
+                </div>
             </div>
-            <p class="cert"><strong>CERTIFICATION:</strong> LFS458: Kubernetes Administration</p>
         </section>
 
-        <section class="section">
-            <h2 class="tagline">│ contact</h2>
-            <p><span class="cyan">email</span> &rarr; <a href="mailto:jimmy@kumpulainen.se">jimmy@kumpulainen.se</a></p>
-            <p><span class="cyan">linkedin</span> &rarr; <a href="https://www.linkedin.com/in/jimmykumpulainen">linkedin.com/in/jimmykumpulainen</a></p>
-            <p><span class="cyan">github</span> &rarr; <a href="https://github.com/yelo">github.com/yelo</a></p>
+        <section class="org-section" data-org-level="1">
+            <h2 class="org-headline-1">* Skills</h2>
+            <button class="org-fold-button" aria-label="Toggle Skills section" title="Toggle section (TAB)"></button>
+            <div class="org-content">
+                <p class="org-tags">
+                    <span class="org-tag">.NET</span>
+                    <span class="org-tag">C#</span>
+                    <span class="org-tag">Go</span>
+                    <span class="org-tag">Rust</span>
+                    <span class="org-tag">Azure</span>
+                    <span class="org-tag">GCP</span>
+                    <span class="org-tag">Terraform</span>
+                    <span class="org-tag">Kubernetes</span>
+                    <span class="org-tag">Docker</span>
+                    <span class="org-tag">CI/CD</span>
+                    <span class="org-tag">DevOps</span>
+                    <span class="org-tag">server-driven UI</span>
+                    <span class="org-tag">backend services</span>
+                    <span class="org-tag">cloud architecture</span>
+                    <span class="org-tag">microservices</span>
+                    <span class="org-tag">event-driven systems</span>
+                    <span class="org-tag">full-stack delivery</span>
+                </p>
+            </div>
+        </section>
+
+        <section class="org-section" data-org-level="1">
+            <h2 class="org-headline-1">* Education</h2>
+            <button class="org-fold-button" aria-label="Toggle Education section" title="Toggle section (TAB)"></button>
+            <div class="org-content">
+                <div class="org-entry">
+                    <p><strong class="purple">Bachelor of Science in Computer Science</strong></p>
+                    <p class="org-desc">Malmö University | 2010 – 2013</p>
+                    <p class="org-desc">Also served as Teaching Assistant for Web Development and Algorithmic courses.</p>
+                </div>
+                <p class="org-cert"><strong>CERTIFICATION:</strong> LFS458: Kubernetes Administration</p>
+            </div>
+        </section>
+
+        <section class="org-section" data-org-level="1">
+            <h2 class="org-headline-1">* Contact</h2>
+            <button class="org-fold-button" aria-label="Toggle Contact section" title="Toggle section (TAB)"></button>
+            <div class="org-content">
+                <p><span class="cyan">email</span> <span class="dim">→</span> <a href="mailto:jimmy@kumpulainen.se">jimmy@kumpulainen.se</a></p>
+                <p><span class="cyan">linkedin</span> <span class="dim">→</span> <a href="https://www.linkedin.com/in/jimmykumpulainen">linkedin.com/in/jimmykumpulainen</a></p>
+                <p><span class="cyan">github</span> <span class="dim">→</span> <a href="https://github.com/yelo">github.com/yelo</a></p>
+            </div>
         </section>
 
         <div class="buffer-end">
             <p>~</p>
             <p>~</p>
-            <p>[No Name] <span class="dim">0,0-1 All</span></p>
         </div>
     </main>
 
-    <footer class="status-bar" id="status-bar">
-        <span class="status-left"><span class="cyan">resume.txt</span> <span class="dim">"jimmy.kumpulainen.se"</span></span>
-        <span class="status-right">
-            <span id="status-clock"></span>
+    <footer class="modeline">
+        <span class="modeline-left">
+            <span class="modeline-file"><span class="cyan">profile.org</span></span>
+            <span class="modeline-mode" id="modeline-mode">Org</span>
+            <span class="modeline-encoding" id="modeline-encoding">utf-8</span>
+        </span>
+        <span class="modeline-middle">
+            <span class="modeline-position" id="modeline-position">L1 C1</span>
+        </span>
+        <span class="modeline-right">
+            <span id="modeline-percentage">All</span>
+            <span id="modeline-clock"></span>
         </span>
     </footer>
 
