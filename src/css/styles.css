@@ -192,11 +192,14 @@ a,
 /* Org content */
 .org-content {
     padding-left: 0.5rem;
-    transition: max-height 0.3s ease, opacity 0.3s ease;
+    transition: max-height 0.3s ease, opacity 0.3s ease, color 0.1s ease;
+    -webkit-transition: max-height 0.3s ease, opacity 0.3s ease, color 0.1s ease;
 }
 
 .org-content p {
     margin-bottom: 0.8rem;
+    transition: color 0.1s ease;
+    -webkit-transition: color 0.1s ease;
 }
 
 .org-content p:last-child {
@@ -210,12 +213,16 @@ a,
 
 .org-entry p {
     margin-bottom: 0.15rem;
+    transition: color 0.1s ease;
+    -webkit-transition: color 0.1s ease;
 }
 
 .org-desc {
     color: var(--fg3);
     font-size: 0.9rem;
     padding-left: 1.2rem;
+    transition: color 0.1s ease;
+    -webkit-transition: color 0.1s ease;
 }
 
 .org-cert {
