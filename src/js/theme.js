@@ -11,6 +11,11 @@
         light: "☀️"
     };
 
+    const themeColors = {
+        dark: "#1d2021",
+        light: "#f9f5f0"
+    };
+
     function getSystemTheme() {
         return window.matchMedia("(prefers-color-scheme: dark)").matches ? DARK_THEME : LIGHT_THEME;
     }
@@ -35,6 +40,14 @@
         }
         localStorage.setItem(THEME_STORAGE_KEY, theme);
         updateThemeSwitcher(theme);
+        updateThemeColor(theme);
+    }
+
+    function updateThemeColor(theme) {
+        const metaTag = document.querySelector('meta[name="theme-color"]');
+        if (metaTag) {
+            metaTag.setAttribute("content", themeColors[theme]);
+        }
     }
 
     function updateThemeSwitcher(theme) {
