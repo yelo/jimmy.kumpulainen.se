@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.4.1](https://github.com/yelo/jimmy.kumpulainen.se/compare/v3.4.0...v3.4.1) (2026-08-05)
+
+
+### Bug Fixes
+
+* Safari theme animation performance for text elements ([#66](https://github.com/yelo/jimmy.kumpulainen.se/issues/66)) ([404b0dd](https://github.com/yelo/jimmy.kumpulainen.se/commit/404b0dd318927df2c7a4a00e947b2738aed05b9b))
+
 ## [3.4.0](https://github.com/yelo/jimmy.kumpulainen.se/compare/v3.3.0...v3.4.0) (2026-08-05)
 
 
