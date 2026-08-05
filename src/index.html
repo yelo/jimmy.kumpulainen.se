@@ -15,8 +15,10 @@
             const saved = localStorage.getItem(THEME_KEY);
             const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
             const theme = saved || (systemDark ? "dark" : "light");
+            const html = document.documentElement;
+            html.classList.add("theme-loading");
             if (theme === "light") {
-                document.documentElement.setAttribute("data-theme", "light");
+                html.setAttribute("data-theme", "light");
             }
         })();
     </script>

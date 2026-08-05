@@ -56,6 +56,21 @@ html[data-theme="light"] {
     -webkit-transition: background-color 0.1s ease, color 0.1s ease, border-color 0.1s ease;
 }
 
+/*
+ * While the theme is being determined/applied on initial load (see the
+ * inline script in <head>), suppress all transitions. Without this, the
+ * browser's first paint can briefly reflect the default (dark) theme
+ * variables before the data-theme attribute takes effect, and the
+ * subsequent style recalculation gets animated by the rule above instead
+ * of applying instantly - most noticeable in Safari as a delayed color
+ * fade on About text and position entries.
+ */
+html.theme-loading,
+html.theme-loading * {
+    transition: none !important;
+    -webkit-transition: none !important;
+}
+
 html {
     font-size: 15px;
     background-color: var(--bg);
