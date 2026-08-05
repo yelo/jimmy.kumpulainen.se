@@ -210,6 +210,7 @@ a,
 }
 
 .org-content p {
+    color: var(--fg);
     margin-bottom: 0.8rem;
     transition: color 0.1s ease 0s;
     -webkit-transition: color 0.1s ease 0s;
@@ -225,6 +226,7 @@ a,
 }
 
 .org-entry p {
+    color: var(--fg);
     margin-bottom: 0.15rem;
     transition: color 0.1s ease 0s;
     -webkit-transition: color 0.1s ease 0s;
