@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.4.0](https://github.com/yelo/jimmy.kumpulainen.se/compare/v3.3.0...v3.4.0) (2026-08-05)
+
+
+### Features
+
+* Add seasonal themes and automatic selection ([#60](https://github.com/yelo/jimmy.kumpulainen.se/issues/60)) ([51b5fd0](https://github.com/yelo/jimmy.kumpulainen.se/commit/51b5fd057c6aa1ff1f0ad1c58465214d2442dfe7))
+* add xmas theme ([#56](https://github.com/yelo/jimmy.kumpulainen.se/issues/56)) ([44cb89c](https://github.com/yelo/jimmy.kumpulainen.se/commit/44cb89cbe513d1c0b45e5b40455080ce99ec88a3))
+* implement light and dark theme support with system sync ([#65](https://github.com/yelo/jimmy.kumpulainen.se/issues/65)) ([514d06f](https://github.com/yelo/jimmy.kumpulainen.se/commit/514d06f4d44f8601bc957da14e83694d0d323c65))
+* rebuild site with clean terminal/vim aesthetic ([#64](https://github.com/yelo/jimmy.kumpulainen.se/issues/64)) ([367a7fb](https://github.com/yelo/jimmy.kumpulainen.se/commit/367a7fb3fc6fea4452a41d0de6f033757a40bfd7))
+
 ## [3.3.0](https://github.com/yelo/jimmy.kumpulainen.se/compare/v3.2.0...v3.3.0) (2025-10-02)
 
 
