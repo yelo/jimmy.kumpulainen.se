@@ -14,7 +14,7 @@ Inspired by vim `:help` pages and emacs buffers. The page renders as a single mo
 
 - **Vim/emacs-style layout:** Section headers with `│` leads, tagline underlines, and a `[No Name]` buffer footer.
 - **Status bar:** Live UTC clock in the bottom status line.
-- **Monospace font stack:** Courier New, Menlo, Consolas, and classic fallbacks.
+- **Monospace font stack:** Iosevka Web with Courier New, Menlo, Consolas fallbacks.
 - **Content from `profile.md`:** The site's text is derived from the single-source-of-truth profile at the repo root.
 
 ## Tech Stack

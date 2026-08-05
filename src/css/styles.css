@@ -35,7 +35,7 @@ html {
 }
 
 body {
-    font-family: "Courier New", Courier, Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace;
+    font-family: "Iosevka Web", "Courier New", Courier, Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace;
     line-height: 1.6;
     min-height: 100vh;
     display: flex;
