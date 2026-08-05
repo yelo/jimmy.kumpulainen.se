@@ -7,9 +7,9 @@ Backend, cloud, DevOps, and product engineering.
 
 ## About
 
-I am a software engineer based in Malmo, working at Knowit FLX and currently contracted as a consultant at Inter IKEA Group.
+I am a software engineer and cloud architect based in Malmö, specializing in backend services, cloud infrastructure, and AI-driven product engineering at scale. Currently at Knowit FLX and Inter IKEA Group, where I architect resilient systems serving millions of active users worldwide.
 
-My focus is on backend services, cloud infrastructure, and shipping reliable systems that support large-scale products.
+My expertise spans backend architecture, DevOps practices, and building next-generation AI-powered features. I focus on shipping reliable, scalable systems that blend cutting-edge technology with real-world reliability. Strong experience with server-driven UI, microservices, event-driven systems, and cloud-native infrastructure across Azure and GCP ecosystems.
 
 ## Contact
 
@@ -24,10 +24,19 @@ Senior Software Engineer | Mar 2025 - Present
 
 ### Inter IKEA Group
 Software Engineer, contractor/consultant | Dec 2025 - Present
-Building and scaling the global Inter IKEA retail app with server-driven UI, backend services, Azure infrastructure, and cross-platform integration.
+
+Building and scaling the global Inter IKEA retail app (millions of active users) through a Server-Driven UI (SDUI) architecture.
+
+**Backend & Cloud Architecture:** Architect and maintain resilient backend services and Azure infrastructure using .NET and cloud-native DevOps practices.
+
+**AI & Smart Shopping:** Engineer foundational systems and infrastructure for next-generation AI-powered shopping features and intelligent customer agents.
+
+**Cross-Functional Integration:** Execute SDUI features across iOS and Android codebases, ensuring full-stack reliability at global scale.
 
 ### Inter IKEA Group
 DevOps Leader, contractor | Mar 2025 - Dec 2025
+
+Led CI/CD infrastructure and cloud engineering initiatives. Managed containerized deployments, infrastructure-as-code with Terraform, and Rust-based DevOps tooling.
 
 ## Work history
 
@@ -37,7 +46,8 @@ Built and maintained internal services and tools for claims, marketing, and insu
 
 ### Knowit
 Senior Software Engineer | Sep 2021 - Dec 2024
-Worked across several assignments, including Trygg-Hansa, KIA, IKEA Customer Item Availability, and IKEA MV E-com. The work centered on backend services, SDUI, Azure, Go, GCP, and infrastructure.
+
+Worked across multiple high-impact assignments spanning three years, including backend engineering at Trygg-Hansa (insurance/claims systems), KIA (serverless architectures), IKEA Customer Item Availability (GCP/Go backend), and IKEA MV E-com (server-driven UI platform). Architected solutions using .NET Core, Go, TypeScript, Azure DevOps, GCP, Terraform, and microservices patterns.
 
 ### Kristianstad University
 Software Engineer | May 2019 - Jul 2021
@@ -61,4 +71,12 @@ Assisted students and corrected assignments for Web Development and Algorithmic'
 
 ## Skills
 
-.NET, C#, Go, Rust, Azure, GCP, Terraform, Kubernetes, Docker, CI/CD, DevOps, server-driven UI, backend services, cloud architecture, microservices, event-driven systems, and full-stack delivery.
+**Languages & Runtime:** .NET, C#, Go, Rust, TypeScript, Java
+
+**Cloud & Infrastructure:** Azure (App Service, AKS, Service Bus, DevOps), GCP (Compute Engine, Cloud Run, Firestore), AWS (EC2, S3, Lambda)
+
+**DevOps & Infrastructure-as-Code:** Kubernetes, Docker, Terraform, CI/CD (Azure DevOps, GitHub Actions, Jenkins), Rust-based tooling
+
+**Architectures & Patterns:** Server-Driven UI (SDUI), microservices, event-driven systems, serverless, RESTful APIs
+
+**Specializations:** Backend services, cloud architecture, AI-powered features, full-stack delivery, system design at scale
