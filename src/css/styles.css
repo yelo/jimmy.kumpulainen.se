@@ -127,8 +127,8 @@ a:hover {
     font-size: 0.95rem;
     font-weight: 600;
     color: var(--orange);
-    margin-bottom: 0.6rem;
-    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    margin-top: 0.8rem;
     padding-bottom: 0.3rem;
     border-bottom: 1px solid var(--border);
 }
