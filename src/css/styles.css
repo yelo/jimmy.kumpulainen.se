@@ -192,8 +192,6 @@ a,
 /* Org content */
 .org-content {
     padding-left: 0.5rem;
-    transition: max-height 0.3s ease, opacity 0.3s ease;
-    -webkit-transition: max-height 0.3s ease, opacity 0.3s ease;
 }
 
 .org-content p {
@@ -357,6 +355,7 @@ a,
     border-radius: 2px;
     color: var(--cyan);
     background-color: var(--bg);
+    font-family: inherit;
     font-size: 0.75rem;
     white-space: nowrap;
 }
