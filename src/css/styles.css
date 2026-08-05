@@ -181,7 +181,11 @@ a:hover {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin: 0 !important;
+    margin: 0 0 0.8rem 0 !important;
+}
+
+.org-tags:last-of-type {
+    margin-bottom: 0 !important;
 }
 
 .org-tag {
