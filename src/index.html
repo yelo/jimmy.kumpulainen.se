@@ -9,11 +9,22 @@
     <title>Jimmy Kumpulainen: Software Engineer</title>
     <link href="https://iosevka-webfonts.github.io/iosevka/Iosevka.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/styles.css">
+    <script>
+        (function() {
+            const THEME_KEY = "theme-preference";
+            const saved = localStorage.getItem(THEME_KEY);
+            const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            const theme = saved || (systemDark ? "dark" : "light");
+            if (theme === "light") {
+                document.documentElement.setAttribute("data-theme", "light");
+            }
+        })();
+    </script>
 </head>
 <body>
     <main class="buffer">
         <header class="org-header">
-            <div class="file-info">profile.org</div>
+            <div class="file-info">~/org/profile.org</div>
             <h1 class="org-title">Jimmy Kumpulainen</h1>
             <p class="org-subtitle">Software Engineer<span class="cursor">|</span></p>
             <p class="org-location">Malmö, Sweden</p>
@@ -131,7 +142,7 @@
 
     <footer class="modeline">
         <span class="modeline-left">
-            <span class="modeline-file"><span class="cyan">profile.org</span></span>
+            <span class="modeline-file"><span class="cyan">~/org/profile.org</span></span>
             <span class="modeline-mode" id="modeline-mode">Org</span>
             <span class="modeline-encoding" id="modeline-encoding">utf-8</span>
         </span>
