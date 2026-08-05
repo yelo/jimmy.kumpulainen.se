@@ -23,6 +23,7 @@ Any use of non-standard technologies or third-party libraries must be discussed 
 
 - **README.md Integrity:** The `README.md` file must be kept meticulously up-to-date. It is the single source of truth for the project's status, features, and how to run it.
 - **AI Responsibility:** The AI assistant is explicitly responsible for updating the `README.md` file to reflect any changes it makes to the codebase, dependencies, or deployment process.
+- **profile.md:** The `profile.md` file at the project root contains the professional profile of Jimi Kumpulainen (Jimmy Kumpulainen), including his about section, contact details, current work, work history, and skills. It should be kept up-to-date alongside any changes to his professional information.
 
 ---
 
