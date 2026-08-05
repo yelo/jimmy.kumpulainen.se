@@ -53,6 +53,7 @@ html[data-theme="light"] {
     padding: 0;
     box-sizing: border-box;
     transition: background-color 0.1s ease, color 0.1s ease, border-color 0.1s ease;
+    -webkit-transition: background-color 0.1s ease, color 0.1s ease, border-color 0.1s ease;
 }
 
 html {
@@ -137,6 +138,7 @@ a,
 .cyan,
 .dim {
     transition: color 0.1s ease;
+    -webkit-transition: color 0.1s ease;
 }
 
 .cursor {
