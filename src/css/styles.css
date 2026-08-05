@@ -121,9 +121,6 @@ a:hover {
     border-bottom: 1px solid var(--border);
     word-spacing: 0.1em;
     letter-spacing: 0.02em;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
 }
 
 .org-headline-2 {
@@ -134,9 +131,6 @@ a:hover {
     margin-top: 1rem;
     padding-bottom: 0.3rem;
     border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
 }
 
 .org-headline-3 {
@@ -145,43 +139,6 @@ a:hover {
     color: var(--yellow);
     margin-bottom: 0.5rem;
     margin-top: 0.8rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-/* Fold button */
-.org-fold-button {
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    padding: 0;
-    margin-right: 0.3rem;
-    border: none;
-    background: none;
-    color: var(--fg4);
-    cursor: pointer;
-    font-size: 0.85rem;
-    line-height: 1;
-    vertical-align: middle;
-    opacity: 0.6;
-    transition: opacity 0.2s ease;
-}
-
-.org-fold-button:hover {
-    opacity: 1;
-}
-
-.org-fold-button::before {
-    content: "▼";
-}
-
-.org-fold-button.folded::before {
-    content: "▶";
-}
-
-.org-section.folded .org-content {
-    display: none;
 }
 
 /* Org content */

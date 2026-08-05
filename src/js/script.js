@@ -42,49 +42,10 @@
         }
     }
 
-    // Folding behavior
-    function initFolding() {
-        var foldButtons = document.querySelectorAll(".org-fold-button");
-
-        foldButtons.forEach(function (button) {
-            button.addEventListener("click", function (e) {
-                e.preventDefault();
-                var section = button.closest(".org-section");
-                if (section) {
-                    section.classList.toggle("folded");
-                    // Update aria-expanded for accessibility
-                    var isOpen = !section.classList.contains("folded");
-                    button.setAttribute("aria-expanded", isOpen);
-                }
-            });
-
-            // Tab key handling for folding
-            button.addEventListener("keydown", function (e) {
-                if (e.key === "Tab") {
-                    // Allow default tab behavior but highlight the button
-                    var section = button.closest(".org-section");
-                    if (section) {
-                        button.focus();
-                    }
-                }
-            });
-        });
-
-        // Keyboard shortcuts for org-mode navigation
-        document.addEventListener("keydown", function (e) {
-            // Tab on heading to fold/unfold
-            if (e.key === "Tab" && e.target.classList.contains("org-fold-button")) {
-                e.preventDefault();
-                e.target.click();
-            }
-        });
-    }
-
     // Initialize on page load
     function init() {
         updateClock();
         updatePosition();
-        initFolding();
 
         setInterval(updateClock, 1000);
         window.addEventListener("scroll", updatePosition);
