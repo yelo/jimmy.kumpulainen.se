@@ -4,7 +4,7 @@
 [![CodeQL](https://github.com/yelo/jimmy.kumpulainen.se/actions/workflows/codeql.yml/badge.svg)](https://github.com/yelo/jimmy.kumpulainen.se/actions/workflows/codeql.yml)
 [![Deployment Status](https://img.shields.io/github/deployments/yelo/jimmy.kumpulainen.se/production?label=deployment&logo=azure)](https://github.com/yelo/jimmy.kumpulainen.se/deployments)
 
-Personal site for Jimmy Kumpulainen — rendered as a clean terminal buffer in your browser. No flash, no fluff. Just a `.jimp` file, open in a text editor.
+Personal site for Jimmy Kumpulainen — rendered as a clean terminal buffer in your browser. No flash, no fluff. Just a `resume.txt` file, open in a text editor.
 
 ## Look & Feel
 
@@ -13,9 +13,8 @@ Inspired by vim `:help` pages and emacs buffers. The page renders as a single mo
 ## Features
 
 - **Vim/emacs-style layout:** Section headers with `│` leads, tagline underlines, and a `[No Name]` buffer footer.
-- **Status bar:** Live UTC clock and session-uptime counter in the bottom status line.
-- **Monospace stack:** Prioritises UI monospace fonts on every platform.
-- **Terminal easter egg:** Type `:wq` anywhere on the page to see a quick terminal message.
+- **Status bar:** Live UTC clock in the bottom status line.
+- **Monospace font stack:** Courier New, Menlo, Consolas, and classic fallbacks.
 - **Content from `profile.md`:** The site's text is derived from the single-source-of-truth profile at the repo root.
 
 ## Tech Stack

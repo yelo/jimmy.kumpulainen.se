@@ -35,7 +35,7 @@ html {
 }
 
 body {
-    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace;
+    font-family: "Courier New", Courier, Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace;
     line-height: 1.6;
     min-height: 100vh;
     display: flex;
@@ -159,32 +159,6 @@ a:hover {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-}
-
-#easter-egg-console {
-    position: fixed;
-    bottom: 1.75rem;
-    left: 0;
-    right: 0;
-    text-align: center;
-    pointer-events: none;
-    z-index: 10;
-    font-family: inherit;
-    font-size: 0.8rem;
-    color: var(--fg);
-    display: none;
-    padding: 0.15rem 0;
-    background-color: var(--bg0);
-    border-top: 1px solid var(--green);
-    border-bottom: 1px solid var(--green);
-}
-
-#easter-egg-console.show {
-    display: block;
-}
-
-.hidden {
-    display: none;
 }
 
 @media (max-width: 680px) {
