@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.4.2](https://github.com/yelo/jimmy.kumpulainen.se/compare/v3.4.1...v3.4.2) (2026-08-06)
+
+
+### Bug Fixes
+
+* improve mobile modeline layout ([#70](https://github.com/yelo/jimmy.kumpulainen.se/issues/70)) ([075e109](https://github.com/yelo/jimmy.kumpulainen.se/commit/075e1094fc71c428c79110c4300930496446c7a2))
+
 ## [3.4.1](https://github.com/yelo/jimmy.kumpulainen.se/compare/v3.4.0...v3.4.1) (2026-08-05)
 
 
