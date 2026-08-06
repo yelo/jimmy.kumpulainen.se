@@ -36,7 +36,7 @@ Building and scaling the global Inter IKEA retail app (millions of active users)
 ### Inter IKEA Group
 DevOps Leader, contractor | Mar 2025 - Dec 2025
 
-Led CI/CD infrastructure and cloud engineering initiatives. Managed containerized deployments, infrastructure-as-code with Terraform, and Rust-based DevOps tooling.
+Led CI/CD infrastructure and cloud engineering initiatives. Managed containerized deployments and infrastructure-as-code with Terraform, and engineered internal DevOps automation built in Rust.
 
 ## Work history
 
@@ -75,7 +75,7 @@ Assisted students and corrected assignments for Web Development and Algorithmic'
 
 **Cloud & Infrastructure:** Azure (App Service, AKS, Service Bus, DevOps), GCP (Compute Engine, Cloud Run, Firestore), AWS (EC2, S3, Lambda)
 
-**DevOps & Infrastructure-as-Code:** Kubernetes, Docker, Terraform, CI/CD (Azure DevOps, GitHub Actions, Jenkins), Rust-based tooling
+**DevOps & Infrastructure-as-Code:** Kubernetes, Docker, Terraform, CI/CD (Azure DevOps, GitHub Actions, Jenkins)
 
 **Architectures & Patterns:** Server-Driven UI (SDUI), microservices, event-driven systems, serverless, RESTful APIs
 
