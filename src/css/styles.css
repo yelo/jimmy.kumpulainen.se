@@ -1,51 +1,51 @@
 :root {
-    /* Dark theme (default) */
-    --bg: #1d2021;
-    --bg0: #282828;
-    --bg1: #3c3836;
-    --bg2: #504945;
-    --fg: #ebdbb2;
-    --fg0: #fbf1c7;
-    --fg1: #ebdbb2;
-    --fg2: #d5c4a1;
-    --fg3: #bdae93;
-    --fg4: #a89984;
-    --red: #fb4934;
-    --green: #b8bb26;
-    --yellow: #fabd2f;
-    --blue: #83a598;
-    --purple: #b16286;
-    --aqua: #8ec07c;
-    --orange: #fe8019;
-    --amber: #d79921;
-    --cyan: #8ab3c7;
-    --dim: #665c54;
-    --border: #3c3836;
+    /* Rose Pine Moon (dark theme, default) */
+    --bg: #232136;
+    --bg0: #2a273f;
+    --bg1: #393552;
+    --bg2: #44415a;
+    --fg: #e0def4;
+    --fg0: #e0def4;
+    --fg1: #e0def4;
+    --fg2: #908caa;
+    --fg3: #6e6a86;
+    --fg4: #908caa;
+    --red: #eb6f92;
+    --green: #9ccfd8;
+    --yellow: #f6c177;
+    --blue: #9ccfd8;
+    --purple: #c4a7e7;
+    --aqua: #31748f;
+    --orange: #ea9a97;
+    --amber: #f6c177;
+    --cyan: #9ccfd8;
+    --dim: #6e6a86;
+    --border: #393552;
 }
 
-/* Light theme */
+/* Rose Pine Dawn (light theme) */
 html[data-theme="light"] {
-    --bg: #f9f5f0;
-    --bg0: #f3efea;
-    --bg1: #e8ddd2;
-    --bg2: #d5c4a1;
-    --fg: #32302f;
-    --fg0: #1d1b19;
-    --fg1: #32302f;
-    --fg2: #504945;
-    --fg3: #665c54;
-    --fg4: #7c6f64;
-    --red: #cc241d;
-    --green: #98971a;
-    --yellow: #d79921;
-    --blue: #458588;
-    --purple: #b16286;
-    --aqua: #689d6a;
-    --orange: #d65d0e;
-    --amber: #b8860b;
-    --cyan: #5c7a87;
-    --dim: #a89984;
-    --border: #d5c4a1;
+    --bg: #faf4ed;
+    --bg0: #fffaf3;
+    --bg1: #f2e9de;
+    --bg2: #dfdad9;
+    --fg: #575279;
+    --fg0: #575279;
+    --fg1: #575279;
+    --fg2: #797593;
+    --fg3: #9893a5;
+    --fg4: #797593;
+    --red: #b4637a;
+    --green: #56949f;
+    --yellow: #ea9d34;
+    --blue: #286983;
+    --purple: #907aa9;
+    --aqua: #56949f;
+    --orange: #d7827e;
+    --amber: #ea9d34;
+    --cyan: #56949f;
+    --dim: #9893a5;
+    --border: #dfdad9;
 }
 
 * {
